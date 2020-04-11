@@ -14,7 +14,7 @@ module.exports = override(
    addLessLoader({
       javascriptEnabled: true,
       modifyVars: { 
-        'hack': `true;@import "${require.resolve('antd/lib/style/color/colorPalette.less')}";`,
+        'hack': `true;@import "${require.resolve('antd/lib/style/color/colorPalette.less')}";`, 
         ...darkTheme,
       },
     }),
