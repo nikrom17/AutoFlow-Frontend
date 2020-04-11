@@ -1,11 +1,7 @@
 import React from "react";
-import { Button } from "antd";
+import { Route } from "react-router-dom";
 import "./App.css";
 
-const App = () => (
-  <div className="App">
-    <Button type="primary">Button</Button>
-  </div>
-);
+const App: React.FC = () => <div className="App"></div>;
 
 export default App;
