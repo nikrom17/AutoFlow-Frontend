@@ -1,3 +1,4 @@
+const darkTheme = require('antd/dist/dark-theme');
 const { 
   addLessLoader, 
   fixBabelImports, 
@@ -8,10 +9,13 @@ module.exports = override(
    fixBabelImports('import', {
      libraryName: 'antd',
      libraryDirectory: 'es',
-     style: 'true',
+     style: true,
    }),
    addLessLoader({
       javascriptEnabled: true,
-      modifyVars: { '@primary-color': '#1DA57A' },
+      modifyVars: { 
+        'hack': `true;@import "${require.resolve('antd/lib/style/color/colorPalette.less')}";`,
+        ...darkTheme,
+      },
     }),
  );
