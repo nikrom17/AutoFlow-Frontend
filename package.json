@@ -19,7 +19,7 @@
     "less": "^3.11.1",
     "less-loader": "^5.0.0",
     "react": "^16.13.1",
-    "react-app-rewired": "^2.1.5",
+    "react-app-rewired": "^2.1.6",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
@@ -45,5 +45,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "tsconfig-paths-webpack-plugin": "^3.2.0"
   }
 }
