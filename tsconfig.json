@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -18,9 +14,17 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react",
-    "baseUrl": "."
+    "baseUrl": ".",
+    "paths": {
+      "hooks/*": ["src/hooks/*"],
+      "api/*": ["src/api/*"],
+      "mockData/*": ["src/mockData/*"],
+      "pages/*": ["src/app/pages/*"],
+      "shared/*": ["src/app/shared/*"],
+      "static/*": ["src/static/*"],
+      "types/*": ["src/types/*"],
+      "utils/*": ["src/types/*"]
+    }
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }
