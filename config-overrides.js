@@ -1,8 +1,12 @@
 const darkTheme = require('antd/dist/dark-theme');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const path = require('path');
 const { 
   addLessLoader, 
+  addWebpackAlias,
   fixBabelImports, 
-  override, 
+  override,
+  addWebpackResolve
 } = require('customize-cra');
 
 module.exports = override(
@@ -18,4 +22,12 @@ module.exports = override(
         ...darkTheme,
       },
     }),
+    addWebpackAlias({
+      'pages': path.resolve(__dirname, './src/app/pages'),
+    }),
+    addWebpackResolve({
+      plugins: [new TsconfigPathsPlugin({ configFile: "./tsconfig.json" })]
+    }),
  );
+
+ 
