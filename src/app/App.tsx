@@ -25,9 +25,9 @@ const App: React.FC = () => {
       {/* on click, this button sets an Object as a message, not a string. */}
       {/* which will cause an error to occur in the component tree */}
       {/* @ts-ignore */}
-      <button onClick={() => setMessage({ message: { text: "Hello World" } })}>
+      {/* <button onClick={() => setMessage({ message: { text: "Hello World" } })}>
         Click here to change message!
-      </button>
+      </button> */}
     </Sentry.ErrorBoundary>
   );
 };
