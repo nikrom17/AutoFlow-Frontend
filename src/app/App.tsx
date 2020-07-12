@@ -1,16 +1,18 @@
-import React from "react";
-import * as Sentry from "@sentry/react";
+import * as React from "react";
+import { Button } from "antd";
 import ErrorPage from "@pages/errorPage/errorPage";
 
 const App: React.FC = () => {
+  const raiseError = () => {
+    throw new Error();
+  };
   return (
-    <Sentry.ErrorBoundary
-      fallback={({ error, componentStack, resetError }) => (
-        <ErrorPage error={error} componentStack={componentStack} />
-      )}
-    >
-      <div>This is the app</div>
-    </Sentry.ErrorBoundary>
+    <div>
+      <p>This is my app</p>
+      <ErrorPage>
+        <Button onClick={raiseError}>Throw Error</Button>
+      </ErrorPage>
+    </div>
   );
 };
 
