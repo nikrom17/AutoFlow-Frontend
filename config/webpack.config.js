@@ -300,6 +300,7 @@ module.exports = function(webpackEnv) {
         ...(modules.webpackAliases || {}),
         hooks: path.resolve(__dirname, 'src/hooks/'),
         api: path.resolve(__dirname, 'src/api/'),
+        pages: path.resolve(__dirname, 'src/apps/pages/'),
         mockData: path.resolve(__dirname, 'src/mockData/'),
         shared: path.resolve(__dirname, 'src/shared/'),
         static: path.resolve(__dirname, 'src/static/'),

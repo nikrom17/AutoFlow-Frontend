@@ -12,8 +12,8 @@
           "hooks/*": ["src/hooks/*"],
           "api/*": ["src/api/*"],
           "mockData/*": ["src/mockData/*"],
-          "pages/*": ["src/pages/*"],
-          "shared/*": ["src/shared/*"],
+          "pages/*": ["src/app/pages/*"],
+          "shared/*": ["src/app/shared/*"],
           "static/*": ["src/static/*"],
           "types/*": ["src/types/*"],
           "utils/*": ["src/types/*"]
