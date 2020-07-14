@@ -11,6 +11,7 @@ const {
 } = require('customize-cra');
 
 module.exports = override(
+  // enable antd
    fixBabelImports('import', {
      libraryName: 'antd',
      libraryDirectory: 'es',
@@ -19,18 +20,18 @@ module.exports = override(
    addLessLoader({
       javascriptEnabled: true,
       modifyVars: { 
-        'hack': `true;@import "${require.resolve('antd/lib/style/color/colorPalette.less')}";`,
+        'hack': `true;@import "${require.resolve('antd/lib/style/color/colorPalette.less')}";`, //add antd less variables
         ...defaultTheme,
         ...darkTheme,
       },
-      // cssModules: {
-        localIdentName: "[path][name]__[local]--[hash:base64:5]", // if you use CSS Modules, and custom `localIdentName`, default is '[local]--[hash:base64:5]'.
-      // },
+      localIdentName: "[path][name]__[local]--[hash:base64:5]", //  enables CSS Modules
     }),
+    // import alias
     addWebpackAlias({
       'pages': path.resolve(__dirname, './src/app/pages'),
       'components': path.resolve(__dirname, './src/app/components'),
     }),
+    // add updated tsconfig to build 
     addWebpackResolve({
       plugins: [new TsconfigPathsPlugin({ configFile: "./tsconfig.json" })]
     }),
