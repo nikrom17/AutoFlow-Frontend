@@ -1,10 +1,10 @@
 import * as React from "react";
 import { Route, Switch } from "react-router-dom";
-import { Button } from "antd";
 import ErrorPage from "@pages/errorPage/errorPage";
 import HomePage from "@pages/homePage/homePage";
 import Navigation from "@components/navigation/navigation";
 import Header from "@components/header/header";
+import { routes } from "src/app/routing/routeConstants";
 import "./app.less";
 
 const App: React.FC = () => {
@@ -15,7 +15,13 @@ const App: React.FC = () => {
         <Header />
         <main>
           <Switch>
-            <Route component={HomePage}></Route>
+            {routes.allIds.map((routeId) => {
+              const { Component, path } = routes.byId[routeId];
+              console.log(path);
+              return (
+                <Route component={Component} exact key={path} path={path} />
+              );
+            })}
           </Switch>
         </main>
       </div>

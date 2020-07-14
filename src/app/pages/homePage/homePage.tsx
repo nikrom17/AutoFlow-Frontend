@@ -1,18 +1,17 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { Button } from "antd";
 
 const Home = () => {
-  const raiseError = () => {
-    throw new Error();
-  };
+  const history = useHistory();
   return (
     <>
       <h1>This is the home page</h1>
       <div>
-        <Button type="primary">Button</Button>
+        <Button onClick={() => history.push("/about")} type="primary">
+          Go to the about page
+        </Button>
       </div>
-      <p>This is my app</p>
-      <Button onClick={raiseError}>Throw Error</Button>
     </>
   );
 };
