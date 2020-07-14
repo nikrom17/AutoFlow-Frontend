@@ -4,11 +4,14 @@ import { BrowserRouter as Router } from "react-router-dom";
 import "./index.less";
 import App from "./app/app";
 // import * as Sentry from "@sentry/react";
+// import { Integrations as AmpIntegrations } from "@sentry/apm";
 import * as serviceWorker from "./serviceWorker";
 
 // Sentry.init({
 //   dsn:
 //     "https://56989b19084a4a0783d729f02cc0ff2a@o419182.ingest.sentry.io/5329556",
+//   integrations: [new AmpIntegrations.Tracing()],
+//   tracesSampleRate: 0.25,
 // });
 
 ReactDOM.render(

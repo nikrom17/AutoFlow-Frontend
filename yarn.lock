@@ -1067,6 +1067,17 @@
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.3.tgz#2b5a3ab3f918cca48a8c754c08168e3f03eba61b"
 
+"@sentry/apm@^5.19.2":
+  version "5.19.2"
+  resolved "https://registry.yarnpkg.com/@sentry/apm/-/apm-5.19.2.tgz#369fdcbc9fa5db992f707b24f3165e106a277cf7"
+  dependencies:
+    "@sentry/browser" "5.19.2"
+    "@sentry/hub" "5.19.2"
+    "@sentry/minimal" "5.19.2"
+    "@sentry/types" "5.19.2"
+    "@sentry/utils" "5.19.2"
+    tslib "^1.9.3"
+
 "@sentry/browser@5.19.1", "@sentry/browser@^5.19.1":
   version "5.19.1"
   resolved "https://registry.yarnpkg.com/@sentry/browser/-/browser-5.19.1.tgz#b22f36fc71f36719ad352a54e6b31722622128c0"
@@ -1074,6 +1085,15 @@
     "@sentry/core" "5.19.1"
     "@sentry/types" "5.19.1"
     "@sentry/utils" "5.19.1"
+    tslib "^1.9.3"
+
+"@sentry/browser@5.19.2":
+  version "5.19.2"
+  resolved "https://registry.yarnpkg.com/@sentry/browser/-/browser-5.19.2.tgz#8bad445b8d1efd50e6510bb43b3018b941f6e5cb"
+  dependencies:
+    "@sentry/core" "5.19.2"
+    "@sentry/types" "5.19.2"
+    "@sentry/utils" "5.19.2"
     tslib "^1.9.3"
 
 "@sentry/core@5.19.1":
@@ -1086,6 +1106,16 @@
     "@sentry/utils" "5.19.1"
     tslib "^1.9.3"
 
+"@sentry/core@5.19.2":
+  version "5.19.2"
+  resolved "https://registry.yarnpkg.com/@sentry/core/-/core-5.19.2.tgz#99a64ef0e55230fc02a083c48fa07ada85de4929"
+  dependencies:
+    "@sentry/hub" "5.19.2"
+    "@sentry/minimal" "5.19.2"
+    "@sentry/types" "5.19.2"
+    "@sentry/utils" "5.19.2"
+    tslib "^1.9.3"
+
 "@sentry/hub@5.19.1":
   version "5.19.1"
   resolved "https://registry.yarnpkg.com/@sentry/hub/-/hub-5.19.1.tgz#f3bc8500680974ce43c1eedcd8e90696cc18b306"
@@ -1094,12 +1124,28 @@
     "@sentry/utils" "5.19.1"
     tslib "^1.9.3"
 
+"@sentry/hub@5.19.2":
+  version "5.19.2"
+  resolved "https://registry.yarnpkg.com/@sentry/hub/-/hub-5.19.2.tgz#ab7f3d2d253c3441b2833a530b17c6de2418b2c7"
+  dependencies:
+    "@sentry/types" "5.19.2"
+    "@sentry/utils" "5.19.2"
+    tslib "^1.9.3"
+
 "@sentry/minimal@5.19.1":
   version "5.19.1"
   resolved "https://registry.yarnpkg.com/@sentry/minimal/-/minimal-5.19.1.tgz#04043d93a7dc90cbed1a31d80f6bf59688ea3100"
   dependencies:
     "@sentry/hub" "5.19.1"
     "@sentry/types" "5.19.1"
+    tslib "^1.9.3"
+
+"@sentry/minimal@5.19.2":
+  version "5.19.2"
+  resolved "https://registry.yarnpkg.com/@sentry/minimal/-/minimal-5.19.2.tgz#0fc2fdf9911a0cb31b52f7ccad061b74785724a3"
+  dependencies:
+    "@sentry/hub" "5.19.2"
+    "@sentry/types" "5.19.2"
     tslib "^1.9.3"
 
 "@sentry/react@^5.19.1":
@@ -1116,11 +1162,22 @@
   version "5.19.1"
   resolved "https://registry.yarnpkg.com/@sentry/types/-/types-5.19.1.tgz#8762f668d3fc2416fbde31d15d13009544caeb54"
 
+"@sentry/types@5.19.2":
+  version "5.19.2"
+  resolved "https://registry.yarnpkg.com/@sentry/types/-/types-5.19.2.tgz#ead586f0b64b91c396d3521b938ca25f7b59d655"
+
 "@sentry/utils@5.19.1":
   version "5.19.1"
   resolved "https://registry.yarnpkg.com/@sentry/utils/-/utils-5.19.1.tgz#e1134db40e4bb9732251e515721cec7ee94d4d9c"
   dependencies:
     "@sentry/types" "5.19.1"
+    tslib "^1.9.3"
+
+"@sentry/utils@5.19.2":
+  version "5.19.2"
+  resolved "https://registry.yarnpkg.com/@sentry/utils/-/utils-5.19.2.tgz#f2819d9de5abc33173019e81955904247e4a8246"
+  dependencies:
+    "@sentry/types" "5.19.2"
     tslib "^1.9.3"
 
 "@sheerun/mutationobserver-shim@^0.3.2":
