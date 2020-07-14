@@ -1,7 +1,6 @@
 import * as React from "react";
 import { Route, Switch } from "react-router-dom";
 import ErrorPage from "@pages/errorPage/errorPage";
-import HomePage from "@pages/homePage/homePage";
 import Navigation from "@components/navigation/navigation";
 import Header from "@components/header/header";
 import { routes } from "src/app/routing/routeConstants";
@@ -17,7 +16,6 @@ const App: React.FC = () => {
           <Switch>
             {routes.allIds.map((routeId) => {
               const { Component, path } = routes.byId[routeId];
-              console.log(path);
               return (
                 <Route component={Component} exact key={path} path={path} />
               );
