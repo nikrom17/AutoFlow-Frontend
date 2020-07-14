@@ -2,23 +2,24 @@ import * as React from "react";
 import { Route, Switch } from "react-router-dom";
 import { Button } from "antd";
 import ErrorPage from "@pages/errorPage/errorPage";
+import HomePage from "@pages/homePage/homePage";
 import Navigation from "@components/navigation/navigation";
-import "./App.less";
+import Header from "@components/header/header";
+import "./app.less";
 
 const App: React.FC = () => {
-  const raiseError = () => {
-    throw new Error();
-  };
   return (
-    <Switch>
+    <ErrorPage>
       <Navigation />
-      <div>
-        <p>This is my app</p>
-        <ErrorPage>
-          <Button onClick={raiseError}>Throw Error</Button>
-        </ErrorPage>
+      <div className="wrapper">
+        <Header />
+        <main>
+          <Switch>
+            <Route component={HomePage}></Route>
+          </Switch>
+        </main>
       </div>
-    </Switch>
+    </ErrorPage>
   );
 };
 
