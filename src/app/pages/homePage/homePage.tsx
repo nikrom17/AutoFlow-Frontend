@@ -18,6 +18,26 @@ const Home = () => {
           Go to the about page
         </Button>
       </div>
+      <h1>This is the home page</h1>
+      <p>User Info:</p>
+      <p>{`First Name: ${isAuthenticated && user.given_name}`}</p>
+      <p>{`Last Name: ${isAuthenticated && user.family_name}`}</p>
+      <p>{`Email: ${isAuthenticated && user.email}`}</p>
+      <div>
+        <Button onClick={() => history.push("/about")} type="primary">
+          Go to the about page
+        </Button>
+      </div>
+      <h1>This is the home page</h1>
+      <p>User Info:</p>
+      <p>{`First Name: ${isAuthenticated && user.given_name}`}</p>
+      <p>{`Last Name: ${isAuthenticated && user.family_name}`}</p>
+      <p>{`Email: ${isAuthenticated && user.email}`}</p>
+      <div>
+        <Button onClick={() => history.push("/about")} type="primary">
+          Go to the about page
+        </Button>
+      </div>
     </>
   );
 };
