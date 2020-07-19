@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Route, Switch } from "react-router-dom";
+import { withAuthenticationRequired } from "@auth0/auth0-react";
 import { routes } from "src/app/routing/routeConstants";
 import ErrorPage from "@pages/errorPage/errorPage";
 import Header from "@components/header/header";
@@ -27,4 +28,4 @@ const App: React.FC = () => {
   );
 };
 
-export default App;
+export default withAuthenticationRequired(App);

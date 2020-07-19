@@ -3,6 +3,8 @@ import ReactDOM from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 import "./index.less";
 import App from "./app/app";
+import { Auth0Provider } from "@auth0/auth0-react";
+import auth0Config from "../auth0-config";
 // import * as Sentry from "@sentry/react";
 // import { Integrations as AmpIntegrations } from "@sentry/apm";
 import * as serviceWorker from "./serviceWorker";
@@ -14,11 +16,27 @@ import * as serviceWorker from "./serviceWorker";
 //   tracesSampleRate: 0.25,
 // });
 
+const onRedirectCallback = (appState: any) => {
+  // history.push(
+  //   appState && appState.returnTo
+  //     ? appState.returnTo
+  //     : window.location.pathname
+  // );
+  console.log(appState);
+};
+
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
-      <App />
-    </Router>
+    <Auth0Provider
+      domain={auth0Config.domain}
+      clientId={auth0Config.clientId}
+      redirectUri={auth0Config.redirect}
+      onRedirectCallback={onRedirectCallback}
+    >
+      <Router>
+        <App />
+      </Router>
+    </Auth0Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );
