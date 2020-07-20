@@ -1,6 +1,6 @@
-import * as deliveriesActionType from "../actionTypes/deliveriesActionTypes";
+import * as deliveriesTypes from "../types/deliveriesTypes";
 
-export const initialDeliveriesState: deliveriesActionType.DeliveriesState = {
+export const initialDeliveriesState: deliveriesTypes.DeliveriesState = {
   deliveries: {
     allIds: [],
     byId: {},
@@ -9,10 +9,10 @@ export const initialDeliveriesState: deliveriesActionType.DeliveriesState = {
 
 export const deliveriesReducer = (
   state = initialDeliveriesState,
-  action: deliveriesActionType.Types
-): deliveriesActionType.DeliveriesState => {
+  action: deliveriesTypes.Types
+): deliveriesTypes.DeliveriesState => {
   switch (action.type) {
-    case deliveriesActionType.FETCH_DELIVERIES_SUCCESS:
+    case deliveriesTypes.FETCH_DELIVERIES_SUCCESS:
       return {
         ...action.data.deliveries,
       };

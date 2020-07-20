@@ -3,16 +3,16 @@ import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import { AppState } from "src/redux/rootReducer";
 import * as deliveriesActions from "src/redux/actions/deliveriesActions";
-import * as deliveriesActionTypes from "src/redux/actionTypes/deliveriesActionTypes";
+import * as deliveriesTypes from "src/redux/types/deliveriesTypes";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Button } from "antd";
 
 interface StateProps {
-  deliveries: deliveriesActionTypes.DeliveriesState;
+  deliveries: deliveriesTypes.DeliveriesState;
 }
 
 interface Props extends StateProps {
-  fetchDeliveries: deliveriesActionTypes.FetchDeliveries;
+  fetchDeliveries: deliveriesTypes.FetchDeliveries;
 }
 
 const Home: React.FC<Props> = ({ deliveries, fetchDeliveries }) => {

@@ -3,7 +3,7 @@ import {
   initialDeliveriesState,
   deliveriesReducer,
 } from "src/redux/reducers/deliveriesReducer";
-import { DeliveriesState } from "src/redux/actionTypes/deliveriesActionTypes";
+import { DeliveriesState } from "src/redux/types/deliveriesTypes";
 
 export interface AppState {
   deliveries: DeliveriesState;

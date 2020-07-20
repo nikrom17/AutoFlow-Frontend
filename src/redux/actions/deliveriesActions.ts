@@ -1,44 +1,58 @@
-import * as deliveriesActionTypes from "../actionTypes/deliveriesActionTypes";
+import * as deliveriesTypes from "../types/deliveriesTypes";
 import api from "src/api/api";
-import { GenericThunkAction } from "../actionTypes/commonTypes";
-
-const BASE_URL = "https://pokeapi.co/api/v2/deliveries";
 
 // ------ SIMPLE ACTIONS ------ //
 export const fetchDeliveriesStart = () => ({
-  type: deliveriesActionTypes.FETCH_DELIVERIES_START,
+  type: deliveriesTypes.FETCH_DELIVERIES_START,
 });
 
 export const fetchDeliveriesSuccess = (data: any) => ({
-  type: deliveriesActionTypes.FETCH_DELIVERIES_SUCCESS,
+  type: deliveriesTypes.FETCH_DELIVERIES_SUCCESS,
   data,
 });
 
 export const fetchDeliveriesFailed = () => ({
-  type: deliveriesActionTypes.FETCH_DELIVERIES_FAILED,
+  type: deliveriesTypes.FETCH_DELIVERIES_FAILED,
 });
 
-export const fetchRandomDeliveriesStart = () => ({
-  type: deliveriesActionTypes.FETCH_RANDOM_DELIVERIES_START,
+export const fetchClientDeliveriesStart = () => ({
+  type: deliveriesTypes.FETCH_CLIENT_DELIVERIES_START,
 });
 
-export const fetchRandomDeliveriesSuccess = (data: any) => ({
-  type: deliveriesActionTypes.FETCH_RANDOM_DELIVERIES_SUCCESS,
+export const fetchClientDeliveriesSuccess = (data: any) => ({
+  type: deliveriesTypes.FETCH_CLIENT_DELIVERIES_SUCCESS,
   data,
 });
 
-export const fetchRandomDeliveriesFailed = () => ({
-  type: deliveriesActionTypes.FETCH_RANDOM_DELIVERIES_FAILED,
+export const fetchClientDeliveriesFailed = () => ({
+  type: deliveriesTypes.FETCH_CLIENT_DELIVERIES_FAILED,
 });
 
 // ------ COMPLEX ACTIONS ------ //
 
-export const fetchDeliveries: deliveriesActionTypes.FetchDeliveries = (
-  clientId
+// Admin
+
+export const fetchDeliveries: deliveriesTypes.FetchDeliveries = () => async (
+  dispatch
+) => {
+  try {
+    dispatch(fetchDeliveriesStart());
+    const response = api.get("deliveries");
+    dispatch(fetchDeliveriesSuccess(response));
+  } catch (error) {
+    dispatch(fetchDeliveriesFailed());
+    //todo handle error
+  }
+};
+
+// Client
+
+export const fetchClientDeliveries: deliveriesTypes.FetchDeliveries = (
+  clientId: number
 ) => async (dispatch) => {
   try {
     dispatch(fetchDeliveriesStart());
-    const response = api.get(`deliveries/${clientId}`);
+    const response = api.get("deliveries");
     dispatch(fetchDeliveriesSuccess(response));
   } catch (error) {
     dispatch(fetchDeliveriesFailed());
