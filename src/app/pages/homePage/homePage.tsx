@@ -1,9 +1,21 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
+import { connect } from "react-redux";
+import { AppState } from "src/redux/rootReducer";
+import * as deliveriesActions from "src/redux/actions/deliveriesActions";
+import * as deliveriesActionTypes from "src/redux/actionTypes/deliveriesActionTypes";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Button } from "antd";
 
-const Home = () => {
+interface StateProps {
+  deliveries: deliveriesActionTypes.DeliveriesState;
+}
+
+interface Props extends StateProps {
+  fetchDeliveries: deliveriesActionTypes.FetchDeliveries;
+}
+
+const Home: React.FC<Props> = ({ deliveries, fetchDeliveries }) => {
   const history = useHistory();
   const { isAuthenticated, user } = useAuth0();
   return (
@@ -42,4 +54,13 @@ const Home = () => {
   );
 };
 
-export default Home;
+const mapStateToProps = (state: AppState): StateProps => ({
+  deliveries: state.deliveries,
+});
+
+const mapDispatchToProps = (dispatch: any) => ({
+  fetchDeliveries: (clientId?: number) =>
+    dispatch(deliveriesActions.fetchDeliveries(clientId)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
