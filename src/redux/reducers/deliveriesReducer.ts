@@ -14,7 +14,11 @@ export const deliveriesReducer = (
   switch (action.type) {
     case deliveriesTypes.FETCH_DELIVERIES_SUCCESS:
       return {
-        ...action.data.deliveries,
+        deliveries: { ...action.data.deliveries },
+      };
+    case deliveriesTypes.FETCH_CLIENT_DELIVERIES_SUCCESS:
+      return {
+        deliveries: { ...action.data.deliveries },
       };
     default:
       return state;

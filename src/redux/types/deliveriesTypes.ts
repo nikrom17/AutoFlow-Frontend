@@ -17,7 +17,9 @@ export interface DeliveriesState {
 }
 
 // ------ THUNK ACTION TYPES ------ //
-export type FetchDeliveries = (clientId: number) => ThunkType;
+export type FetchDeliveries = () => ThunkType;
+export type FetchClientDeliveries = (clientId: number) => ThunkType;
+export type FetchDelivery = (DeliveryId: number) => ThunkType;
 
 // ------ CONSTANTS ------ //
 export const FETCH_DELIVERIES_START = "FETCH_DELIVERIES_START";
@@ -29,17 +31,27 @@ export const FETCH_CLIENT_DELIVERIES_SUCCESS =
   "FETCH_CLIENT_DELIVERIES_SUCCESS";
 export const FETCH_CLIENT_DELIVERIES_FAILED = "FETCH_CLIENT_DELIVERIES_FAILED";
 
+export const FETCH_DELIVERY_START = "FETCH_DELIVERY_START";
+export const FETCH_DELIVERY_SUCCESS = "FETCH_DELIVERY_SUCCESS";
+export const FETCH_DELIVERY_FAILED = "FETCH_DELIVERY_FAILED";
+
 // ------ TYPES ------ //
 interface FetchDeliveriesSuccess {
   type: typeof FETCH_DELIVERIES_SUCCESS;
-  data: {
-    deliveries: DeliveriesState;
-  };
+  data: DeliveriesState;
 }
 
 interface FetchClientDeliveriesSuccess {
   type: typeof FETCH_CLIENT_DELIVERIES_SUCCESS;
-  data: Deliveries;
+  data: DeliveriesState;
 }
 
-export type Types = FetchDeliveriesSuccess | FetchClientDeliveriesSuccess;
+interface FetchDeliverySuccess {
+  type: typeof FETCH_DELIVERY_SUCCESS;
+  data: DeliveriesState;
+}
+
+export type Types =
+  | FetchDeliveriesSuccess
+  | FetchClientDeliveriesSuccess
+  | FetchDeliverySuccess;

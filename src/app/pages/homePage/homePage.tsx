@@ -13,33 +13,27 @@ interface StateProps {
 
 interface Props extends StateProps {
   fetchDeliveries: deliveriesTypes.FetchDeliveries;
+  fetchClientDeliveries: deliveriesTypes.FetchClientDeliveries;
+  fetchDelivery: deliveriesTypes.FetchDelivery;
 }
 
-const Home: React.FC<Props> = ({ deliveries, fetchDeliveries }) => {
+const Home: React.FC<Props> = ({
+  deliveries,
+  fetchDeliveries,
+  fetchClientDeliveries,
+  fetchDelivery,
+}) => {
   const history = useHistory();
   const { isAuthenticated, user } = useAuth0();
+
+  React.useEffect(() => {
+    fetchDeliveries();
+    // fetchClientDeliveries(1);
+    // fetchDelivery(1);
+  }, [fetchDeliveries]);
+
   return (
     <>
-      <h1>This is the home page</h1>
-      <p>User Info:</p>
-      <p>{`First Name: ${isAuthenticated && user.given_name}`}</p>
-      <p>{`Last Name: ${isAuthenticated && user.family_name}`}</p>
-      <p>{`Email: ${isAuthenticated && user.email}`}</p>
-      <div>
-        <Button onClick={() => history.push("/about")} type="primary">
-          Go to the about page
-        </Button>
-      </div>
-      <h1>This is the home page</h1>
-      <p>User Info:</p>
-      <p>{`First Name: ${isAuthenticated && user.given_name}`}</p>
-      <p>{`Last Name: ${isAuthenticated && user.family_name}`}</p>
-      <p>{`Email: ${isAuthenticated && user.email}`}</p>
-      <div>
-        <Button onClick={() => history.push("/about")} type="primary">
-          Go to the about page
-        </Button>
-      </div>
       <h1>This is the home page</h1>
       <p>User Info:</p>
       <p>{`First Name: ${isAuthenticated && user.given_name}`}</p>
@@ -59,8 +53,11 @@ const mapStateToProps = (state: AppState): StateProps => ({
 });
 
 const mapDispatchToProps = (dispatch: any) => ({
-  fetchDeliveries: (clientId?: number) =>
-    dispatch(deliveriesActions.fetchDeliveries(clientId)),
+  fetchDeliveries: () => dispatch(deliveriesActions.fetchDeliveries()),
+  fetchClientDeliveries: (clientId: number) =>
+    dispatch(deliveriesActions.fetchClientDeliveries(clientId)),
+  fetchDelivery: (deliveryId: number) =>
+    dispatch(deliveriesActions.fetchDelivery(deliveryId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
