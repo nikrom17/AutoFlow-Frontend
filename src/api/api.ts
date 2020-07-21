@@ -1,9 +1,10 @@
 import { handelError } from "@utils/errorHandling";
+
+const BASEURL = "http://127.0.0.1:5000";
+
 const throwError = (response: any) => {
   throw response;
 };
-
-const BASEURL = "http://127.0.0.1:5000";
 
 const get: any = async (url: string) => {
   try {

@@ -81,7 +81,6 @@ export const fetchClientDeliveries: deliveriesTypes.FetchClientDeliveries = (
     dispatch(fetchClientDeliveriesSuccess(response));
   } catch (error) {
     dispatch(fetchClientDeliveriesFailed());
-    handelError(error);
   }
 };
 
@@ -97,6 +96,5 @@ export const fetchDelivery: deliveriesTypes.FetchDelivery = (
     dispatch(fetchDeliverySuccess(response));
   } catch (error) {
     dispatch(fetchDeliveryFailed());
-    handelError(error);
   }
 };
