@@ -1,5 +1,6 @@
 import * as deliveriesTypes from "../types/deliveriesTypes";
 import api from "src/api/api";
+import { handelError } from "@utils/errorHandling";
 
 // ------ SIMPLE ACTIONS ------ //
 
@@ -55,21 +56,22 @@ export const fetchDeliveryFailed = () => ({
 
 // Admin
 
+// fetch all deliveries
 export const fetchDeliveries: deliveriesTypes.FetchDeliveries = () => async (
   dispatch
 ) => {
   try {
     dispatch(fetchDeliveriesStart());
-    const response = api.get("deliveries");
+    const response = await api.get("deliveries");
     dispatch(fetchDeliveriesSuccess(response));
   } catch (error) {
     dispatch(fetchDeliveriesFailed());
-    //todo handle error
   }
 };
 
 // Client
 
+// fetch all deliveries for a client
 export const fetchClientDeliveries: deliveriesTypes.FetchClientDeliveries = (
   clientId: number
 ) => async (dispatch) => {
@@ -79,12 +81,13 @@ export const fetchClientDeliveries: deliveriesTypes.FetchClientDeliveries = (
     dispatch(fetchClientDeliveriesSuccess(response));
   } catch (error) {
     dispatch(fetchClientDeliveriesFailed());
-    //todo handle error
+    handelError(error);
   }
 };
 
 // Both
 
+// fetch a single delivery
 export const fetchDelivery: deliveriesTypes.FetchDelivery = (
   deliveryId: number
 ) => async (dispatch) => {
@@ -94,6 +97,6 @@ export const fetchDelivery: deliveriesTypes.FetchDelivery = (
     dispatch(fetchDeliverySuccess(response));
   } catch (error) {
     dispatch(fetchDeliveryFailed());
-    //todo handle error
+    handelError(error);
   }
 };
