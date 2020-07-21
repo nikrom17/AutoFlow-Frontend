@@ -3,6 +3,10 @@ import ReactDOM from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 import "./index.less";
 import App from "./app/app";
+import { Provider } from "react-redux";
+import { createStore, applyMiddleware, compose } from "redux";
+import { rootReducer } from "./redux/rootReducer";
+import thunk from "redux-thunk";
 import { Auth0Provider } from "@auth0/auth0-react";
 import auth0Config from "../auth0-config";
 // import * as Sentry from "@sentry/react";
@@ -15,6 +19,25 @@ import * as serviceWorker from "./serviceWorker";
 //   integrations: [new AmpIntegrations.Tracing()],
 //   tracesSampleRate: 0.25,
 // });
+
+declare global {
+  interface Window {
+    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: any;
+  }
+}
+
+const composeEnhancers =
+  (window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ &&
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
+      trace: true,
+      traceLimit: 25,
+    })) ||
+  compose;
+
+const store = createStore(
+  rootReducer,
+  composeEnhancers(applyMiddleware(thunk))
+);
 
 const onRedirectCallback = (appState: any) => {
   // history.push(
@@ -33,9 +56,11 @@ ReactDOM.render(
       redirectUri={auth0Config.redirect}
       onRedirectCallback={onRedirectCallback}
     >
-      <Router>
-        <App />
-      </Router>
+      <Provider store={store}>
+        <Router>
+          <App />
+        </Router>
+      </Provider>
     </Auth0Provider>
   </React.StrictMode>,
   document.getElementById("root")

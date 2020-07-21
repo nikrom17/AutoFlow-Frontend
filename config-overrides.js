@@ -30,6 +30,7 @@ module.exports = override(
     addWebpackAlias({
       'pages': path.resolve(__dirname, './src/app/pages'),
       'components': path.resolve(__dirname, './src/app/components'),
+      'utils': path.resolve(__dirname, './src/utils'),
     }),
     // add updated tsconfig to build 
     addWebpackResolve({
