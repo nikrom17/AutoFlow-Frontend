@@ -77,7 +77,7 @@ export const fetchClientDeliveries: deliveriesTypes.FetchClientDeliveries = (
 ) => async (dispatch) => {
   try {
     dispatch(fetchClientDeliveriesStart());
-    const response = api.get(`deliveries/client/${clientId}`);
+    const response = await api.get(`deliveries/client/${clientId}`);
     dispatch(fetchClientDeliveriesSuccess(response));
   } catch (error) {
     dispatch(fetchClientDeliveriesFailed());
@@ -92,7 +92,7 @@ export const fetchDelivery: deliveriesTypes.FetchDelivery = (
 ) => async (dispatch) => {
   try {
     dispatch(fetchDeliveryStart());
-    const response = api.get(`deliveries/${deliveryId}`);
+    const response = await api.get(`deliveries/${deliveryId}`);
     dispatch(fetchDeliverySuccess(response));
   } catch (error) {
     dispatch(fetchDeliveryFailed());

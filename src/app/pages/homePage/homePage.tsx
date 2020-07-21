@@ -27,10 +27,10 @@ const Home: React.FC<Props> = ({
   const { isAuthenticated, user } = useAuth0();
 
   React.useEffect(() => {
-    fetchDeliveries();
-    // fetchClientDeliveries(1);
-    // fetchDelivery(1);
-  }, [fetchDeliveries]);
+    // fetchDeliveries();
+    fetchClientDeliveries(1);
+    fetchDelivery(6);
+  }, [fetchClientDeliveries, fetchDeliveries, fetchDelivery]);
 
   return (
     <>
