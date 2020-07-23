@@ -1,6 +1,5 @@
 import * as deliveriesTypes from "../types/deliveriesTypes";
 import api from "src/api/api";
-import { handelError } from "@utils/errorHandling";
 
 // ------ SIMPLE ACTIONS ------ //
 

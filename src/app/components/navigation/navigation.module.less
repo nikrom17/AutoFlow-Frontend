@@ -1,7 +1,10 @@
+@navigationWidth: 4.45rem;
+@navigationItemHeight: @navigationWidth;
+
 .navigation {
   background-color: @black;
   height: 100vh;
-  width: 75px;
+  width: @navigationWidth;
   .navButton {
     background: none;
     border: none;
@@ -16,8 +19,8 @@
   align-items: center;
   cursor: pointer;
   display: flex;
-  font-size: 32px;
-  height: 75px;
+  font-size: 2rem;
+  height: @navigationItemHeight;
   justify-content: center;
   margin: auto;
   width: 100%;
