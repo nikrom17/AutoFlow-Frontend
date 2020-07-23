@@ -6,7 +6,7 @@ import * as styles from "./header.module.less";
 const Header = () => {
   return (
     <div className={styles.header}>
-      <div className={styles.headerLeftSide}>
+      <div className={styles.headerRightSide}>
         <Tooltip title="Search">
           <div className={styles.headerChild}>
             <Button shape="circle" icon={<SearchOutlined />} />
