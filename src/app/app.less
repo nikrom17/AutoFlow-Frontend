@@ -1,8 +1,16 @@
 @import "~antd/dist/antd.less";
+@import "../styles/colors.less";
 
 #root {
+  background-color: @app-background;
   display: flex;
   height: 100%;
+}
+
+main {
+  height: 100%;
+  overflow: auto;
+  padding: 3rem;
 }
 
 .wrapper {
@@ -10,10 +18,4 @@
   flex-direction: column;
   overflow: auto;
   width: 100%;
-}
-
-main {
-  height: 100%;
-  overflow: auto;
-  padding: 3rem;
 }

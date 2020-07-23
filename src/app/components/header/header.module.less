@@ -1,5 +1,33 @@
+@headerMargin: 0.25rem;
+@headerHeight: 4.75rem;
+
 .header {
-  height: 75px;
+  background-color: @black;
+  box-sizing: border-box;
+  display: flex;
+  height: @headerHeight;
+  margin-left: @headerMargin;
+  width: calc(100% - @headerMargin);
+}
+
+.headerRightSide {
+  align-items: center;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 1rem;
   width: 100%;
-  background-color: @primary-color;
+  .ant-button {
+    border: none;
+  }
+  .avatar {
+    margin: 0 0.5rem;
+  }
+  .headerChild {
+    cursor: pointer;
+    display: flex;
+    margin: 0 0.5rem;
+  }
+  p {
+    margin: auto 0;
+  }
 }

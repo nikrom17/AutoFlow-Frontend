@@ -1,5 +1,28 @@
-.nav {
+@navigationWidth: 4.45rem;
+//ensure nav items are square
+@navigationItemHeight: @navigationWidth;
+
+.navigation {
+  background-color: @black;
   height: 100vh;
-  width: 75px;
-  background-color: @primary-color;
+  width: @navigationWidth;
+  .navButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  button:focus {
+    all: unset;
+  }
+}
+
+.navItem {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  font-size: 2rem;
+  height: @navigationItemHeight;
+  justify-content: center;
+  margin: auto;
+  width: 100%;
 }

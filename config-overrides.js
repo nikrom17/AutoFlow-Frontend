@@ -5,9 +5,9 @@ const path = require('path');
 const { 
   addLessLoader, 
   addWebpackAlias,
+  addWebpackResolve,
   fixBabelImports, 
   override,
-  addWebpackResolve
 } = require('customize-cra');
 
 module.exports = override(
