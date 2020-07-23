@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 import "./index.less";
-import App from "./app/test";
+import App from "./app/app";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware, compose } from "redux";
 import { rootReducer } from "./redux/rootReducer";
