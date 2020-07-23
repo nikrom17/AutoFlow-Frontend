@@ -2,11 +2,21 @@
   background-color: @black;
   height: 100vh;
   width: 75px;
+  .navButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  button:focus {
+    all: unset;
+  }
 }
 
-.logo {
+.navItem {
   align-items: center;
+  cursor: pointer;
   display: flex;
+  font-size: 32px;
   height: 75px;
   justify-content: center;
   margin: auto;
