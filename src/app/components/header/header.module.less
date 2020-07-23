@@ -1,5 +1,41 @@
+@headingMargin: 4px;
+
 .header {
+  background-color: @black;
+  box-sizing: border-box;
+  display: flex;
   height: 75px;
+  margin-left: @headingMargin;
+  width: calc(100% - @headingMargin);
+}
+
+.openCloseNav {
+  align-items: center;
+  display: flex;
+  font-size: 24px;
+  height: 100%;
+  justify-content: center;
+  width: 75px;
+}
+
+.headerLeftSide {
+  align-items: center;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 1rem;
   width: 100%;
-  background-color: @primary-color;
+  .ant-button {
+    border: none;
+  }
+  p {
+    margin: auto 0;
+  }
+  .headerChild {
+    cursor: pointer;
+    display: flex;
+    margin: 0 0.5rem;
+  }
+  .avatar {
+    margin: 0 0.5rem;
+  }
 }
