@@ -1,6 +1,7 @@
 import * as React from "react";
 import { RouteComponentProps } from "react-router-dom";
-import AboutPage from "@pages/aboutPage/aboutPage";
+import DeliveriesPage from "@pages/deliveriesPage/deliveriesPage";
+import LocationsPage from "@pages/locationsPage/locationsPage";
 import ErrorPage from "@pages/errorPage/errorPage";
 import HomePage from "@pages/homePage/homePage";
 
@@ -20,12 +21,26 @@ interface Routes {
   };
 }
 
-export const routeConstants: string[] = ["error", "home", "about"];
+export const routeConstants: string[] = [
+  "error",
+  "home",
+  "deliveries",
+  "locations",
+];
 
 export const routes: Routes = {
-  allIds: ["about", "error", "home"],
+  allIds: ["deliveries", "error", "home", "locations"],
   byId: {
-    about: { requiredRoles: [], Component: AboutPage, path: "/about" },
+    deliveries: {
+      requiredRoles: [],
+      Component: DeliveriesPage,
+      path: "/deliveries",
+    },
+    locations: {
+      requiredRoles: [],
+      Component: LocationsPage,
+      path: "/locations",
+    },
     error: { requiredRoles: [], Component: ErrorPage, path: "/error" },
     home: { requiredRoles: [], Component: HomePage, path: "/home" },
   },
