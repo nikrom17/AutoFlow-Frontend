@@ -1,9 +1,9 @@
 import * as React from "react";
 import { RouteComponentProps } from "react-router-dom";
 import DeliveriesPage from "@pages/deliveriesPage/deliveriesPage";
-import LocationsPage from "@pages/locationsPage/locationsPage";
 import ErrorPage from "@pages/errorPage/errorPage";
 import HomePage from "@pages/homePage/homePage";
+import LocationsPage from "@pages/locationsPage/locationsPage";
 
 // master list of roles used in this app
 type Roles = "admin" | "basicUser" | "paidUser";
