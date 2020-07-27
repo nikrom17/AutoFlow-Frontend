@@ -22,9 +22,9 @@ interface Routes {
 }
 
 export const routeConstants: string[] = [
+  "deliveries",
   "error",
   "home",
-  "deliveries",
   "locations",
 ];
 
@@ -36,12 +36,12 @@ export const routes: Routes = {
       Component: DeliveriesPage,
       path: "/deliveries",
     },
+    error: { requiredRoles: [], Component: ErrorPage, path: "/error" },
+    home: { requiredRoles: [], Component: HomePage, path: "/home" },
     locations: {
       requiredRoles: [],
       Component: LocationsPage,
       path: "/locations",
     },
-    error: { requiredRoles: [], Component: ErrorPage, path: "/error" },
-    home: { requiredRoles: [], Component: HomePage, path: "/home" },
   },
 };

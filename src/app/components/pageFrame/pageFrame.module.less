@@ -1,6 +1,17 @@
 @headerMargin: 0.25rem;
 @headerHeight: 4.75rem;
 
+.buttonWrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin: auto 1.5rem;
+  width: 100%;
+}
+
+.pageFrame {
+  margin: 3rem;
+}
+
 .pageHeader {
   background-color: @black;
   display: flex;
@@ -9,17 +20,6 @@
   width: calc(100% - @headerMargin);
 }
 
-.pageFrame {
-  margin: 3rem;
-}
-
 .title {
   padding: 1.5rem;
-}
-
-.buttonWrapper {
-  display: flex;
-  justify-content: flex-end;
-  width: 100%;
-  margin: auto 1.5rem;
 }

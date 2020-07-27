@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { Button } from "antd";
 import PageFrame from "@components/pageFrame/pageFrame";
 
-const DeliveriesPage = () => {
+const DeliveriesPage: React.FC = () => {
   const history = useHistory();
   return (
     <PageFrame

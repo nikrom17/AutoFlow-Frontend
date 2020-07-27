@@ -4,9 +4,9 @@ import { Button } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 
 interface Props {
+  buttonOnClick(): void;
   buttonTitle: string;
   children: React.ReactNode;
-  buttonOnClick(): void;
   title: string;
 }
 
