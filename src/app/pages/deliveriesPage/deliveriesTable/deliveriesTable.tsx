@@ -33,7 +33,7 @@ const columns: ColumnsType<any> = [
       const fulfilled = (
         <Tooltip placement="bottom" title={date}>
           <CheckCircleTwoTone
-            twoToneColor="#306317"
+            twoToneColor="#306317" //todo this should be a var
             style={{ fontSize: "24px" }}
           />
         </Tooltip>
@@ -41,7 +41,7 @@ const columns: ColumnsType<any> = [
       const notFulfilled = (
         <Tooltip placement="bottom" title="Not fulfilled">
           <CloseCircleTwoTone
-            twoToneColor="#791a1f"
+            twoToneColor="#791a1f" //todo this should be a var
             style={{ fontSize: "24px" }}
           />
         </Tooltip>

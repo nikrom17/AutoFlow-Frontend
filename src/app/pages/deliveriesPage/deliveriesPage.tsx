@@ -14,26 +14,26 @@ interface StateProps {
 
 interface Props extends StateProps {
   fetchClientDeliveries: deliveriesTypes.FetchClientDeliveries;
-  // fetchDelivery: deliveriesTypes.FetchDelivery;
+  // fetchDelivery: deliveriesTypes.FetchDelivery; //todo do we need this?
 }
-
 const DeliveriesPage: React.FC<Props> = ({
   deliveries,
   fetchClientDeliveries,
-  // fetchDelivery,
+  // fetchDelivery, //todo do we need this?
 }) => {
   const { deliveries: delivery } = deliveries;
   React.useEffect(() => {
     fetchClientDeliveries(1);
   }, [fetchClientDeliveries]);
 
+  //todo make this reusable
   const transformData = (data: DefaultSchema<any>) =>
     data.allIds.map((id) => data.byId[id]);
 
   return (
     <PageFrame
       title="Deliveries"
-      buttonOnClick={() => console.log("Deliveries button")}
+      buttonOnClick={() => console.log("Deliveries button")} //todo add functionality
       buttonTitle="Schedule delivery"
     >
       {delivery.allIds.length ? (
@@ -52,7 +52,7 @@ const mapStateToProps = (state: AppState): StateProps => ({
 const mapDispatchToProps = (dispatch: any) => ({
   fetchClientDeliveries: (clientId: number) =>
     dispatch(deliveriesActions.fetchClientDeliveries(clientId)),
-  // fetchDelivery: (deliveryId: number) =>
+  // fetchDelivery: (deliveryId: number) => //todo do we need this?
   //   dispatch(deliveriesActions.fetchDelivery(deliveryId)),
 });
 
