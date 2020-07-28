@@ -37,7 +37,7 @@ export const routes: Routes = {
       path: "/deliveries",
     },
     error: { requiredRoles: [], Component: ErrorPage, path: "/error" },
-    home: { requiredRoles: [], Component: HomePage, path: "/home" },
+    home: { requiredRoles: [], Component: HomePage, path: "/" },
     locations: {
       requiredRoles: [],
       Component: LocationsPage,
