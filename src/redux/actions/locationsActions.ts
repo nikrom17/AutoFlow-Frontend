@@ -33,7 +33,7 @@ export const fetchClientLocationsFailed = () => ({
   type: locationsTypes.FETCH_CLIENT_LOCATIONS_FAILED,
 });
 
-// fetch a single delivery
+// fetch a single location
 export const fetchLocationStart = () => ({
   type: locationsTypes.FETCH_LOCATION_START,
 });
@@ -81,13 +81,13 @@ export const fetchClientLocations: locationsTypes.FetchClientLocations = (
 
 // Both
 
-// fetch a single delivery
+// fetch a single location
 export const fetchLocation: locationsTypes.FetchLocation = (
-  deliveryId: number
+  locationId: number
 ) => async (dispatch) => {
   try {
     dispatch(fetchLocationStart());
-    const response = await api.get(`locations/${deliveryId}`);
+    const response = await api.get(`locations/${locationId}`);
     dispatch(fetchLocationSuccess(response));
   } catch (error) {
     dispatch(fetchLocationFailed());
