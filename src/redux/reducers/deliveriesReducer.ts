@@ -14,14 +14,11 @@ export const deliveriesReducer = (
 ): deliveriesTypes.DeliveriesState => {
   switch (action.type) {
     case deliveriesTypes.FETCH_DELIVERIES_SUCCESS:
-      return {
-        deliveries: { ...action.data.deliveries },
-      };
     case deliveriesTypes.FETCH_CLIENT_DELIVERIES_SUCCESS:
       return {
         deliveries: { ...action.data.deliveries },
       };
-    case deliveriesTypes.FETCH_DELIVERY_SUCCESS:
+    case deliveriesTypes.FETCH_DELIVERY_SUCCESS: //todo verify allIds is merged correctly
       return {
         deliveries: {
           allIds: [

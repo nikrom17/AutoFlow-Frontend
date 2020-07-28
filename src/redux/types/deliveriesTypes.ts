@@ -4,10 +4,10 @@ import { ThunkType, DefaultSchema } from "./commonTypes";
 export interface Deliveries {
   id: number;
   clientId: number;
-  dateCreated: Date;
+  date_created: Date;
   item: string;
   notes: string;
-  dateFulfilled: Date;
+  date_fulfilled: Date;
   pickup_location_id: number;
   dropoff_location_id: number;
 }
