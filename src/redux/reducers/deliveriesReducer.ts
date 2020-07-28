@@ -18,7 +18,7 @@ export const deliveriesReducer = (
       return {
         deliveries: { ...action.data.deliveries },
       };
-    case deliveriesTypes.FETCH_DELIVERY_SUCCESS:
+    case deliveriesTypes.FETCH_DELIVERY_SUCCESS: //todo verify allIds is merged correctly
       return {
         deliveries: {
           allIds: [

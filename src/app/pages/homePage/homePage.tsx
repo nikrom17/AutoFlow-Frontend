@@ -4,17 +4,23 @@ import { connect } from "react-redux";
 import { AppState } from "src/redux/rootReducer";
 import * as deliveriesActions from "src/redux/actions/deliveriesActions";
 import * as deliveriesTypes from "src/redux/types/deliveriesTypes";
+import * as locationsActions from "src/redux/actions/locationsActions";
+import * as locationsTypes from "src/redux/types/locationsTypes";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Button } from "antd";
 
 interface StateProps {
   deliveries: deliveriesTypes.DeliveriesState;
+  locations: locationsTypes.LocationsState;
 }
 
 interface Props extends StateProps {
   fetchDeliveries: deliveriesTypes.FetchDeliveries;
   fetchClientDeliveries: deliveriesTypes.FetchClientDeliveries;
   fetchDelivery: deliveriesTypes.FetchDelivery;
+  fetchLocations: locationsTypes.FetchLocations;
+  fetchClientLocations: locationsTypes.FetchClientLocations;
+  fetchLocation: locationsTypes.FetchLocation;
 }
 
 const Home: React.FC<Props> = ({
@@ -22,15 +28,29 @@ const Home: React.FC<Props> = ({
   fetchDeliveries,
   fetchClientDeliveries,
   fetchDelivery,
+  locations,
+  fetchLocations,
+  fetchClientLocations,
+  fetchLocation,
 }) => {
   const history = useHistory();
   const { isAuthenticated, user } = useAuth0();
 
   React.useEffect(() => {
     // fetchDeliveries();
-    fetchClientDeliveries(1);
-    fetchDelivery(6);
-  }, [fetchClientDeliveries, fetchDeliveries, fetchDelivery]);
+    // fetchClientDeliveries(1);
+    // fetchDelivery(6);
+    fetchLocations();
+    // fetchClientLocations(1);
+    fetchLocation(1);
+  }, [
+    fetchClientDeliveries,
+    fetchDeliveries,
+    fetchDelivery,
+    fetchClientLocations,
+    fetchLocation,
+    fetchLocations,
+  ]);
 
   return (
     <>
@@ -50,6 +70,7 @@ const Home: React.FC<Props> = ({
 
 const mapStateToProps = (state: AppState): StateProps => ({
   deliveries: state.deliveries,
+  locations: state.locations,
 });
 
 const mapDispatchToProps = (dispatch: any) => ({
@@ -58,6 +79,11 @@ const mapDispatchToProps = (dispatch: any) => ({
     dispatch(deliveriesActions.fetchClientDeliveries(clientId)),
   fetchDelivery: (deliveryId: number) =>
     dispatch(deliveriesActions.fetchDelivery(deliveryId)),
+  fetchLocations: () => dispatch(locationsActions.fetchLocations()),
+  fetchClientLocations: (clientId: number) =>
+    dispatch(locationsActions.fetchClientLocations(clientId)),
+  fetchLocation: (locationId: number) =>
+    dispatch(locationsActions.fetchLocation(locationId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

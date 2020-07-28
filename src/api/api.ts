@@ -10,6 +10,7 @@ const get: any = async (url: string) => {
   try {
     let response: any = await fetch(`${BASEURL}/${url}`);
     response = await response.json();
+    console.log(response);
     return response.code === 200 ? response : throwError(response);
   } catch (error) {
     handelError(error);

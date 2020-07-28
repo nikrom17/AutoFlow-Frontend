@@ -18,7 +18,7 @@ export const locationsReducer = (
       return {
         locations: { ...action.data.locations },
       };
-    case locationsTypes.FETCH_LOCATION_SUCCESS:
+    case locationsTypes.FETCH_LOCATION_SUCCESS: //todo verify allIds is merged correctly
       return {
         locations: {
           allIds: [...state.locations.allIds, ...action.data.locations.allIds],
