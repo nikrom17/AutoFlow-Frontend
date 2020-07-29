@@ -1,30 +1,29 @@
 import { cloneDeep } from "lodash";
-import * as locationsTypes from "../types/locationsTypes";
+import * as clientsTypes from "../types/clientsTypes";
 
-export const initialLocationsState: locationsTypes.LocationsState = {
-  locations: {
+export const initialClientsState: clientsTypes.ClientsState = {
+  clients: {
     allIds: [],
     byId: {},
   },
 };
 
-export const locationsReducer = (
-  state = initialLocationsState,
-  action: locationsTypes.Types
-): locationsTypes.LocationsState => {
+export const clientsReducer = (
+  state = initialClientsState,
+  action: clientsTypes.Types
+): clientsTypes.ClientsState => {
   switch (action.type) {
-    case locationsTypes.FETCH_LOCATIONS_SUCCESS:
-    case locationsTypes.FETCH_CLIENT_LOCATIONS_SUCCESS:
+    case clientsTypes.FETCH_CLIENTS_SUCCESS:
       return {
-        locations: { ...action.data.locations },
+        clients: { ...action.data.clients },
       };
-    case locationsTypes.FETCH_LOCATION_SUCCESS: //todo verify allIds is merged correctly
+    case clientsTypes.FETCH_CLIENT_SUCCESS: //todo verify allIds is merged correctly
       return {
-        locations: {
-          allIds: [...state.locations.allIds, ...action.data.locations.allIds],
+        clients: {
+          allIds: [...state.clients.allIds, ...action.data.clients.allIds],
           byId: {
-            ...cloneDeep(state.locations.byId),
-            ...action.data.locations.byId,
+            ...cloneDeep(state.clients.byId),
+            ...action.data.clients.byId,
           },
         },
       };

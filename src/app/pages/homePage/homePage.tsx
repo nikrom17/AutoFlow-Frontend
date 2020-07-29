@@ -6,12 +6,15 @@ import * as deliveriesActions from "src/redux/actions/deliveriesActions";
 import * as deliveriesTypes from "src/redux/types/deliveriesTypes";
 import * as locationsActions from "src/redux/actions/locationsActions";
 import * as locationsTypes from "src/redux/types/locationsTypes";
+import * as clientsActions from "src/redux/actions/clientsActions";
+import * as clientsTypes from "src/redux/types/clientsTypes";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Button } from "antd";
 
 interface StateProps {
   deliveries: deliveriesTypes.DeliveriesState;
   locations: locationsTypes.LocationsState;
+  clients: clientsTypes.ClientsState;
 }
 
 interface Props extends StateProps {
@@ -21,6 +24,8 @@ interface Props extends StateProps {
   fetchLocations: locationsTypes.FetchLocations;
   fetchClientLocations: locationsTypes.FetchClientLocations;
   fetchLocation: locationsTypes.FetchLocation;
+  fetchClients: clientsTypes.FetchClients;
+  fetchClient: clientsTypes.FetchClient;
 }
 
 const Home: React.FC<Props> = ({
@@ -32,6 +37,9 @@ const Home: React.FC<Props> = ({
   fetchLocations,
   fetchClientLocations,
   fetchLocation,
+  clients,
+  fetchClient,
+  fetchClients,
 }) => {
   const history = useHistory();
   const { isAuthenticated, user } = useAuth0();
@@ -71,6 +79,7 @@ const Home: React.FC<Props> = ({
 const mapStateToProps = (state: AppState): StateProps => ({
   deliveries: state.deliveries,
   locations: state.locations,
+  clients: state.clients,
 });
 
 const mapDispatchToProps = (dispatch: any) => ({
