@@ -2,7 +2,7 @@ import React from "react";
 import { useHistory } from "react-router";
 import * as styles from "./navigation.module.less";
 import { Tooltip, Button } from "antd";
-import { CarOutlined, ShopOutlined, PlusOutlined } from "@ant-design/icons";
+import { OrderedListOutlined, UserOutlined, FunnelPlotOutlined, PlusOutlined } from "@ant-design/icons";
 
 const Navigation = () => {
   const history = useHistory();
@@ -16,23 +16,33 @@ const Navigation = () => {
           />
         </button>
       </div>
-      <Tooltip title="Deliveries" placement="right">
+      <Tooltip title="Todo List" placement="right">
         <div className={styles.navItem}>
           <button
             className={styles.navButton}
-            onClick={() => history.push("/deliveries")}
+            onClick={() => history.push("/todos")}
           >
-            <CarOutlined />
+            <OrderedListOutlined />
           </button>
         </div>
       </Tooltip>
-      <Tooltip title="Locations" placement="right">
+      <Tooltip title="Sales Funnel" placement="right">
         <div className={styles.navItem}>
           <button
             className={styles.navButton}
-            onClick={() => history.push("/locations")}
+            onClick={() => history.push("/funnel")}
           >
-            <ShopOutlined />
+            <FunnelPlotOutlined />
+          </button>
+        </div>
+      </Tooltip>
+      <Tooltip title="Leads" placement="right">
+        <div className={styles.navItem}>
+          <button
+            className={styles.navButton}
+            onClick={() => history.push("/leads")}
+          >
+            <UserOutlined />
           </button>
         </div>
       </Tooltip>

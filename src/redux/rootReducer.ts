@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
 import {
-  initialDeliveriesState,
-  deliveriesReducer,
-} from "src/redux/reducers/deliveriesReducer";
+  initialTodosState,
+  todosReducer,
+} from "src/redux/reducers/todosReducer";
 import {
   initialLocationsState,
   locationsReducer,
@@ -12,23 +12,23 @@ import {
   clientsReducer,
 } from "src/redux/reducers/clientsReducer";
 import { ClientsState } from "src/redux/types/clientsTypes";
-import { DeliveriesState } from "src/redux/types/deliveriesTypes";
+import { TodosState } from "src/redux/types/todosTypes";
 import { LocationsState } from "src/redux/types/locationsTypes";
 
 export interface AppState {
   clients: ClientsState;
-  deliveries: DeliveriesState;
+  todos: TodosState;
   locations: LocationsState;
 }
 
 export const initialAppState: AppState = {
   clients: { ...initialClientsState },
-  deliveries: { ...initialDeliveriesState },
+  todos: { ...initialTodosState },
   locations: { ...initialLocationsState },
 };
 
 export const rootReducer = combineReducers({
   clients: clientsReducer,
-  deliveries: deliveriesReducer,
+  todos: todosReducer,
   locations: locationsReducer,
 });

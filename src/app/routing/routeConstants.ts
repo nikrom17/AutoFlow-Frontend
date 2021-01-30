@@ -1,9 +1,10 @@
 import * as React from "react";
 import { RouteComponentProps } from "react-router-dom";
-import DeliveriesPage from "@pages/deliveriesPage/deliveriesPage";
+import TodosPage from "@pages/todosPage/todosPage";
 import ErrorPage from "@pages/errorPage/errorPage";
 import HomePage from "@pages/homePage/homePage";
-import LocationsPage from "@pages/locationsPage/locationsPage";
+import FunnelPage from "@pages/funnelPage/funnelPage";
+import LeadsPage from "@pages/leadsPage/leadsPage";
 
 // master list of roles used in this app
 type Roles = "admin" | "basicUser" | "paidUser";
@@ -22,26 +23,32 @@ interface Routes {
 }
 
 export const routeConstants: string[] = [
-  "deliveries",
   "error",
+  "funnel",
   "home",
-  "locations",
+  "leads",
+  "todos",
 ];
 
 export const routes: Routes = {
-  allIds: ["deliveries", "error", "home", "locations"],
+  allIds: routeConstants,
   byId: {
-    deliveries: {
-      requiredRoles: [],
-      Component: DeliveriesPage,
-      path: "/deliveries",
-    },
     error: { requiredRoles: [], Component: ErrorPage, path: "/error" },
-    home: { requiredRoles: [], Component: HomePage, path: "/" },
-    locations: {
+    funnel: {
       requiredRoles: [],
-      Component: LocationsPage,
-      path: "/locations",
+      Component: FunnelPage,
+      path: "/funnel",
+    },
+    home: { requiredRoles: [], Component: HomePage, path: "/" },
+    leads: {
+      requiredRoles: [],
+      Component: LeadsPage,
+      path: "/leads",
+    },
+    todos: {
+      requiredRoles: [],
+      Component: TodosPage,
+      path: "/todos",
     },
   },
 };
