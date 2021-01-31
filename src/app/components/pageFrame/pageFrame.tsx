@@ -4,8 +4,8 @@ import { Button } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 
 interface Props {
-  buttonOnClick(): void;
-  buttonTitle: string;
+  buttonOnClick?(): void;
+  buttonTitle?: string;
   children: React.ReactNode;
   title: string;
 }
@@ -21,6 +21,7 @@ const PageHeader: React.FC<Props> = ({
       <div className={styles.pageHeader}>
         <h2 className={styles.title}>{title}</h2>
         <div className={styles.buttonWrapper}>
+          { (buttonOnClick && buttonTitle) &&
           <Button
             icon={<PlusOutlined />}
             onClick={buttonOnClick}
@@ -28,6 +29,7 @@ const PageHeader: React.FC<Props> = ({
           >
             {buttonTitle}
           </Button>
+}
         </div>
       </div>
       <div className={styles.pageFrame}>{children}</div>

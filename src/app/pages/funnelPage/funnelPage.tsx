@@ -3,15 +3,15 @@ import { useHistory } from "react-router-dom";
 import { Button } from "antd";
 import PageFrame from "@components/pageFrame/pageFrame";
 
-const LocationsPage: React.FC = () => {
+const FunnelPage: React.FC = () => {
   const history = useHistory();
   return (
     <PageFrame
-      title="Locations"
-      buttonOnClick={() => console.log("Locations button")}
-      buttonTitle="Add new location"
+      title="Funnel"
+      buttonOnClick={() => console.log("Funnel button")}
+      buttonTitle="Add new funnel"
     >
-      <h1>This is the Locations page</h1>
+      <h1>This is the Funnel page</h1>
       <div>
         <Button onClick={() => history.push("/home")} type="primary">
           Go to the home page
@@ -21,4 +21,4 @@ const LocationsPage: React.FC = () => {
   );
 };
 
-export default LocationsPage;
+export default FunnelPage;
