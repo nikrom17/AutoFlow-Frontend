@@ -3,13 +3,13 @@ import { ThunkType, DefaultSchema } from "./commonTypes";
 // ------ COMMON INTERFACES ------ //
 export interface Todos {
   id: number;
-  clientId: number;
-  date_created: Date;
-  item: string;
-  notes: string;
-  date_fulfilled: Date;
-  pickup_location_id: number;
-  dropoff_location_id: number;
+  completed: boolean;
+  // date_completed: Date;
+  // date_created: Date;
+  description: string;
+  leadId: number;
+  priority_rank: number;
+  status: string;
 }
 
 export interface TodosState {

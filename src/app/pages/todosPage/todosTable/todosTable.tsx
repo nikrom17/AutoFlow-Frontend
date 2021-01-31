@@ -1,53 +1,41 @@
 import * as React from "react";
-import { Table, Tooltip } from "antd";
+import { Table, Tag } from "antd";
 import { ColumnsType } from "antd/es/table";
-import { CheckCircleTwoTone, CloseCircleTwoTone } from "@ant-design/icons";
+import getStatusColor from "@utils/getTagColor";
+import * as styles from './todosTable.module.less';
 
 const columns: ColumnsType<any> = [
   {
-    title: "Item",
-    dataIndex: "item",
-    key: "item",
+    title: "Description",
+    dataIndex: "description",
+    key: "description",
   },
   {
-    title: "Notes",
-    dataIndex: "notes",
-    key: "notes",
+    title: "Lead",
+    dataIndex: "leadId",
+    key: "leadId",
   },
   {
-    title: "Pickup Location",
+    title: "Last Comm.",
     dataIndex: "pickup_location_id",
     key: "pickup_location",
   },
   {
-    title: "Dropoff Location",
+    title: "Price Estimate",
     dataIndex: "dropoff_location_id",
     key: "dropoff_location",
   },
   {
-    title: "Fulfilled",
-    dataIndex: "date_fulfilled",
-    key: "fulfilled",
-    align: "center",
-    render: (date: any) => {
-      const fulfilled = (
-        <Tooltip placement="bottom" title={date}>
-          <CheckCircleTwoTone
-            twoToneColor="#306317" //todo this should be a var
-            style={{ fontSize: "24px" }}
-          />
-        </Tooltip>
-      );
-      const notFulfilled = (
-        <Tooltip placement="bottom" title="Not fulfilled">
-          <CloseCircleTwoTone
-            twoToneColor="#791a1f" //todo this should be a var
-            style={{ fontSize: "24px" }}
-          />
-        </Tooltip>
-      );
-      return date ? fulfilled : notFulfilled;
-    },
+    title: "Status",
+    dataIndex: "status",
+    key: "status",
+    render: (status: string) => <Tag color={getStatusColor(status)}>{status}</Tag>
+  },
+  {
+    title: "Rank ",
+    dataIndex: "priority_rank",
+    key: "priority_rank",
+    render: (rank: number) => <span className={styles.rank}>{rank}</span>
   },
 ];
 
@@ -56,7 +44,7 @@ interface Props {
 }
 
 const DeliveriesTable: React.FC<Props> = ({ tableData }) => (
-  <Table columns={columns} dataSource={tableData} />
+  <Table columns={columns} dataSource={tableData} rowSelection={{type: "checkbox"}}/>
 );
 
 export default DeliveriesTable;

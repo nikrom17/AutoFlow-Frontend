@@ -24,5 +24,8 @@
     "src",
     "tsconfig.extends.json"
   ],
+  "exclude": [
+    ".node_modules"
+  ],
   "extends": "./tsconfig.extends.json"
 }
