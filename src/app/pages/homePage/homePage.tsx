@@ -6,8 +6,8 @@ import * as todosActions from "src/redux/actions/todosActions";
 import * as todosTypes from "src/redux/types/todosTypes";
 import * as locationsActions from "src/redux/actions/locationsActions";
 import * as locationsTypes from "src/redux/types/locationsTypes";
-import * as clientsActions from "src/redux/actions/clientsActions";
-import * as clientsTypes from "src/redux/types/clientsTypes";
+import * as leadsActions from "src/redux/actions/leadsActions";
+import * as leadsTypes from "src/redux/types/leadsTypes";
 import { useAuth0 } from "@auth0/auth0-react";
 import PageFrame from "@components/pageFrame/pageFrame";
 import { Button } from "antd";
@@ -15,53 +15,53 @@ import { Button } from "antd";
 interface StateProps {
   todos: todosTypes.TodosState;
   locations: locationsTypes.LocationsState;
-  clients: clientsTypes.ClientsState;
+  leads: leadsTypes.LeadsState;
 }
 
 interface Props extends StateProps {
   fetchTodos: todosTypes.FetchTodos;
-  fetchClientTodos: todosTypes.FetchClientTodos;
+  fetchLeadTodos: todosTypes.FetchClientTodos;
   fetchTodo: todosTypes.FetchTodo;
   fetchLocations: locationsTypes.FetchLocations;
-  fetchClientLocations: locationsTypes.FetchClientLocations;
+  fetchLeadLocations: locationsTypes.FetchClientLocations;
   fetchLocation: locationsTypes.FetchLocation;
-  fetchClients: clientsTypes.FetchClients;
-  fetchClient: clientsTypes.FetchClient;
+  fetchLeads: leadsTypes.FetchLeads;
+  fetchLead: leadsTypes.FetchLead;
 }
 
 const Home: React.FC<Props> = ({
   todos,
   fetchTodos,
-  fetchClientTodos,
+  fetchLeadTodos,
   fetchTodo,
   locations,
   fetchLocations,
-  fetchClientLocations,
+  fetchLeadLocations,
   fetchLocation,
-  clients,
-  fetchClient,
-  fetchClients,
+  leads,
+  fetchLead,
+  fetchLeads,
 }) => {
   const history = useHistory();
   const { isAuthenticated, user } = useAuth0();
 
   React.useEffect(() => {
     // fetchTodos();
-    // fetchClientTodos(1);
+    // fetchLeadTodos(1);
     // fetchTodo(6);
     // fetchLocations();
-    // fetchClientLocations(1);
+    // fetchLeadLocations(1);
     // fetchLocation(1);
-    // fetchClient(1);
-    // fetchClients();
+    // fetchLead(1);
+    // fetchLeads();
   }, [
-    fetchClientTodos,
+    fetchLeadTodos,
     fetchTodos,
     fetchTodo,
-    fetchClientLocations,
+    fetchLeadLocations,
     fetchLocation,
     fetchLocations,
-    fetchClient,
+    fetchLead,
   ]);
 
   return (
@@ -82,23 +82,23 @@ const Home: React.FC<Props> = ({
 const mapStateToProps = (state: AppState): StateProps => ({
   todos: state.todos,
   locations: state.locations,
-  clients: state.clients,
+  leads: state.leads,
 });
 
 const mapDispatchToProps = (dispatch: any) => ({
   fetchTodos: () => dispatch(todosActions.fetchTodos()),
-  fetchClientTodos: (clientId: number) =>
-    dispatch(todosActions.fetchClientTodos(clientId)),
+  fetchLeadTodos: (leadId: number) =>
+    dispatch(todosActions.fetchClientTodos(leadId)),
   fetchTodo: (todoId: number) =>
     dispatch(todosActions.fetchTodo(todoId)),
   fetchLocations: () => dispatch(locationsActions.fetchLocations()),
-  fetchClientLocations: (clientId: number) =>
-    dispatch(locationsActions.fetchClientLocations(clientId)),
+  fetchLeadLocations: (leadId: number) =>
+    dispatch(locationsActions.fetchClientLocations(leadId)),
   fetchLocation: (locationId: number) =>
     dispatch(locationsActions.fetchLocation(locationId)),
-  fetchClients: () => dispatch(clientsActions.fetchClients()),
-  fetchClient: (clientId: number) =>
-    dispatch(clientsActions.fetchClient(clientId)),
+  fetchLeads: () => dispatch(leadsActions.fetchLeads()),
+  fetchLead: (leadId: number) =>
+    dispatch(leadsActions.fetchLead(leadId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

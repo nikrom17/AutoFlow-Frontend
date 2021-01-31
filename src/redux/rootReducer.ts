@@ -8,27 +8,27 @@ import {
   locationsReducer,
 } from "src/redux/reducers/locationsReducer";
 import {
-  initialClientsState,
-  clientsReducer,
-} from "src/redux/reducers/clientsReducer";
-import { ClientsState } from "src/redux/types/clientsTypes";
+  initialLeadsState,
+  leadsReducer,
+} from "src/redux/reducers/leadsReducer";
+import { LeadsState } from "src/redux/types/leadsTypes";
 import { TodosState } from "src/redux/types/todosTypes";
 import { LocationsState } from "src/redux/types/locationsTypes";
 
 export interface AppState {
-  clients: ClientsState;
+  leads: LeadsState;
   todos: TodosState;
   locations: LocationsState;
 }
 
 export const initialAppState: AppState = {
-  clients: { ...initialClientsState },
+  leads: { ...initialLeadsState },
   todos: { ...initialTodosState },
   locations: { ...initialLocationsState },
 };
 
 export const rootReducer = combineReducers({
-  clients: clientsReducer,
+  leads: leadsReducer,
   todos: todosReducer,
   locations: locationsReducer,
 });

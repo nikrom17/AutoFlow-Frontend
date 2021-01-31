@@ -13,15 +13,15 @@ interface StateProps {
 }
 
 interface Props extends StateProps {
-  fetchClientTodos: todosTypes.FetchClientTodos;
-  // fetchTodo: todosTypes.FetchTodo; //todo do we need this?
+  fetchTodos: todosTypes.FetchTodos;
 }
+
 const TodosPage: React.FC<Props> = ({
   todos,
-  fetchClientTodos,
-  // fetchTodo, //todo do we need this?
+  fetchTodos,
 }) => {
   const { todos: todo } = todos;
+  
   // React.useEffect(() => {
   //   fetchClientTodos(1);
   // }, [fetchClientTodos]);
@@ -50,10 +50,8 @@ const mapStateToProps = (state: AppState): StateProps => ({
 });
 
 const mapDispatchToProps = (dispatch: any) => ({
-  fetchClientTodos: (clientId: number) =>
-    dispatch(todosActions.fetchClientTodos(clientId)),
-  // fetchTodo: (todoId: number) => //todo do we need this?
-  //   dispatch(todosActions.fetchTodo(todoId)),
+  fetchTodos: () =>
+    dispatch(todosActions.fetchTodos()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodosPage);

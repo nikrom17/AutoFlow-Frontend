@@ -1,24 +1,44 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
-import { Button } from "antd";
+import { connect } from "react-redux";
+import { AppState } from "src/redux/rootReducer";
+import { DefaultSchema } from "src/redux/types/commonTypes";
+import { Skeleton } from "antd";
+import * as leadsTypes from "src/redux/types/leadsTypes";
 import PageFrame from "@components/pageFrame/pageFrame";
+import LeadsTable from './leadsTable/leadsTable';
 
-const LeadsPage: React.FC = () => {
-  const history = useHistory();
+interface StateProps {
+  leads: leadsTypes.LeadsState;
+}
+
+interface Props extends StateProps {
+  fetchLeads: leadsTypes.FetchLeads;
+}
+
+const LeadsPage: React.FC<Props> = ({ leads }) => {
+  const { leads: lead } = leads;
+
+    //todo make this reusable
+    const transformData = (data: DefaultSchema<any>) =>
+    data.allIds.map((id) => data.byId[id]);
+
   return (
     <PageFrame
       title="Leads"
       buttonOnClick={() => console.log("Leads button")}
       buttonTitle="Add new lead"
     >
-      <h1>This is the Leads page</h1>
-      <div>
-        <Button onClick={() => history.push("/home")} type="primary">
-          Go to the home page
-        </Button>
-      </div>
+      {lead.allIds.length ? (
+        <LeadsTable tableData={transformData(lead)} />
+      ) : (
+        <Skeleton active paragraph={{ rows: 6 }} />
+      )}
     </PageFrame>
   );
 };
 
-export default LeadsPage;
+const mapStateToProps = (state: AppState): StateProps => ({
+  leads: state.leads,
+})
+
+export default connect(mapStateToProps)(LeadsPage);
