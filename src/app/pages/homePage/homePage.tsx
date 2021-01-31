@@ -9,6 +9,7 @@ import * as locationsTypes from "src/redux/types/locationsTypes";
 import * as clientsActions from "src/redux/actions/clientsActions";
 import * as clientsTypes from "src/redux/types/clientsTypes";
 import { useAuth0 } from "@auth0/auth0-react";
+import PageFrame from "@components/pageFrame/pageFrame";
 import { Button } from "antd";
 
 interface StateProps {
@@ -64,8 +65,7 @@ const Home: React.FC<Props> = ({
   ]);
 
   return (
-    <>
-      <h1>This is the home page</h1>
+    <PageFrame title="Home Page">
       <p>User Info:</p>
       <p>{`First Name: ${isAuthenticated && user.given_name}`}</p>
       <p>{`Last Name: ${isAuthenticated && user.family_name}`}</p>
@@ -75,7 +75,7 @@ const Home: React.FC<Props> = ({
           Go to the about page
         </Button>
       </div>
-    </>
+    </PageFrame>
   );
 };
 
