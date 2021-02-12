@@ -1,35 +1,21 @@
-import React from "react";
-import { connect } from "react-redux";
-import { AppState } from "src/redux/rootReducer";
-import { DefaultSchema } from "src/redux/types/commonTypes";
-import { Skeleton } from "antd";
-import * as leadsTypes from "src/redux/types/leadsTypes";
-import PageFrame from "@components/pageFrame/pageFrame";
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from 'src/redux/rootReducer';
+import { Skeleton } from 'antd';
+import PageFrame from '@components/pageFrame/pageFrame';
 import LeadsTable from './leadsTable/leadsTable';
 
-interface StateProps {
-  leads: leadsTypes.LeadsState;
-}
-
-interface Props extends StateProps {
-  fetchLeads: leadsTypes.FetchLeads;
-}
-
-const LeadsPage: React.FC<Props> = ({ leads }) => {
-  const { leads: lead } = leads;
-
-    //todo make this reusable
-    const transformData = (data: DefaultSchema<any>) =>
-    data.allIds.map((id) => data.byId[id]);
+const LeadsPage: React.FC = () => {
+  const leadsTableData = useSelector((state: RootState) => state.leads);
 
   return (
     <PageFrame
       title="Leads"
-      buttonOnClick={() => console.log("Leads button")}
+      buttonOnClick={() => console.log('Leads button')}
       buttonTitle="Add new lead"
     >
-      {lead.allIds.length ? (
-        <LeadsTable tableData={transformData(lead)} />
+      {leadsTableData ? (
+        <LeadsTable tableData={leadsTableData} />
       ) : (
         <Skeleton active paragraph={{ rows: 6 }} />
       )}
@@ -37,8 +23,4 @@ const LeadsPage: React.FC<Props> = ({ leads }) => {
   );
 };
 
-const mapStateToProps = (state: AppState): StateProps => ({
-  leads: state.leads,
-})
-
-export default connect(mapStateToProps)(LeadsPage);
+export default LeadsPage;

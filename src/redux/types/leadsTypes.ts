@@ -1,4 +1,4 @@
-import { ThunkType, DefaultSchema } from "./commonTypes";
+import { ThunkType, DefaultSchema } from './commonTypes';
 
 // ------ COMMON INTERFACES ------ //
 export interface Leads {
@@ -15,22 +15,20 @@ export interface Leads {
   tags?: number[];
 }
 
-export interface LeadsState {
-  leads: DefaultSchema<Leads>;
-}
+export interface LeadsState extends DefaultSchema<Leads> {}
 
 // ------ THUNK ACTION TYPES ------ //
 export type FetchLeads = () => ThunkType;
 export type FetchLead = (clientId: number) => ThunkType;
 
 // ------ CONSTANTS ------ //
-export const FETCH_LEADS_START = "FETCH_LEADS_START";
-export const FETCH_LEADS_SUCCESS = "FETCH_LEADS_SUCCESS";
-export const FETCH_LEADS_FAILED = "FETCH_LEADS_FAILED";
+export const FETCH_LEADS_START = 'FETCH_LEADS_START';
+export const FETCH_LEADS_SUCCESS = 'FETCH_LEADS_SUCCESS';
+export const FETCH_LEADS_FAILED = 'FETCH_LEADS_FAILED';
 
-export const FETCH_LEAD_START = "FETCH_LEAD_START";
-export const FETCH_LEAD_SUCCESS = "FETCH_LEAD_SUCCESS";
-export const FETCH_LEAD_FAILED = "FETCH_LEAD_FAILED";
+export const FETCH_LEAD_START = 'FETCH_LEAD_START';
+export const FETCH_LEAD_SUCCESS = 'FETCH_LEAD_SUCCESS';
+export const FETCH_LEAD_FAILED = 'FETCH_LEAD_FAILED';
 
 // ------ TYPES ------ //
 interface FetchLeadsSuccess {

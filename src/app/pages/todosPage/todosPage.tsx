@@ -1,43 +1,21 @@
-import React from "react";
-import { connect } from "react-redux";
-import { AppState } from "src/redux/rootReducer";
-import { Skeleton } from "antd";
-import { DefaultSchema } from "src/redux/types/commonTypes";
-import * as todosActions from "src/redux/actions/todosActions";
-import * as todosTypes from "src/redux/types/todosTypes";
-import PageFrame from "@components/pageFrame/pageFrame";
-import TodosTable from "./todosTable/todosTable";
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { Skeleton } from 'antd';
+import { getTodosTableData } from 'src/redux/selectors/todosSelectors';
+import PageFrame from '@components/pageFrame/pageFrame';
+import TodosTable from './todosTable/todosTable';
 
-interface StateProps {
-  todos: todosTypes.TodosState;
-}
-
-interface Props extends StateProps {
-  fetchTodos: todosTypes.FetchTodos;
-}
-
-const TodosPage: React.FC<Props> = ({
-  todos,
-  fetchTodos,
-}) => {
-  const { todos: todo } = todos;
-  
-  // React.useEffect(() => {
-  //   fetchClientTodos(1);
-  // }, [fetchClientTodos]);
-
-  //todo make this reusable
-  const transformData = (data: DefaultSchema<any>) =>
-    data.allIds.map((id) => data.byId[id]);
+const TodosPage: React.FC = () => {
+  const todos = useSelector(getTodosTableData);
 
   return (
     <PageFrame
       title="Todo List"
-      buttonOnClick={() => console.log("Todos button")} //todo add functionality
+      buttonOnClick={() => console.log('Todos button')} //todo add functionality
       buttonTitle="Prioritized Todo List"
     >
-      {todo.allIds.length ? (
-        <TodosTable tableData={transformData(todo)} />
+      {todos ? (
+        <TodosTable tableData={todos} />
       ) : (
         <Skeleton active paragraph={{ rows: 6 }} />
       )}
@@ -45,13 +23,4 @@ const TodosPage: React.FC<Props> = ({
   );
 };
 
-const mapStateToProps = (state: AppState): StateProps => ({
-  todos: state.todos,
-});
-
-const mapDispatchToProps = (dispatch: any) => ({
-  fetchTodos: () =>
-    dispatch(todosActions.fetchTodos()),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(TodosPage);
+export default TodosPage;

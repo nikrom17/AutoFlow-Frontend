@@ -2,21 +2,20 @@ import { ThunkType, DefaultSchema } from "./commonTypes";
 
 // ------ COMMON INTERFACES ------ //
 export interface SalesFunnels {
-  address: string;
-  chanceToConvert: number;
-  email: string;
-  history?: number[];
+  funnelSteps: number[];
   id: number;
-  lastComm: string;
   name: string;
-  notes?: number[];
-  opportunityInfo: object;
-  phone: string;
-  tags?: number[];
+}
+
+export interface FunnelSteps {
+  id: number;
+  name: string;
+  salesFunnel: number;
 }
 
 export interface SalesFunnelsState {
   salesFunnels: DefaultSchema<SalesFunnels>;
+  funnelSteps: DefaultSchema<FunnelSteps>;
 }
 
 // ------ THUNK ACTION TYPES ------ //
