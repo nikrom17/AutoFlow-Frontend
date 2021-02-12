@@ -13,6 +13,7 @@ export interface Leads {
   opportunityInfo: object;
   phone: string;
   tags?: number[];
+  type: 'individual' | 'business';
 }
 
 export interface LeadsState extends DefaultSchema<Leads> {}

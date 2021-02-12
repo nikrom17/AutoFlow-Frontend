@@ -15,7 +15,7 @@ const columns: ColumnsType<any> = [
   },
   {
     title: 'Last Comm.',
-    dataIndex: 'pickup_location_id',
+    dataIndex: ['lead', 'lastComm'],
   },
   {
     title: 'Price Estimate',

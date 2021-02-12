@@ -1,12 +1,12 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { RootState } from 'src/redux/rootReducer';
+import { getLeadsTableData } from 'src/redux/selectors/leadsSelectors';
 import { Skeleton } from 'antd';
 import PageFrame from '@components/pageFrame/pageFrame';
 import LeadsTable from './leadsTable/leadsTable';
 
 const LeadsPage: React.FC = () => {
-  const leadsTableData = useSelector((state: RootState) => state.leads);
+  const leadsTableData = useSelector(getLeadsTableData);
 
   return (
     <PageFrame

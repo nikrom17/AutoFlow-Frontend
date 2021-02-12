@@ -18,6 +18,7 @@ export const initialLeadsState: leadsTypes.LeadsState = {
         quotedPrice: '$350',
       },
       phone: '(847) 460-8607',
+      type: 'business',
     },
     2: {
       id: 2,
@@ -33,6 +34,7 @@ export const initialLeadsState: leadsTypes.LeadsState = {
         quotedPrice: '$350',
       },
       phone: '(847) 460-8607',
+      type: 'business',
     },
     3: {
       id: 3,
@@ -48,6 +50,7 @@ export const initialLeadsState: leadsTypes.LeadsState = {
         quotedPrice: '$350',
       },
       phone: '(847) 460-8607',
+      type: 'business',
     },
     4: {
       id: 4,
@@ -63,6 +66,7 @@ export const initialLeadsState: leadsTypes.LeadsState = {
         quotedPrice: '$350',
       },
       phone: '(847) 460-8607',
+      type: 'business',
     },
     5: {
       id: 5,
@@ -78,6 +82,7 @@ export const initialLeadsState: leadsTypes.LeadsState = {
         quotedPrice: '$350',
       },
       phone: '(847) 460-8607',
+      type: 'business',
     },
     6: {
       id: 6,
@@ -93,6 +98,7 @@ export const initialLeadsState: leadsTypes.LeadsState = {
         quotedPrice: '$350',
       },
       phone: '(847) 460-8607',
+      type: 'business',
     },
     7: {
       id: 7,
@@ -108,6 +114,7 @@ export const initialLeadsState: leadsTypes.LeadsState = {
         quotedPrice: '$350',
       },
       phone: '(847) 460-8607',
+      type: 'business',
     },
     8: {
       id: 8,
@@ -123,6 +130,7 @@ export const initialLeadsState: leadsTypes.LeadsState = {
         quotedPrice: '$350',
       },
       phone: '(847) 460-8607',
+      type: 'business',
     },
     9: {
       id: 9,
@@ -138,6 +146,7 @@ export const initialLeadsState: leadsTypes.LeadsState = {
         quotedPrice: '$350',
       },
       phone: '(847) 460-8607',
+      type: 'business',
     },
   },
 };
