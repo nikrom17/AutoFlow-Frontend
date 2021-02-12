@@ -1,145 +1,152 @@
-import { cloneDeep } from "lodash";
-import * as leadsTypes from "../types/leadsTypes";
+import { cloneDeep } from 'lodash';
+import * as leadsTypes from '../types/leadsTypes';
 
 export const initialLeadsState: leadsTypes.LeadsState = {
-  leads: {
-    allIds: [1,2,3,4,5,6,7,8,9],
-    byId: { 
-      1: {
-        id: 1,
-        address: "1918 N Michigan Ave\nUnit 1010\n Chicago, IL 60612",
-        chanceToConvert: 0.923,
-        email: "coolDude@gmail.com",
-        lastComm: "1 hour ago",
-        name: "Johnathon Leaderson",
-        opportunityInfo: {
-          filingStatus: "Single",
-          occupation: "Senior Consultant",
-          yearlyIncome: "$150k+",
-          quotedPrice: "$350"
-        },
-        phone: "(847) 460-8607",
+  allIds: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+  byId: {
+    1: {
+      id: 1,
+      address: '1918 N Michigan Ave\nUnit 1010\n Chicago, IL 60612',
+      chanceToConvert: 0.923,
+      email: 'coolDude@gmail.com',
+      lastComm: '1 hour ago',
+      name: 'Johnathon Leaderson',
+      opportunityInfo: {
+        filingStatus: 'Single',
+        occupation: 'Senior Consultant',
+        yearlyIncome: '$150k+',
+        quotedPrice: '$350',
       },
-      2: {
-        id: 2,
-        address: "1918 N Michigan Ave\nUnit 1010\n Chicago, IL 60612",
-        chanceToConvert: 0.923,
-        email: "coolDude@gmail.com",
-        lastComm: "1 hour ago",
-        name: "Johnathon Leaderson",
-        opportunityInfo: {
-          filingStatus: "Single",
-          occupation: "Senior Consultant",
-          yearlyIncome: "$150k+",
-          quotedPrice: "$350"
-        }, 
-        phone: "(847) 460-8607",
+      phone: '(847) 460-8607',
+      type: 'business',
+    },
+    2: {
+      id: 2,
+      address: '1918 N Michigan Ave\nUnit 1010\n Chicago, IL 60612',
+      chanceToConvert: 0.923,
+      email: 'coolDude@gmail.com',
+      lastComm: '1 hour ago',
+      name: 'Johnathon Leaderson',
+      opportunityInfo: {
+        filingStatus: 'Single',
+        occupation: 'Senior Consultant',
+        yearlyIncome: '$150k+',
+        quotedPrice: '$350',
       },
-      3: {
-        id: 3,
-        address: "1918 N Michigan Ave\nUnit 1010\n Chicago, IL 60612",
-        chanceToConvert: 0.923,
-        email: "coolDude@gmail.com",
-        lastComm: "1 hour ago",
-        name: "Johnathon Leaderson",
-        opportunityInfo: {
-          filingStatus: "Single",
-          occupation: "Senior Consultant",
-          yearlyIncome: "$150k+",
-          quotedPrice: "$350"
-        },
-        phone: "(847) 460-8607",
+      phone: '(847) 460-8607',
+      type: 'business',
+    },
+    3: {
+      id: 3,
+      address: '1918 N Michigan Ave\nUnit 1010\n Chicago, IL 60612',
+      chanceToConvert: 0.923,
+      email: 'coolDude@gmail.com',
+      lastComm: '1 hour ago',
+      name: 'Johnathon Leaderson',
+      opportunityInfo: {
+        filingStatus: 'Single',
+        occupation: 'Senior Consultant',
+        yearlyIncome: '$150k+',
+        quotedPrice: '$350',
       },
-      4: {
-        id: 4,
-        address: "1918 N Michigan Ave\nUnit 1010\n Chicago, IL 60612",
-        chanceToConvert: 0.923,
-        email: "coolDude@gmail.com",
-        lastComm: "1 hour ago",
-        name: "Johnathon Leaderson",
-        opportunityInfo: {
-          filingStatus: "Single",
-          occupation: "Senior Consultant",
-          yearlyIncome: "$150k+",
-          quotedPrice: "$350"
-        },
-        phone: "(847) 460-8607",
+      phone: '(847) 460-8607',
+      type: 'business',
+    },
+    4: {
+      id: 4,
+      address: '1918 N Michigan Ave\nUnit 1010\n Chicago, IL 60612',
+      chanceToConvert: 0.923,
+      email: 'coolDude@gmail.com',
+      lastComm: '1 hour ago',
+      name: 'Johnathon Leaderson',
+      opportunityInfo: {
+        filingStatus: 'Single',
+        occupation: 'Senior Consultant',
+        yearlyIncome: '$150k+',
+        quotedPrice: '$350',
       },
-      5: {
-        id: 5,
-        address: "1918 N Michigan Ave\nUnit 1010\n Chicago, IL 60612",
-        chanceToConvert: 0.923,
-        email: "coolDude@gmail.com",
-        lastComm: "1 hour ago",
-        name: "Johnathon Leaderson",
-        opportunityInfo: {
-          filingStatus: "Single",
-          occupation: "Senior Consultant",
-          yearlyIncome: "$150k+",
-          quotedPrice: "$350"
-        },
-        phone: "(847) 460-8607",
+      phone: '(847) 460-8607',
+      type: 'business',
+    },
+    5: {
+      id: 5,
+      address: '1918 N Michigan Ave\nUnit 1010\n Chicago, IL 60612',
+      chanceToConvert: 0.923,
+      email: 'coolDude@gmail.com',
+      lastComm: '1 hour ago',
+      name: 'Johnathon Leaderson',
+      opportunityInfo: {
+        filingStatus: 'Single',
+        occupation: 'Senior Consultant',
+        yearlyIncome: '$150k+',
+        quotedPrice: '$350',
       },
-      6: {
-        id: 6,
-        address: "1918 N Michigan Ave\nUnit 1010\n Chicago, IL 60612",
-        chanceToConvert: 0.923,
-        email: "coolDude@gmail.com",
-        lastComm: "1 hour ago",
-        name: "Johnathon Leaderson",
-        opportunityInfo: {
-          filingStatus: "Single",
-          occupation: "Senior Consultant",
-          yearlyIncome: "$150k+",
-          quotedPrice: "$350"
-        },
-        phone: "(847) 460-8607",
+      phone: '(847) 460-8607',
+      type: 'business',
+    },
+    6: {
+      id: 6,
+      address: '1918 N Michigan Ave\nUnit 1010\n Chicago, IL 60612',
+      chanceToConvert: 0.923,
+      email: 'coolDude@gmail.com',
+      lastComm: '1 hour ago',
+      name: 'Johnathon Leaderson',
+      opportunityInfo: {
+        filingStatus: 'Single',
+        occupation: 'Senior Consultant',
+        yearlyIncome: '$150k+',
+        quotedPrice: '$350',
       },
-      7: {
-        id: 7,
-        address: "1918 N Michigan Ave\nUnit 1010\n Chicago, IL 60612",
-        chanceToConvert: 0.923,
-        email: "coolDude@gmail.com",
-        lastComm: "1 hour ago",
-        name: "Johnathon Leaderson",
-        opportunityInfo: {
-          filingStatus: "Single",
-          occupation: "Senior Consultant",
-          yearlyIncome: "$150k+",
-          quotedPrice: "$350"
-        },
-        phone: "(847) 460-8607",
+      phone: '(847) 460-8607',
+      type: 'business',
+    },
+    7: {
+      id: 7,
+      address: '1918 N Michigan Ave\nUnit 1010\n Chicago, IL 60612',
+      chanceToConvert: 0.923,
+      email: 'coolDude@gmail.com',
+      lastComm: '1 hour ago',
+      name: 'Johnathon Leaderson',
+      opportunityInfo: {
+        filingStatus: 'Single',
+        occupation: 'Senior Consultant',
+        yearlyIncome: '$150k+',
+        quotedPrice: '$350',
       },
-      8: {
-        id: 8,
-        address: "1918 N Michigan Ave\nUnit 1010\n Chicago, IL 60612",
-        chanceToConvert: 0.923,
-        email: "coolDude@gmail.com",
-        lastComm: "1 hour ago",
-        name: "Johnathon Leaderson",
-        opportunityInfo: {
-          filingStatus: "Single",
-          occupation: "Senior Consultant",
-          yearlyIncome: "$150k+",
-          quotedPrice: "$350"
-        },
-        phone: "(847) 460-8607",
+      phone: '(847) 460-8607',
+      type: 'business',
+    },
+    8: {
+      id: 8,
+      address: '1918 N Michigan Ave\nUnit 1010\n Chicago, IL 60612',
+      chanceToConvert: 0.923,
+      email: 'coolDude@gmail.com',
+      lastComm: '1 hour ago',
+      name: 'Johnathon Leaderson',
+      opportunityInfo: {
+        filingStatus: 'Single',
+        occupation: 'Senior Consultant',
+        yearlyIncome: '$150k+',
+        quotedPrice: '$350',
       },
-      9: {
-        id: 9,
-        address: "1918 N Michigan Ave\nUnit 1010\n Chicago, IL 60612",
-        chanceToConvert: 0.923,
-        email: "coolDude@gmail.com",
-        lastComm: "1 hour ago",
-        name: "Johnathon Leaderson",
-        opportunityInfo: {
-          filingStatus: "Single",
-          occupation: "Senior Consultant",
-          yearlyIncome: "$150k+",
-          quotedPrice: "$350"
-        },
-        phone: "(847) 460-8607",
+      phone: '(847) 460-8607',
+      type: 'business',
+    },
+    9: {
+      id: 9,
+      address: '1918 N Michigan Ave\nUnit 1010\n Chicago, IL 60612',
+      chanceToConvert: 0.923,
+      email: 'coolDude@gmail.com',
+      lastComm: '1 hour ago',
+      name: 'Johnathon Leaderson',
+      opportunityInfo: {
+        filingStatus: 'Single',
+        occupation: 'Senior Consultant',
+        yearlyIncome: '$150k+',
+        quotedPrice: '$350',
       },
+      phone: '(847) 460-8607',
+      type: 'business',
     },
   },
 };
@@ -150,17 +157,13 @@ export const leadsReducer = (
 ): leadsTypes.LeadsState => {
   switch (action.type) {
     case leadsTypes.FETCH_LEADS_SUCCESS:
-      return {
-        leads: { ...action.data.leads },
-      };
+      return { ...action.data };
     case leadsTypes.FETCH_LEAD_SUCCESS: //todo verify allIds is merged correctly
       return {
-        leads: {
-          allIds: [...state.leads.allIds, ...action.data.leads.allIds],
-          byId: {
-            ...cloneDeep(state.leads.byId),
-            ...action.data.leads.byId,
-          },
+        allIds: [...state.allIds, ...action.data.allIds],
+        byId: {
+          ...cloneDeep(state.byId),
+          ...action.data.byId,
         },
       };
     default:

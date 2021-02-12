@@ -1,144 +1,64 @@
-import { cloneDeep } from "lodash";
+// import { cloneDeep } from "lodash";
 import * as salesFunnelsTypes from "../types/salesFunnelsTypes";
 
 export const initialSalesFunnelsState: salesFunnelsTypes.SalesFunnelsState = {
   salesFunnels: {
-    allIds: [1,2,3,4,5,6,7,8,9],
+    allIds: [1,2],
     byId: { 
       1: {
         id: 1,
-        address: "1918 N Michigan Ave\nUnit 1010\n Chicago, IL 60612",
-        chanceToConvert: 0.923,
-        email: "coolDude@gmail.com",
-        lastComm: "1 hour ago",
-        name: "Johnathon SalesFunnelerson",
-        opportunityInfo: {
-          filingStatus: "Single",
-          occupation: "Senior Consultant",
-          yearlyIncome: "$150k+",
-          quotedPrice: "$350"
-        },
-        phone: "(847) 460-8607",
+        name: "Personal Tax Returns",
+        funnelSteps: [1,2,3,4],
       },
       2: {
         id: 2,
-        address: "1918 N Michigan Ave\nUnit 1010\n Chicago, IL 60612",
-        chanceToConvert: 0.923,
-        email: "coolDude@gmail.com",
-        lastComm: "1 hour ago",
-        name: "Johnathon SalesFunnelerson",
-        opportunityInfo: {
-          filingStatus: "Single",
-          occupation: "Senior Consultant",
-          yearlyIncome: "$150k+",
-          quotedPrice: "$350"
-        }, 
-        phone: "(847) 460-8607",
+        name: "BusinessTax Returns",
+        funnelSteps: [1,2,3,4],
+      },
+    },
+  },
+  funnelSteps: {
+    allIds: [1,2,3,4],
+    byId: {
+      1: {
+        id: 1,
+        name: "Initial Inquiry",
+        salesFunnel: 1,
+      },
+      2: {
+        id: 2,
+        name: "Took Questionnaire",
+        salesFunnel: 1,
       },
       3: {
         id: 3,
-        address: "1918 N Michigan Ave\nUnit 1010\n Chicago, IL 60612",
-        chanceToConvert: 0.923,
-        email: "coolDude@gmail.com",
-        lastComm: "1 hour ago",
-        name: "Johnathon SalesFunnelerson",
-        opportunityInfo: {
-          filingStatus: "Single",
-          occupation: "Senior Consultant",
-          yearlyIncome: "$150k+",
-          quotedPrice: "$350"
-        },
-        phone: "(847) 460-8607",
+        name: "Scheduled Phone Consult",
+        salesFunnel: 1,
       },
       4: {
         id: 4,
-        address: "1918 N Michigan Ave\nUnit 1010\n Chicago, IL 60612",
-        chanceToConvert: 0.923,
-        email: "coolDude@gmail.com",
-        lastComm: "1 hour ago",
-        name: "Johnathon SalesFunnelerson",
-        opportunityInfo: {
-          filingStatus: "Single",
-          occupation: "Senior Consultant",
-          yearlyIncome: "$150k+",
-          quotedPrice: "$350"
-        },
-        phone: "(847) 460-8607",
+        name: "Has Phone Consult",
+        salesFunnel: 1,
       },
       5: {
         id: 5,
-        address: "1918 N Michigan Ave\nUnit 1010\n Chicago, IL 60612",
-        chanceToConvert: 0.923,
-        email: "coolDude@gmail.com",
-        lastComm: "1 hour ago",
-        name: "Johnathon SalesFunnelerson",
-        opportunityInfo: {
-          filingStatus: "Single",
-          occupation: "Senior Consultant",
-          yearlyIncome: "$150k+",
-          quotedPrice: "$350"
-        },
-        phone: "(847) 460-8607",
+        name: "Initial Inquiry",
+        salesFunnel: 2,
       },
       6: {
         id: 6,
-        address: "1918 N Michigan Ave\nUnit 1010\n Chicago, IL 60612",
-        chanceToConvert: 0.923,
-        email: "coolDude@gmail.com",
-        lastComm: "1 hour ago",
-        name: "Johnathon SalesFunnelerson",
-        opportunityInfo: {
-          filingStatus: "Single",
-          occupation: "Senior Consultant",
-          yearlyIncome: "$150k+",
-          quotedPrice: "$350"
-        },
-        phone: "(847) 460-8607",
+        name: "Took Questionnaire",
+        salesFunnel: 2,
       },
       7: {
         id: 7,
-        address: "1918 N Michigan Ave\nUnit 1010\n Chicago, IL 60612",
-        chanceToConvert: 0.923,
-        email: "coolDude@gmail.com",
-        lastComm: "1 hour ago",
-        name: "Johnathon SalesFunnelerson",
-        opportunityInfo: {
-          filingStatus: "Single",
-          occupation: "Senior Consultant",
-          yearlyIncome: "$150k+",
-          quotedPrice: "$350"
-        },
-        phone: "(847) 460-8607",
+        name: "Scheduled Phone Consult",
+        salesFunnel: 2,
       },
       8: {
         id: 8,
-        address: "1918 N Michigan Ave\nUnit 1010\n Chicago, IL 60612",
-        chanceToConvert: 0.923,
-        email: "coolDude@gmail.com",
-        lastComm: "1 hour ago",
-        name: "Johnathon SalesFunnelerson",
-        opportunityInfo: {
-          filingStatus: "Single",
-          occupation: "Senior Consultant",
-          yearlyIncome: "$150k+",
-          quotedPrice: "$350"
-        },
-        phone: "(847) 460-8607",
-      },
-      9: {
-        id: 9,
-        address: "1918 N Michigan Ave\nUnit 1010\n Chicago, IL 60612",
-        chanceToConvert: 0.923,
-        email: "coolDude@gmail.com",
-        lastComm: "1 hour ago",
-        name: "Johnathon SalesFunnelerson",
-        opportunityInfo: {
-          filingStatus: "Single",
-          occupation: "Senior Consultant",
-          yearlyIncome: "$150k+",
-          quotedPrice: "$350"
-        },
-        phone: "(847) 460-8607",
+        name: "Has Phone Consult",
+        salesFunnel: 2,
       },
     },
   },
@@ -149,20 +69,6 @@ export const salesFunnelsReducer = (
   action: salesFunnelsTypes.Types
 ): salesFunnelsTypes.SalesFunnelsState => {
   switch (action.type) {
-    case salesFunnelsTypes.FETCH_SALES_FUNNELS_SUCCESS:
-      return {
-        salesFunnels: { ...action.data.salesFunnels },
-      };
-    case salesFunnelsTypes.FETCH_SALES_FUNNEL_SUCCESS: //todo verify allIds is merged correctly
-      return {
-        salesFunnels: {
-          allIds: [...state.salesFunnels.allIds, ...action.data.salesFunnels.allIds],
-          byId: {
-            ...cloneDeep(state.salesFunnels.byId),
-            ...action.data.salesFunnels.byId,
-          },
-        },
-      };
     default:
       return state;
   }

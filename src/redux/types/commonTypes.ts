@@ -1,6 +1,6 @@
-import { ThunkAction } from "redux-thunk";
-import { Action } from "redux";
-import { AppState } from "../rootReducer";
+import { ThunkAction } from 'redux-thunk';
+import { Action } from 'redux';
+import { RootState } from '../rootReducer';
 
 export interface DefaultSchema<T> {
   allIds: number[];
@@ -9,6 +9,6 @@ export interface DefaultSchema<T> {
   };
 }
 
-export type ThunkType = ThunkAction<void, AppState, null, Action<string>>;
+export type ThunkType = ThunkAction<void, RootState, null, Action<string>>;
 
 export type GenericThunkAction = () => ThunkType;
