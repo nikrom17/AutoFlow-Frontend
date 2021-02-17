@@ -6,12 +6,10 @@ const columns: ColumnsType<any> = [
   {
     title: 'Lead',
     dataIndex: 'name',
-    key: 'name',
   },
   {
-    title: 'Sales Funnel',
-    dataIndex: 'salesFunnel',
-    key: 'salesFunnel',
+    title: 'Opportunity',
+    dataIndex: ['opportunity', 'name'],
   },
   {
     title: 'Last Comm.',
@@ -20,15 +18,11 @@ const columns: ColumnsType<any> = [
   },
   {
     title: 'Price Estimate',
-    dataIndex: 'opportunityInfo',
-    key: 'opportunityInfo',
-    render: (opportunityInfo: any) => (
-      <span>{opportunityInfo.quotedPrice}</span>
-    ),
+    dataIndex: ['opportunity', 'info', 'quotedPrice'],
   },
   {
     title: 'Funnel Step',
-    dataIndex: 'status',
+    dataIndex: ['funnelStep', 'name'],
     key: 'status',
   },
 ];
@@ -44,6 +38,7 @@ const DeliveriesTable: React.FC<Props> = ({ tableData }) => {
       columns={columns}
       dataSource={tableData}
       rowSelection={{ type: 'checkbox' }}
+      rowKey={(lead) => lead.id}
     />
   );
 };

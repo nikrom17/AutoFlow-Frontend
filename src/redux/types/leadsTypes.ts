@@ -5,12 +5,12 @@ export interface Leads {
   address: string;
   chanceToConvert: number;
   email: string;
+  funnelStep: number;
   history?: number[];
   id: number;
   lastComm: string;
   name: string;
   notes?: number[];
-  opportunityInfo: object;
   phone: string;
   tags?: number[];
   type: 'individual' | 'business';
