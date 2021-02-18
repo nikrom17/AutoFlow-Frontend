@@ -1,15 +1,20 @@
-import React from "react";
-import { useHistory } from "react-router";
-import * as styles from "./navigation.module.less";
-import { Tooltip, Button } from "antd";
-import { OrderedListOutlined, UserOutlined, FunnelPlotOutlined, PlusOutlined } from "@ant-design/icons";
+import React from 'react';
+import { useHistory } from 'react-router';
+import * as styles from './navigation.module.less';
+import { Tooltip, Button } from 'antd';
+import {
+  OrderedListOutlined,
+  UserOutlined,
+  FunnelPlotOutlined,
+  PlusOutlined,
+} from '@ant-design/icons';
 
 const Navigation = () => {
   const history = useHistory();
   return (
     <div className={styles.navigation}>
       <div className={styles.navItem}>
-        <button className={styles.navButton} onClick={() => history.push("/")}>
+        <button className={styles.navButton} onClick={() => history.push('/')}>
           <img
             alt="logo"
             src="https://cdn.canopytax.com/static/primary-navbar/canopy-logo-light.svg"
@@ -20,7 +25,7 @@ const Navigation = () => {
         <div className={styles.navItem}>
           <button
             className={styles.navButton}
-            onClick={() => history.push("/todos")}
+            onClick={() => history.push('/todos')}
           >
             <OrderedListOutlined />
           </button>
@@ -30,7 +35,7 @@ const Navigation = () => {
         <div className={styles.navItem}>
           <button
             className={styles.navButton}
-            onClick={() => history.push("/funnel")}
+            onClick={() => history.push('/opportunities')}
           >
             <FunnelPlotOutlined />
           </button>
@@ -40,7 +45,7 @@ const Navigation = () => {
         <div className={styles.navItem}>
           <button
             className={styles.navButton}
-            onClick={() => history.push("/leads")}
+            onClick={() => history.push('/leads')}
           >
             <UserOutlined />
           </button>

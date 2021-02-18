@@ -12,7 +12,7 @@ export const initialOpportunitiesState: opportunitiesTypes.OpportunitiesState = 
       },
       2: {
         id: 2,
-        name: 'BusinessTax Returns',
+        name: 'Business Tax Returns',
         funnelSteps: [5, 6, 7, 8],
       },
     },
