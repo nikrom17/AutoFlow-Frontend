@@ -19,7 +19,7 @@ const columns: ColumnsType<any> = [
   },
   {
     title: 'Price Estimate',
-    dataIndex: ['lead', 'opportunityInfo', 'quotedPrice'],
+    dataIndex: ['opportunity', 'info', 'quotedPrice'],
   },
   {
     title: 'Status',
