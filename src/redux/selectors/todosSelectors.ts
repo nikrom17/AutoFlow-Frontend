@@ -1,21 +1,41 @@
 import { createSelector } from 'reselect';
 import { TodosState } from 'src/redux/types/todosTypes';
 import { LeadsState } from 'src/redux/types/leadsTypes';
+import { OpportunitiesState } from 'src/redux/types/opportunitiesTypes';
+import { FunnelStepsState } from 'src/redux/types/funnelStepsTypes';
 import { RootState } from 'src/redux/rootReducer';
 
 const getTodos = (state: RootState) => state.todos;
 const getLeads = (state: RootState) => state.leads;
+const getFunnelSteps = (state: RootState) => state.funnelSteps;
+const getOpportunities = (state: RootState) => state.opportunities;
 
-const transformTodosTableData = (todos: TodosState, leads: LeadsState) =>
+const transformTodosTableData = (
+  todos: TodosState,
+  leads: LeadsState,
+  funnelSteps: FunnelStepsState,
+  opportunities: OpportunitiesState
+) =>
   todos.allIds.map((id) => {
     const todo = todos.byId[id];
     const lead = leads.byId[todo.leadId];
+    const funnelStep = funnelSteps.byId[lead.funnelStep];
+    const opportunity = opportunities.name.byId[funnelStep.opportunity];
+    const opportunityInfo = opportunities.info.byId[id];
 
-    return { ...todo, lead };
+    return {
+      ...todo,
+      lead,
+      funnelStep,
+      opportunity: { ...opportunity, info: opportunityInfo },
+    };
   });
 
 export const getTodosTableData = createSelector(
   getTodos,
   getLeads,
-  (todos, leads) => transformTodosTableData(todos, leads)
+  getFunnelSteps,
+  getOpportunities,
+  (todos, leads, funnelSteps, opportunities) =>
+    transformTodosTableData(todos, leads, funnelSteps, opportunities)
 );

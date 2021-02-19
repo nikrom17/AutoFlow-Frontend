@@ -14,6 +14,7 @@ export interface Leads {
   phone: string;
   tags?: number[];
   type: 'individual' | 'business';
+  status: string;
 }
 
 export interface LeadsState extends DefaultSchema<Leads> {}

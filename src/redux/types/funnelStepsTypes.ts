@@ -11,6 +11,7 @@ export interface FunnelSteps {
   id: number;
   name: string;
   opportunity: number;
+  leads: number[];
 }
 
 export interface FunnelStepsState extends DefaultSchema<FunnelSteps> {}

@@ -10,17 +10,29 @@
 
 .pageFrame {
   margin: 3rem;
+  overflow: scroll;
+}
+
+.pageFrameNoRightMargin {
+  margin: 3rem 0 3rem 3rem;
+  overflow: scroll;
 }
 
 .pageHeader {
   background-color: @background-color-base;
   display: flex;
+  flex-direction: column;
   height: 6.25rem;
   margin: @headerMargin;
   width: calc(100% - @headerMargin);
+  padding: 0.5rem 1.5rem 0 1.5rem;
+}
+
+.pageHeaderTop {
+  display: flex;
+  flex-direction: row;
 }
 
 .title {
-  padding: 1.5rem;
   width: 100%;
 }
