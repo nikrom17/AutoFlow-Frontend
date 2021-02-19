@@ -10,12 +10,8 @@ import './opportunities.less';
 const { TabPane } = Tabs;
 
 const FunnelPage: React.FC = () => {
-  const opportunities = useSelector(
-    (state: RootState) => state.opportunities.name
-  );
-  const opportunityInfo = useSelector(
-    (state: RootState) => state.opportunities.info
-  );
+  const opportunities = useSelector((state: RootState) => state.opportunities.name);
+  const opportunityInfo = useSelector((state: RootState) => state.opportunities.info);
   const leads = useSelector((state: RootState) => state.leads);
   const funnelSteps = useSelector((state: RootState) => state.funnelSteps);
   const [opportunityId, setOpportunityId] = React.useState<number>(
@@ -23,16 +19,12 @@ const FunnelPage: React.FC = () => {
   );
 
   const renderFunnelSteps = () => {
-    const opportunityFunnelSteps =
-      opportunities.byId[opportunityId].funnelSteps;
+    const opportunityFunnelSteps = opportunities.byId[opportunityId].funnelSteps;
     return opportunityFunnelSteps.map((funnelStepId: number) => {
       const funnelStep = funnelSteps.byId[funnelStepId];
 
       return (
-        <FunnelStepLeadContainer
-          funnelStepName={funnelStep.name}
-          key={funnelStepId}
-        >
+        <FunnelStepLeadContainer funnelStepName={funnelStep.name} key={funnelStepId}>
           <Space size="middle" direction="vertical">
             {funnelStep.leads.map((leadId) => {
               const lead = leads.byId[leadId];
@@ -73,11 +65,7 @@ const FunnelPage: React.FC = () => {
       }
     >
       <Space size="large" align="start">
-        {opportunityId && opportunities ? (
-          renderFunnelSteps()
-        ) : (
-          <p>No Opportunities</p>
-        )}
+        {opportunityId && opportunities ? renderFunnelSteps() : <p>No Opportunities</p>}
       </Space>
     </PageFrame>
   );
