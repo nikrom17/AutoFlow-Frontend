@@ -5,7 +5,7 @@ import { Tabs, Space } from 'antd';
 import PageFrame from '@components/pageFrame/pageFrame';
 import FunnelStepLeadContainer from '@components/funnelStepLeadContainer/funnelStepLeadContainer';
 import FunnelStepLeadCard from '@components/funnelStepLeadCard/funnelStepLeadCard';
-import './opportunities.less';
+import './opportunities.module.less';
 
 const { TabPane } = Tabs;
 
