@@ -13,7 +13,8 @@ export const initialLeadsState: leadsTypes.LeadsState = {
       lastComm: '1 hour ago',
       name: 'Johnathon Leaderson',
       phone: '(847) 460-8607',
-      type: 'business',
+      type: 'individual',
+      status: 'Follow Up',
     },
     2: {
       id: 2,
@@ -22,9 +23,10 @@ export const initialLeadsState: leadsTypes.LeadsState = {
       email: 'coolDude@gmail.com',
       funnelStep: 1,
       lastComm: '1 hour ago',
-      name: 'Johnathon Leaderson',
+      name: 'Gordon Ramsey',
       phone: '(847) 460-8607',
-      type: 'business',
+      type: 'individual',
+      status: 'Follow Up',
     },
     3: {
       id: 3,
@@ -33,9 +35,10 @@ export const initialLeadsState: leadsTypes.LeadsState = {
       email: 'coolDude@gmail.com',
       funnelStep: 1,
       lastComm: '1 hour ago',
-      name: 'Johnathon Leaderson',
+      name: 'Taco Bell',
       phone: '(847) 460-8607',
-      type: 'business',
+      type: 'individual',
+      status: 'Follow Up',
     },
     4: {
       id: 4,
@@ -46,7 +49,8 @@ export const initialLeadsState: leadsTypes.LeadsState = {
       lastComm: '1 hour ago',
       name: 'Johnathon Leaderson',
       phone: '(847) 460-8607',
-      type: 'business',
+      type: 'individual',
+      status: 'Follow Up',
     },
     5: {
       id: 5,
@@ -57,7 +61,8 @@ export const initialLeadsState: leadsTypes.LeadsState = {
       lastComm: '1 hour ago',
       name: 'Johnathon Leaderson',
       phone: '(847) 460-8607',
-      type: 'business',
+      type: 'individual',
+      status: 'Follow Up',
     },
     6: {
       id: 6,
@@ -69,6 +74,7 @@ export const initialLeadsState: leadsTypes.LeadsState = {
       name: 'Johnathon Leaderson',
       phone: '(847) 460-8607',
       type: 'business',
+      status: 'Follow Up',
     },
     7: {
       id: 7,
@@ -80,6 +86,7 @@ export const initialLeadsState: leadsTypes.LeadsState = {
       name: 'Johnathon Leaderson',
       phone: '(847) 460-8607',
       type: 'business',
+      status: 'Follow Up',
     },
     8: {
       id: 8,
@@ -91,6 +98,7 @@ export const initialLeadsState: leadsTypes.LeadsState = {
       name: 'Johnathon Leaderson',
       phone: '(847) 460-8607',
       type: 'business',
+      status: 'Follow Up',
     },
     9: {
       id: 9,
@@ -102,6 +110,7 @@ export const initialLeadsState: leadsTypes.LeadsState = {
       name: 'Johnathon Leaderson',
       phone: '(847) 460-8607',
       type: 'business',
+      status: 'Follow Up',
     },
   },
 };

@@ -9,6 +9,7 @@ interface Props {
   children: React.ReactNode;
   title: string;
   renderTabs?: any;
+  rightMargin?: boolean;
 }
 
 const PageHeader: React.FC<Props> = ({
@@ -17,6 +18,7 @@ const PageHeader: React.FC<Props> = ({
   children,
   renderTabs,
   title,
+  rightMargin = true,
 }) => {
   return (
     <>
@@ -37,7 +39,13 @@ const PageHeader: React.FC<Props> = ({
         </div>
         {renderTabs}
       </div>
-      <div className={styles.pageFrame}>{children}</div>
+      <div
+        className={
+          rightMargin ? styles.pageFrame : styles.pageFrameNoRightMargin
+        }
+      >
+        {children}
+      </div>
     </>
   );
 };
