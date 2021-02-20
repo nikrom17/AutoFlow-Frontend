@@ -26,7 +26,7 @@ module.exports = override(
       // ...defaultTheme,
       ...darkTheme,
     },
-    localIdentName: '[path][name]__[local]--[hash:base64:5]', //  enables CSS Modules
+    localIdentName: '[local]--[hash:base64:5]', //  enables CSS Modules
   }),
   // import alias
   addWebpackAlias({

@@ -9,7 +9,7 @@ const Home: React.FC = () => {
   const { isAuthenticated, user } = useAuth0();
 
   return (
-    <PageFrame title="Home Page">
+    <PageFrame>
       <p>User Info:</p>
       <p>{`First Name: ${isAuthenticated && user.given_name}`}</p>
       <p>{`Last Name: ${isAuthenticated && user.family_name}`}</p>
