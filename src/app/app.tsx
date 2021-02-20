@@ -4,7 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import { Layout } from 'antd';
 import { routes } from 'src/app/routing/routeConstants';
 import ErrorPage from '@pages/errorPage/errorPage';
-import Headers from '@components/header/header';
+import MainHeader from '@components/header/header';
 import Navigation from '@components/navigation/navigation';
 import './app.less';
 
@@ -21,17 +21,15 @@ const App: React.FC = () => {
         </Sider>
         <Layout>
           <Header style={headerStyles}>
-            <Headers />
+            <MainHeader />
           </Header>
           <Content>
-            <main>
-              <Switch>
-                {routes.allIds.map((routeId) => {
-                  const { Component, path } = routes.byId[routeId];
-                  return <Route component={Component} exact key={path} path={path} />;
-                })}
-              </Switch>
-            </main>
+            <Switch>
+              {routes.allIds.map((routeId) => {
+                const { Component, path } = routes.byId[routeId];
+                return <Route component={Component} exact key={path} path={path} />;
+              })}
+            </Switch>
           </Content>
         </Layout>
       </Layout>

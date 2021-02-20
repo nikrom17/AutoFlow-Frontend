@@ -2,10 +2,11 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from 'src/redux/rootReducer';
 import { Tabs, Space } from 'antd';
-import PageFrame from '@components/pageFrame/pageFrame';
+import SubHeader from '@components/subHeader/subHeader';
 import FunnelStepLeadContainer from '@components/funnelStepLeadContainer/funnelStepLeadContainer';
 import FunnelStepLeadCard from '@components/funnelStepLeadCard/funnelStepLeadCard';
 import './opportunities.module.less';
+import PageFrame from '@components/pageFrame/pageFrame';
 
 const { TabPane } = Tabs;
 
@@ -47,27 +48,30 @@ const FunnelPage: React.FC = () => {
   };
 
   return (
-    <PageFrame
-      buttonOnClick={() => console.log('add opportunity')}
-      buttonTitle="Add Opportunity"
-      rightMargin={false}
-      title="Opportunities"
-      renderTabs={
-        <Tabs
-          defaultActiveKey="9"
-          onChange={(activeKey: string) => setOpportunityId(Number(activeKey))}
-        >
-          {opportunities.allIds.map((opportunityId: number) => {
-            const opportunity = opportunities.byId[opportunityId];
-            return <TabPane tab={opportunity.name} key={opportunityId} />;
-          })}
-        </Tabs>
-      }
-    >
-      <Space size="large" align="start">
-        {opportunityId && opportunities ? renderFunnelSteps() : <p>No Opportunities</p>}
-      </Space>
-    </PageFrame>
+    <>
+      <SubHeader
+        buttonOnClick={() => console.log('add opportunity')}
+        buttonTitle="Add Opportunity"
+        rightMargin={false}
+        title="Opportunities"
+        renderTabs={
+          <Tabs
+            defaultActiveKey="9"
+            onChange={(activeKey: string) => setOpportunityId(Number(activeKey))}
+          >
+            {opportunities.allIds.map((opportunityId: number) => {
+              const opportunity = opportunities.byId[opportunityId];
+              return <TabPane tab={opportunity.name} key={opportunityId} />;
+            })}
+          </Tabs>
+        }
+      />
+      <PageFrame>
+        <Space size="large" align="start">
+          {opportunityId && opportunities ? renderFunnelSteps() : <p>No Opportunities</p>}
+        </Space>
+      </PageFrame>
+    </>
   );
 };
 

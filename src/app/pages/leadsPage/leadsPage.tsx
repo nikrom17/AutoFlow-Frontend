@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { getLeadsTableData } from 'src/redux/selectors/leadsSelectors';
 import { Skeleton } from 'antd';
-import PageFrame from '@components/pageFrame/pageFrame';
+import PageFrame from '@components/subHeader/subHeader';
 import LeadsTable from './leadsTable/leadsTable';
 
 const LeadsPage: React.FC = () => {

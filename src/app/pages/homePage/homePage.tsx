@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
-import PageFrame from '@components/pageFrame/pageFrame';
+import PageFrame from '@components/subHeader/subHeader';
 import { Button } from 'antd';
 
 const Home: React.FC = () => {
