@@ -5,9 +5,8 @@ interface Props {
   children: React.ReactChild | React.ReactChild[];
 }
 
-const PageFrame: React.FC<Props> = ({ children }) => {
-  // console.log(children);
-  return <div className={styles.pageFrame}>{children}</div>;
-};
+const PageFrame: React.FC<Props> = ({ children }) => (
+  <div className={styles.pageFrame}>{children}</div>
+);
 
 export default PageFrame;
