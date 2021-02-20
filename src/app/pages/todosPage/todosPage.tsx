@@ -13,7 +13,11 @@ const TodosPage: React.FC = () => {
 
   return (
     <>
-      <SubHeader title="Todos">
+      <SubHeader
+        title="Todos"
+        addButtonOnClick={() => console.log('add todo')}
+        addButtonTitle="Add New Todo"
+      >
         <Tabs defaultActiveKey="9=1">
           <TabPane tab="Prioritized Todos" key="1" />
           <TabPane tab="Follow Up" key="2" />

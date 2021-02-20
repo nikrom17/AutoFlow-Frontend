@@ -16,7 +16,7 @@ const LeadsPage: React.FC = () => {
       <SubHeader
         title="Leads"
         addButtonOnClick={() => console.log('Leads button')}
-        addButtonTitle="Add new lead"
+        addButtonTitle="Add New Lead"
       >
         <Tabs defaultActiveKey="9=1">
           <TabPane tab="All Leads" key="1" />

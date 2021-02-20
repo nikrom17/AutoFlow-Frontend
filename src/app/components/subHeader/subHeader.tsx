@@ -21,6 +21,7 @@ const SubHeader: React.FC<Props> = ({
       {addButtonTitle}
     </Button>
   );
+
   return (
     <div className={styles.subHeader}>
       <PageHeader title={title} extra={addButtonTitle && addButtonOnClick && addButton}>
@@ -31,19 +32,3 @@ const SubHeader: React.FC<Props> = ({
 };
 
 export default SubHeader;
-
-// const thing = (
-//   <div className={styles.subHeader}>
-//     <div className={styles.pageHeaderTop}>
-//       <h2 className={styles.title}>{title}</h2>
-//       <div className={styles.buttonWrapper}>
-//         {buttonOnClick && buttonTitle && (
-//           <Button icon={<PlusOutlined />} onClick={buttonOnClick} type="primary">
-//             {buttonTitle}
-//           </Button>
-//         )}
-//       </div>
-//     </div>
-//     {renderTabs}
-//   </div>
-// );

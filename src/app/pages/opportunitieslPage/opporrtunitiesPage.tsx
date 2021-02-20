@@ -51,7 +51,7 @@ const FunnelPage: React.FC = () => {
     <>
       <SubHeader
         addButtonOnClick={() => console.log('add opportunity')}
-        addButtonTitle="Add Opportunity"
+        addButtonTitle="Add New Opportunity"
         title="Opportunities"
       >
         <Tabs
