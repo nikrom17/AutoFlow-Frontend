@@ -4,23 +4,28 @@ import { Button, PageHeader } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 
 interface Props {
-  buttonOnClick?(): void;
-  buttonTitle?: string;
+  addButtonOnClick?(): void;
+  addButtonTitle?: string;
   title: string;
-  renderTabs?: any;
-  rightMargin?: boolean;
+  children?: React.ReactChild;
 }
 
 const SubHeader: React.FC<Props> = ({
-  buttonOnClick,
-  buttonTitle,
-  renderTabs,
+  addButtonOnClick,
+  addButtonTitle,
   title,
-  rightMargin = true,
+  children,
 }) => {
+  const addButton = (
+    <Button icon={<PlusOutlined />} onClick={addButtonOnClick} type="primary">
+      {addButtonTitle}
+    </Button>
+  );
   return (
     <div className={styles.subHeader}>
-      <PageHeader title="opportunities" />
+      <PageHeader title={title} extra={addButtonTitle && addButtonOnClick && addButton}>
+        {children}
+      </PageHeader>
     </div>
   );
 };

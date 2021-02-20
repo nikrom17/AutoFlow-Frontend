@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
-import PageFrame from '@components/subHeader/subHeader';
+import PageFrame from '@components/pageFrame/pageFrame';
 import { Button } from 'antd';
 
 const Home: React.FC = () => {
@@ -9,7 +9,7 @@ const Home: React.FC = () => {
   const { isAuthenticated, user } = useAuth0();
 
   return (
-    <PageFrame title="Home Page">
+    <PageFrame>
       <p>User Info:</p>
       <p>{`First Name: ${isAuthenticated && user.given_name}`}</p>
       <p>{`Last Name: ${isAuthenticated && user.family_name}`}</p>

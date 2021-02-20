@@ -50,22 +50,20 @@ const FunnelPage: React.FC = () => {
   return (
     <>
       <SubHeader
-        buttonOnClick={() => console.log('add opportunity')}
-        buttonTitle="Add Opportunity"
-        rightMargin={false}
+        addButtonOnClick={() => console.log('add opportunity')}
+        addButtonTitle="Add Opportunity"
         title="Opportunities"
-        renderTabs={
-          <Tabs
-            defaultActiveKey="9"
-            onChange={(activeKey: string) => setOpportunityId(Number(activeKey))}
-          >
-            {opportunities.allIds.map((opportunityId: number) => {
-              const opportunity = opportunities.byId[opportunityId];
-              return <TabPane tab={opportunity.name} key={opportunityId} />;
-            })}
-          </Tabs>
-        }
-      />
+      >
+        <Tabs
+          defaultActiveKey="9"
+          onChange={(activeKey: string) => setOpportunityId(Number(activeKey))}
+        >
+          {opportunities.allIds.map((opportunityId: number) => {
+            const opportunity = opportunities.byId[opportunityId];
+            return <TabPane tab={opportunity.name} key={opportunityId} />;
+          })}
+        </Tabs>
+      </SubHeader>
       <PageFrame>
         <Space size="large" align="start">
           {opportunityId && opportunities ? renderFunnelSteps() : <p>No Opportunities</p>}
