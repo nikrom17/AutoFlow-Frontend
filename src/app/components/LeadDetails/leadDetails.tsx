@@ -2,8 +2,18 @@ import * as React from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from 'src/redux/rootReducer';
 import { getLeadDetails } from 'src/redux/selectors/leadsSelectors';
-import { Modal, Progress, Button, Card, Checkbox, List } from 'antd';
-import { MailOutlined } from '@ant-design/icons';
+import {
+  Button,
+  Card,
+  Checkbox,
+  List,
+  Modal,
+  Progress,
+  Space,
+  Tag,
+  Timeline,
+} from 'antd';
+import { MailOutlined, ArrowUpOutlined } from '@ant-design/icons';
 import * as styles from './leadDetails.module.less';
 
 const todosMockData = [
@@ -22,6 +32,29 @@ const todosMockData = [
   {
     description: 'Send email to ask if still interested',
     completed: false,
+  },
+];
+
+const timelineMockData = [
+  'send engagement letter',
+  'created account on client portal',
+  'sent invitation to client portal',
+  'received email',
+  'sent email',
+  'scheduled phone consult',
+  'took questionnaire',
+  'sent message on thumbtack',
+  'reached out for quote',
+];
+
+const tagsMockData = [
+  {
+    description: 'Took questionnaire',
+    color: 'orange',
+  },
+  {
+    description: 'phone consult',
+    color: 'cyan',
   },
 ];
 
@@ -61,13 +94,16 @@ const LeadDetails: React.FC<Props> = ({ isModalVisible, setLeadId, leadId }) => 
       <div className={styles.container}>
         <div className={styles.header}>
           <div>
-            <p>{name}</p>
+            <h2 className={styles.leadName}>{name}</h2>
             <p>{`Status: ${status}`}</p>
           </div>
-          <Progress
-            percent={Math.round(chanceToConvert * 100)}
-            style={{ maxWidth: '500px' }}
-          />
+          <div className={styles.convertProgressContainer}>
+            <Progress
+              percent={Math.round(chanceToConvert * 100)}
+              style={{ maxWidth: '500px' }}
+            />
+            <p>Chance to convert</p>
+          </div>
           <Button type="primary" ghost icon={<MailOutlined />}>
             Send Message
           </Button>
@@ -87,19 +123,27 @@ const LeadDetails: React.FC<Props> = ({ isModalVisible, setLeadId, leadId }) => 
             </Card>
           </div>
           <div className={styles.cardColumnContainer}>
-            <Card title="Contact Info" className={styles.card}>
-              <p>{`Phone Number: ${phone}`}</p>
-              <p>{`Email: ${email}`}</p>
-              <p>{`Address: ${address}`}</p>
+            <Card title="Lead Events Timeline" className={styles.card}>
+              <Timeline>
+                {timelineMockData.map((item) => (
+                  <Timeline.Item dot={<ArrowUpOutlined />} key={item}>
+                    {item}
+                  </Timeline.Item>
+                ))}
+              </Timeline>
             </Card>
-            <Card title="Contact Info" className={styles.card}>
-              <p>{`Phone Number: ${phone}`}</p>
-              <p>{`Email: ${email}`}</p>
-              <p>{`Address: ${address}`}</p>
+            <Card title="Tags" className={styles.card}>
+              <Space>
+                {tagsMockData.map((tag) => (
+                  <Tag key={tag.description} color={tag.color}>
+                    {tag.description}
+                  </Tag>
+                ))}
+              </Space>
             </Card>
           </div>
           <div className={styles.cardColumnContainer}>
-            <Card title="Todos" className={styles.card}>
+            <Card title="Todos" className={styles.cardNoPadding}>
               <List
                 dataSource={todosMockData}
                 size="small"
@@ -113,7 +157,7 @@ const LeadDetails: React.FC<Props> = ({ isModalVisible, setLeadId, leadId }) => 
                 )}
               />
             </Card>
-            <Card title="Notes" className={styles.card}>
+            <Card title="Notes" className={styles.cardNoPadding}>
               <List
                 dataSource={notesMockData}
                 size="small"

@@ -5,6 +5,16 @@
 
 .card {
   width: 300px;
+  max-height: 400px;
+  overflow-y: hidden;
+}
+
+.cardNoPadding {
+  width: 300px;
+  max-height: 300px;
+  :global(div.ant-card-body) {
+    padding: 0;
+  }
 }
 
 .container {
@@ -26,4 +36,21 @@
 
 .card:not(:last-child) {
   margin-bottom: 2rem;
+}
+
+:global(li.ant-timeline-item-last > div.ant-timeline-item-content) {
+  min-height: 0;
+}
+
+:global(li.ant-timeline-item-last) {
+  padding-bottom: 0;
+}
+
+.leadName {
+  margin-bottom: 0;
+}
+
+.convertProgressContainer {
+  width: 400px;
+  text-align: end;
 }

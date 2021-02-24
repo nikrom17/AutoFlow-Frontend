@@ -1,5 +1,4 @@
 import { createSelector } from 'reselect';
-import { DefaultSchema } from 'src/redux/types/commonTypes';
 import { FunnelStepsState } from 'src/redux/types/funnelStepsTypes';
 import { LeadsState, Leads } from 'src/redux/types/leadsTypes';
 import { OpportunitiesState } from 'src/redux/types/opportunitiesTypes';
