@@ -1,4 +1,29 @@
 .header {
   display: flex;
-  // flex-direction: rrwp;
+  justify-content: space-between;
+}
+
+.card {
+  width: 300px;
+}
+
+.container {
+  padding: 1.5rem;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+.cardContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cardColumnContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card:not(:last-child) {
+  margin-bottom: 2rem;
 }

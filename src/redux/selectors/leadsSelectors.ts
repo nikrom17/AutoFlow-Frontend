@@ -30,7 +30,7 @@ const transformLeadsTableData = (
     };
   });
 
-const transformLeadDetailsData = (lead: Leads, opportunityInfo: DefaultSchema<any>) => {
+const transformLeadDetailsData = (lead: Leads, opportunityInfo: any) => {
   return { ...lead, opportunityInfo: opportunityInfo };
 };
 

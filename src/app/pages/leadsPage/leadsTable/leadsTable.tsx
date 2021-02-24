@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Table } from 'antd';
 import { ColumnsType } from 'antd/es/table';
 import LeadDetails from '@components/LeadDetails/leadDetails';
+import * as styles from './leadsTable.module.less';
 
 const columns: ColumnsType<any> = [
   {
@@ -40,6 +41,7 @@ const DeliveriesTable: React.FC<Props> = ({ tableData }) => {
         columns={columns}
         dataSource={tableData}
         rowSelection={{ type: 'checkbox' }}
+        rowClassName={styles.row}
         rowKey={(lead) => lead.id}
         onRow={(record, rowIndex) => {
           return {
