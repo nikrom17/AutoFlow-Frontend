@@ -1,12 +1,15 @@
 import { createSelector } from 'reselect';
-import { LeadsState } from 'src/redux/types/leadsTypes';
+import { FunnelStepsState } from 'src/redux/types/funnelStepsTypes';
+import { LeadsState, Leads } from 'src/redux/types/leadsTypes';
+import { OpportunitiesState } from 'src/redux/types/opportunitiesTypes';
 import { RootState } from 'src/redux/rootReducer';
-import { FunnelStepsState } from '../types/funnelStepsTypes';
-import { OpportunitiesState } from '../types/opportunitiesTypes';
 
 const getFunnelSteps = (state: RootState) => state.funnelSteps;
 const getLeads = (state: RootState) => state.leads;
+const getLeadById = (state: RootState, leadId: number) => state.leads.byId[leadId];
 const getOpportunities = (state: RootState) => state.opportunities;
+const getOpportunityInfoById = (state: RootState, leadId: number) =>
+  state.opportunities.info.byId[leadId];
 
 const transformLeadsTableData = (
   funnelSteps: FunnelStepsState,
@@ -26,10 +29,20 @@ const transformLeadsTableData = (
     };
   });
 
+const transformLeadDetailsData = (lead: Leads, opportunityInfo: any) => {
+  return { ...lead, opportunityInfo: opportunityInfo };
+};
+
 export const getLeadsTableData = createSelector(
   getFunnelSteps,
   getLeads,
   getOpportunities,
   (funnelSteps, leads, opportunities) =>
     transformLeadsTableData(funnelSteps, leads, opportunities)
+);
+
+export const getLeadDetails = createSelector(
+  getLeadById,
+  getOpportunityInfoById,
+  (lead, opportunityInfo) => transformLeadDetailsData(lead, opportunityInfo)
 );

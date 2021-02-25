@@ -4,6 +4,7 @@ import { RootState } from 'src/redux/rootReducer';
 import { Tabs, Space } from 'antd';
 import SubHeader from '@components/subHeader/subHeader';
 import FunnelStepLeadContainer from '@components/funnelStepLeadContainer/funnelStepLeadContainer';
+import LeadDetails from '@components/LeadDetails/leadDetails';
 import FunnelStepLeadCard from '@components/funnelStepLeadCard/funnelStepLeadCard';
 import './opportunities.module.less';
 import PageFrame from '@components/pageFrame/pageFrame';
@@ -18,6 +19,7 @@ const FunnelPage: React.FC = () => {
   const [opportunityId, setOpportunityId] = React.useState<number>(
     opportunities.allIds[0] || null
   );
+  const [leadId, setLeadId] = React.useState(0);
 
   const renderFunnelSteps = () => {
     const opportunityFunnelSteps = opportunities.byId[opportunityId].funnelSteps;
@@ -38,6 +40,7 @@ const FunnelPage: React.FC = () => {
                   leadName={lead.name}
                   quotedPrice={opportunity.quotedPrice}
                   status={lead.status}
+                  onClick={() => setLeadId(leadId)}
                 />
               );
             })}
@@ -69,6 +72,13 @@ const FunnelPage: React.FC = () => {
           {opportunityId && opportunities ? renderFunnelSteps() : <p>No Opportunities</p>}
         </Space>
       </PageFrame>
+      {Boolean(leadId) && (
+        <LeadDetails
+          isModalVisible={Boolean(leadId)}
+          leadId={leadId}
+          setLeadId={setLeadId}
+        />
+      )}
     </>
   );
 };
