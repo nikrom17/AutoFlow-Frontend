@@ -73,7 +73,6 @@ interface Props {
 
 const LeadDetails: React.FC<Props> = ({ isModalVisible, setLeadId, leadId }) => {
   const leadDetails = useSelector((state: RootState) => getLeadDetails(state, leadId));
-  // console.log(leadDetails);
   const {
     name,
     chanceToConvert,

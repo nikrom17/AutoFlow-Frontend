@@ -49,7 +49,7 @@ const DeliveriesTable: React.FC<Props> = ({ tableData }) => {
           };
         }}
       />
-      {leadId && (
+      {Boolean(leadId) && (
         <LeadDetails
           isModalVisible={Boolean(leadId)}
           leadId={leadId}
