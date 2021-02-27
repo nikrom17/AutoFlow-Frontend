@@ -1,10 +1,18 @@
-// import { cloneDeep } from "lodash";
-import * as opportunitiesTypes from './opportunitiesTypes';
-
-export const initialOpportunitiesState: opportunitiesTypes.OpportunitiesState = {
+export const opportunityState = {
   name: {
-    allIds: [],
-    byId: {},
+    allIds: [1, 2],
+    byId: {
+      1: {
+        id: 1,
+        name: 'Personal Tax Returns',
+        funnelSteps: [1, 2, 3, 4],
+      },
+      2: {
+        id: 2,
+        name: 'Business Tax Returns',
+        funnelSteps: [5, 6, 7, 8],
+      },
+    },
   },
   info: {
     allIds: [1, 2, 3, 4, 5, 6, 7, 8, 9],
@@ -65,14 +73,4 @@ export const initialOpportunitiesState: opportunitiesTypes.OpportunitiesState = 
       },
     },
   },
-};
-
-export const opportunitiesReducer = (
-  state = initialOpportunitiesState,
-  action: any
-): any => {
-  switch (action.type) {
-    default:
-      return state;
-  }
 };

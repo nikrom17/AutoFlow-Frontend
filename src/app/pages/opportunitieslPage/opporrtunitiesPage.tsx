@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from 'src/redux/rootReducer';
-import { Tabs, Space } from 'antd';
+import { Tabs, Space, Empty } from 'antd';
 import SubHeader from '@components/subHeader/subHeader';
 import FunnelStepLeadContainer from '@components/funnelStepLeadContainer/funnelStepLeadContainer';
 import LeadDetails from '@components/LeadDetails/leadDetails';
@@ -68,9 +68,16 @@ const FunnelPage: React.FC = () => {
         </Tabs>
       </SubHeader>
       <PageFrame>
-        <Space size="large" align="start">
-          {opportunityId && opportunities ? renderFunnelSteps() : <p>No Opportunities</p>}
-        </Space>
+        {opportunityId && opportunities ? (
+          <Space size="large" align="start">
+            renderFunnelSteps()
+          </Space>
+        ) : (
+          <Empty
+            description={<span>No Opportunities</span>}
+            style={{ margin: '5rem auto' }}
+          />
+        )}
       </PageFrame>
       {Boolean(leadId) && (
         <LeadDetails
