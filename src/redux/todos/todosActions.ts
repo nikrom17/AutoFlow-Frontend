@@ -1,5 +1,5 @@
-import * as todosTypes from "../types/todosTypes";
-import api from "src/api/api";
+import * as todosTypes from './todosTypes';
+import api from 'src/api/api';
 
 // ------ SIMPLE ACTIONS ------ //
 
@@ -8,9 +8,7 @@ export const fetchTodosStart = () => ({
   type: todosTypes.FETCH_TODOS_START,
 });
 
-export const fetchTodosSuccess = (
-  data: todosTypes.TodosState
-) => ({
+export const fetchTodosSuccess = (data: todosTypes.TodosState) => ({
   type: todosTypes.FETCH_TODOS_SUCCESS,
   data,
 });
@@ -24,9 +22,7 @@ export const fetchClientTodosStart = () => ({
   type: todosTypes.FETCH_CLIENT_TODOS_START,
 });
 
-export const fetchClientTodosSuccess = (
-  data: todosTypes.TodosState
-) => ({
+export const fetchClientTodosSuccess = (data: todosTypes.TodosState) => ({
   type: todosTypes.FETCH_CLIENT_TODOS_SUCCESS,
   data,
 });
@@ -40,9 +36,7 @@ export const fetchTodoStart = () => ({
   type: todosTypes.FETCH_TODO_START,
 });
 
-export const fetchTodoSuccess = (
-  data: todosTypes.TodosState
-) => ({
+export const fetchTodoSuccess = (data: todosTypes.TodosState) => ({
   type: todosTypes.FETCH_TODO_SUCCESS,
   data,
 });
@@ -56,12 +50,10 @@ export const fetchTodoFailed = () => ({
 // Admin
 
 // fetch all todos
-export const fetchTodos: todosTypes.FetchTodos = () => async (
-  dispatch
-) => {
+export const fetchTodos: todosTypes.FetchTodos = () => async (dispatch) => {
   try {
     dispatch(fetchTodosStart());
-    const response = await api.get("todos");
+    const response = await api.get('todos');
     dispatch(fetchTodosSuccess(response));
   } catch (error) {
     dispatch(fetchTodosFailed());
@@ -71,9 +63,9 @@ export const fetchTodos: todosTypes.FetchTodos = () => async (
 // Client
 
 // fetch all todos for a client
-export const fetchClientTodos: todosTypes.FetchClientTodos = (
-  clientId: number
-) => async (dispatch) => {
+export const fetchClientTodos: todosTypes.FetchClientTodos = (clientId: number) => async (
+  dispatch
+) => {
   try {
     dispatch(fetchClientTodosStart());
     const response = await api.get(`todos/client/${clientId}`);
@@ -86,9 +78,7 @@ export const fetchClientTodos: todosTypes.FetchClientTodos = (
 // Both
 
 // fetch a single todo
-export const fetchTodo: todosTypes.FetchTodo = (
-  todoId: number
-) => async (dispatch) => {
+export const fetchTodo: todosTypes.FetchTodo = (todoId: number) => async (dispatch) => {
   try {
     dispatch(fetchTodoStart());
     const response = await api.get(`todos/${todoId}`);

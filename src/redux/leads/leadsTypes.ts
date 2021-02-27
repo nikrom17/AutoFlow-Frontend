@@ -1,4 +1,4 @@
-import { ThunkType, DefaultSchema } from './commonTypes';
+import { ThunkType, DefaultSchema } from '../commonTypes';
 
 // ------ COMMON INTERFACES ------ //
 export interface Leads {
@@ -6,11 +6,12 @@ export interface Leads {
   chanceToConvert: number;
   email: string;
   funnelStep: number;
-  history?: number[];
+  events?: number[]; // add this to db
   id: number;
-  lastComm: string;
+  lastComm: string; // convert to date
   name: string;
-  notes?: number[];
+  notes?: number[]; // add this to db
+  dateCreated?: Date;
   phone: string;
   tags?: number[];
   type: 'individual' | 'business';

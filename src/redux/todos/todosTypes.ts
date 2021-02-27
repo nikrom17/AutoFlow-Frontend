@@ -1,4 +1,4 @@
-import { ThunkType, DefaultSchema } from './commonTypes';
+import { ThunkType, DefaultSchema } from '../commonTypes';
 
 // ------ COMMON INTERFACES ------ //
 export interface Todos {
@@ -48,7 +48,4 @@ interface FetchTodoSuccess {
   data: TodosState;
 }
 
-export type Types =
-  | FetchTodosSuccess
-  | FetchClientTodosSuccess
-  | FetchTodoSuccess;
+export type Types = FetchTodosSuccess | FetchClientTodosSuccess | FetchTodoSuccess;

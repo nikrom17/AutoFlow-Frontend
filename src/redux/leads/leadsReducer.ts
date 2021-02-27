@@ -1,5 +1,5 @@
 import { cloneDeep } from 'lodash';
-import * as leadsTypes from '../types/leadsTypes';
+import * as leadsTypes from './leadsTypes';
 
 export const initialLeadsState: leadsTypes.LeadsState = {
   allIds: [1, 2, 3, 4, 5, 6, 7, 8, 9],

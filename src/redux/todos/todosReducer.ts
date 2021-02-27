@@ -1,5 +1,5 @@
 import { cloneDeep } from 'lodash';
-import * as todosTypes from '../types/todosTypes';
+import * as todosTypes from './todosTypes';
 
 export const initialTodosState: todosTypes.TodosState = {
   allIds: [1, 2, 3, 4, 5, 6, 7, 8],

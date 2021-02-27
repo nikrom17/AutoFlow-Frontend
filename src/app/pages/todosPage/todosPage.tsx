@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Skeleton, Tabs } from 'antd';
-import { getTodosTableData } from 'src/redux/selectors/todosSelectors';
+import { getTodosTableData } from 'src/redux/todos/todosSelectors';
 import PageFrame from '@components/pageFrame/pageFrame';
 import TodosTable from './todosTable/todosTable';
 import SubHeader from '@components/subHeader/subHeader';

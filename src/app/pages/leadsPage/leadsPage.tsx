@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { getLeadsTableData } from 'src/redux/selectors/leadsSelectors';
+import { getLeadsTableData } from 'src/redux/leads/leadsSelectors';
 import { Skeleton, Tabs } from 'antd';
 import SubHeader from '@components/subHeader/subHeader';
 import LeadsTable from './leadsTable/leadsTable';

@@ -1,5 +1,5 @@
 // import { cloneDeep } from "lodash";
-import * as funnelStepsTypes from '../types/funnelStepsTypes';
+import * as funnelStepsTypes from './funnelStepsTypes';
 
 export const initialFunnelStepsState: funnelStepsTypes.FunnelStepsState = {
   allIds: [1, 2, 3, 4],

@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import { funnelStepsReducer } from 'src/redux/reducers/funnelStepsReducer';
-import { leadsReducer } from 'src/redux/reducers/leadsReducer';
-import { opportunitiesReducer } from 'src/redux/reducers/opportunitiesReducer';
-import { todosReducer } from 'src/redux/reducers/todosReducer';
+import { funnelStepsReducer } from 'src/redux/funnelSteps/funnelStepsReducer';
+import { leadsReducer } from 'src/redux/leads/leadsReducer';
+import { opportunitiesReducer } from 'src/redux/opportunities/opportunitiesReducer';
+import { todosReducer } from 'src/redux/todos/todosReducer';
 
 export const rootReducer = combineReducers({
   funnelSteps: funnelStepsReducer,

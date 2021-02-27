@@ -1,8 +1,8 @@
 import { createSelector } from 'reselect';
-import { TodosState } from 'src/redux/types/todosTypes';
-import { LeadsState } from 'src/redux/types/leadsTypes';
-import { OpportunitiesState } from 'src/redux/types/opportunitiesTypes';
-import { FunnelStepsState } from 'src/redux/types/funnelStepsTypes';
+import { TodosState } from 'src/redux/todos/todosTypes';
+import { LeadsState } from 'src/redux/leads/leadsTypes';
+import { OpportunitiesState } from 'src/redux/opportunities/opportunitiesTypes';
+import { FunnelStepsState } from 'src/redux/funnelSteps/funnelStepsTypes';
 import { RootState } from 'src/redux/rootReducer';
 
 const getTodos = (state: RootState) => state.todos;

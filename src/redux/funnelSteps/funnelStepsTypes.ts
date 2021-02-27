@@ -1,4 +1,4 @@
-import { DefaultSchema } from './commonTypes';
+import { DefaultSchema } from '../commonTypes';
 
 // ------ COMMON INTERFACES ------ //
 export interface Opportunities {

@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
-import { FunnelStepsState } from 'src/redux/types/funnelStepsTypes';
-import { LeadsState, Leads } from 'src/redux/types/leadsTypes';
-import { OpportunitiesState } from 'src/redux/types/opportunitiesTypes';
+import { FunnelStepsState } from 'src/redux/funnelSteps/funnelStepsTypes';
+import { LeadsState, Leads } from 'src/redux/leads/leadsTypes';
+import { OpportunitiesState } from 'src/redux/opportunities/opportunitiesTypes';
 import { RootState } from 'src/redux/rootReducer';
 
 const getFunnelSteps = (state: RootState) => state.funnelSteps;

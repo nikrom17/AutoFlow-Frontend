@@ -1,5 +1,5 @@
 // import { cloneDeep } from "lodash";
-import * as opportunitiesTypes from '../types/opportunitiesTypes';
+import * as opportunitiesTypes from './opportunitiesTypes';
 
 export const initialOpportunitiesState: opportunitiesTypes.OpportunitiesState = {
   name: {
