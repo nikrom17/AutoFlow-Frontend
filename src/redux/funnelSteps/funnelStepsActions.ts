@@ -8,7 +8,7 @@ export const fetchFunnelStepsStart = () => ({
   type: funnelStepsTypes.FETCH_FUNNEL_STEPS_START,
 });
 
-export const fetchFunnelStepsSuccess = (data: funnelStepsTypes.FunnelStepsState) => ({
+export const fetchFunnelStepsSuccess: funnelStepsTypes.FetchSuccess = (data) => ({
   type: funnelStepsTypes.FETCH_FUNNEL_STEPS_SUCCESS,
   data,
 });
@@ -22,7 +22,7 @@ export const fetchFunnelStepStart = () => ({
   type: funnelStepsTypes.FETCH_FUNNEL_STEP_START,
 });
 
-export const fetchFunnelStepSuccess = (data: funnelStepsTypes.FunnelStepsState) => ({
+export const fetchFunnelStepSuccess: funnelStepsTypes.FetchSuccess = (data) => ({
   type: funnelStepsTypes.FETCH_FUNNEL_STEP_SUCCESS,
   data,
 });

@@ -8,9 +8,7 @@ export const fetchOpportunitiesStart = () => ({
   type: opportunitiesTypes.FETCH_OPPORTUNITIES_START,
 });
 
-export const fetchOpportunitiesSuccess = (
-  data: opportunitiesTypes.OpportunitiesState
-) => ({
+export const fetchOpportunitiesSuccess: opportunitiesTypes.FetchSuccess = (data) => ({
   type: opportunitiesTypes.FETCH_OPPORTUNITIES_SUCCESS,
   data,
 });
@@ -24,7 +22,7 @@ export const fetchOpportunityStart = () => ({
   type: opportunitiesTypes.FETCH_OPPORTUNITY_START,
 });
 
-export const fetchOpportunitySuccess = (data: opportunitiesTypes.OpportunitiesState) => ({
+export const fetchOpportunitySuccess: opportunitiesTypes.FetchSuccess = (data) => ({
   type: opportunitiesTypes.FETCH_OPPORTUNITY_SUCCESS,
   data,
 });

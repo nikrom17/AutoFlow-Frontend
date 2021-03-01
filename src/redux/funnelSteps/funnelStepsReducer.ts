@@ -8,7 +8,7 @@ export const initialFunnelStepsState: funnelStepsTypes.FunnelStepsState = {
 
 export const funnelStepsReducer = (
   state = initialFunnelStepsState,
-  action: any
+  action: funnelStepsTypes.Types
 ): funnelStepsTypes.FunnelStepsState => {
   switch (action.type) {
     case funnelStepsTypes.FETCH_FUNNEL_STEPS_SUCCESS:

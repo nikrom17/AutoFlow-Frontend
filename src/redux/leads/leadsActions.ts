@@ -8,7 +8,7 @@ export const fetchLeadsStart = () => ({
   type: leadsTypes.FETCH_LEADS_START,
 });
 
-export const fetchLeadsSuccess = (data: leadsTypes.LeadsState) => ({
+export const fetchLeadsSuccess: leadsTypes.FetchSuccess = (data) => ({
   type: leadsTypes.FETCH_LEADS_SUCCESS,
   data,
 });
@@ -22,7 +22,7 @@ export const fetchLeadStart = () => ({
   type: leadsTypes.FETCH_LEAD_START,
 });
 
-export const fetchLeadSuccess = (data: leadsTypes.LeadsState) => ({
+export const fetchLeadSuccess: leadsTypes.FetchSuccess = (data) => ({
   type: leadsTypes.FETCH_LEAD_SUCCESS,
   data,
 });
@@ -32,8 +32,6 @@ export const fetchLeadFailed = () => ({
 });
 
 // ------ COMPLEX ACTIONS ------ //
-
-// Admin
 
 // fetch all leads
 export const fetchLeads: leadsTypes.FetchLeads = () => async (dispatch) => {

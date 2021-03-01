@@ -69,8 +69,8 @@ export const initialOpportunitiesState: opportunitiesTypes.OpportunitiesState = 
 
 export const opportunitiesReducer = (
   state = initialOpportunitiesState,
-  action: any
-): any => {
+  action: opportunitiesTypes.Types
+): opportunitiesTypes.OpportunitiesState => {
   switch (action.type) {
     case opportunitiesTypes.FETCH_OPPORTUNITIES_SUCCESS:
       return {

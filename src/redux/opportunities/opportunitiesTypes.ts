@@ -28,12 +28,17 @@ export const FETCH_OPPORTUNITY_FAILED = 'FETCH_OPPORTUNITY_FAILED';
 // ------ TYPES ------ //
 interface FetchOpportunitiesSuccess {
   type: typeof FETCH_OPPORTUNITIES_SUCCESS;
-  data: OpportunitiesState;
+  data: { opportunities: DefaultSchema<Opportunities> };
 }
 
 interface FetchOpportunitySuccess {
   type: typeof FETCH_OPPORTUNITY_SUCCESS;
-  data: OpportunitiesState;
+  data: { opportunities: DefaultSchema<Opportunities> };
 }
 
 export type Types = FetchOpportunitiesSuccess | FetchOpportunitySuccess;
+
+// ------ ACTION TYPES ------ //
+export type FetchSuccess = (data: {
+  opportunities: DefaultSchema<Opportunities>;
+}) => Types;

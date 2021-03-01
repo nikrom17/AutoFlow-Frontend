@@ -36,12 +36,15 @@ export const FETCH_LEAD_FAILED = 'FETCH_LEAD_FAILED';
 // ------ TYPES ------ //
 interface FetchLeadsSuccess {
   type: typeof FETCH_LEADS_SUCCESS;
-  data: LeadsState;
+  data: { leads: LeadsState };
 }
 
 interface FetchLeadSuccess {
   type: typeof FETCH_LEAD_SUCCESS;
-  data: LeadsState;
+  data: { leads: LeadsState };
 }
 
 export type Types = FetchLeadsSuccess | FetchLeadSuccess;
+
+// ------ ACTION TYPES ------ //
+export type FetchSuccess = (data: { leads: LeadsState }) => Types;

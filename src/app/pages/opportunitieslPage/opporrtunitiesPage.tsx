@@ -19,7 +19,7 @@ const OpportunitiesPage: React.FC = () => {
   const opportunityInfo = useSelector((state: RootState) => state.opportunities.info);
   const leads = useSelector((state: RootState) => state.leads);
   const funnelSteps = useSelector((state: RootState) => state.funnelSteps);
-  const [opportunityId, setOpportunityId] = React.useState<number>(
+  const [opportunityId, setOpportunityId] = React.useState(
     opportunities.allIds[0] || null
   );
   const [leadId, setLeadId] = React.useState(0);
@@ -30,6 +30,7 @@ const OpportunitiesPage: React.FC = () => {
   }, [dispatch]);
 
   const renderFunnelSteps = () => {
+    // @ts-ignore
     const opportunityFunnelSteps = opportunities.byId[opportunityId].funnelSteps;
     return opportunityFunnelSteps.map((funnelStepId: number) => {
       const funnelStep = funnelSteps.byId[funnelStepId];
