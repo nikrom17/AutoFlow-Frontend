@@ -1,17 +1,20 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import * as React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from 'src/redux/rootReducer';
 import { Tabs, Space, Empty } from 'antd';
 import SubHeader from '@components/subHeader/subHeader';
 import FunnelStepLeadContainer from '@components/funnelStepLeadContainer/funnelStepLeadContainer';
 import LeadDetails from '@components/LeadDetails/leadDetails';
 import FunnelStepLeadCard from '@components/funnelStepLeadCard/funnelStepLeadCard';
+import { fetchOpportunities } from 'src/redux/opportunities/opportunitiesActions';
+import { fetchFunnelSteps } from 'src/redux/funnelSteps/funnelStepsActions';
 import './opportunities.module.less';
 import PageFrame from '@components/pageFrame/pageFrame';
 
 const { TabPane } = Tabs;
 
-const FunnelPage: React.FC = () => {
+const OpportunitiesPage: React.FC = () => {
+  const dispatch = useDispatch();
   const opportunities = useSelector((state: RootState) => state.opportunities.name);
   const opportunityInfo = useSelector((state: RootState) => state.opportunities.info);
   const leads = useSelector((state: RootState) => state.leads);
@@ -20,6 +23,11 @@ const FunnelPage: React.FC = () => {
     opportunities.allIds[0] || null
   );
   const [leadId, setLeadId] = React.useState(0);
+
+  React.useEffect(() => {
+    dispatch(fetchOpportunities());
+    dispatch(fetchFunnelSteps());
+  }, [dispatch]);
 
   const renderFunnelSteps = () => {
     const opportunityFunnelSteps = opportunities.byId[opportunityId].funnelSteps;
@@ -70,7 +78,7 @@ const FunnelPage: React.FC = () => {
       <PageFrame>
         {opportunityId && opportunities ? (
           <Space size="large" align="start">
-            renderFunnelSteps()
+            {renderFunnelSteps()}
           </Space>
         ) : (
           <Empty
@@ -90,4 +98,4 @@ const FunnelPage: React.FC = () => {
   );
 };
 
-export default FunnelPage;
+export default OpportunitiesPage;

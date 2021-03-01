@@ -31,4 +31,9 @@ interface FetchOpportunitiesSuccess {
   data: OpportunitiesState;
 }
 
-export type Types = FetchOpportunitiesSuccess;
+interface FetchOpportunitySuccess {
+  type: typeof FETCH_OPPORTUNITY_SUCCESS;
+  data: OpportunitiesState;
+}
+
+export type Types = FetchOpportunitiesSuccess | FetchOpportunitySuccess;

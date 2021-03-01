@@ -35,10 +35,8 @@ export const fetchOpportunityFailed = () => ({
 
 // ------ COMPLEX ACTIONS ------ //
 
-// Admin
-
 // fetch all opportunities
-export const FetchOpportunities: opportunitiesTypes.FetchOpportunities = () => async (
+export const fetchOpportunities: opportunitiesTypes.FetchOpportunities = () => async (
   dispatch
 ) => {
   try {
@@ -51,7 +49,7 @@ export const FetchOpportunities: opportunitiesTypes.FetchOpportunities = () => a
 };
 
 // fetch a single opportunity
-export const FetchOpportunity: opportunitiesTypes.FetchOpportunity = (
+export const fetchOpportunity: opportunitiesTypes.FetchOpportunity = (
   opportunityId: number
 ) => async (dispatch) => {
   try {

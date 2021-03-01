@@ -1,4 +1,4 @@
-// import { cloneDeep } from "lodash";
+import { cloneDeep } from 'lodash';
 import * as opportunitiesTypes from './opportunitiesTypes';
 
 export const initialOpportunitiesState: opportunitiesTypes.OpportunitiesState = {
@@ -72,6 +72,24 @@ export const opportunitiesReducer = (
   action: any
 ): any => {
   switch (action.type) {
+    case opportunitiesTypes.FETCH_OPPORTUNITIES_SUCCESS:
+      return {
+        ...state,
+        name: {
+          ...action.data.opportunities,
+        },
+      };
+    case opportunitiesTypes.FETCH_OPPORTUNITY_SUCCESS:
+      return {
+        ...state,
+        name: {
+          allIds: [...state.name.allIds, ...action.data.opportunities.allIds],
+          byId: {
+            ...cloneDeep(state.name.byId),
+            ...action.data.opportunities.byId,
+          },
+        },
+      };
     default:
       return state;
   }
