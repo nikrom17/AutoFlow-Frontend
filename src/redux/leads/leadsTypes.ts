@@ -5,7 +5,7 @@ export interface Leads {
   address: string;
   chanceToConvert: number;
   email: string;
-  funnelStep: number;
+  funnelStepId: number;
   events?: number[]; // add this to db
   id: number;
   lastComm: string; // convert to date

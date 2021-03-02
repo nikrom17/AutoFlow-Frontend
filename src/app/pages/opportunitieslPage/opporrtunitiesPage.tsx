@@ -2,32 +2,47 @@ import * as React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from 'src/redux/rootReducer';
 import { Tabs, Space, Empty } from 'antd';
+import {
+  fetchOpportunities,
+  fetchOpportunityInfos,
+} from 'src/redux/opportunities/opportunitiesActions';
+import { fetchFunnelSteps } from 'src/redux/funnelSteps/funnelStepsActions';
+import { fetchLeads } from 'src/redux/leads/leadsActions';
 import SubHeader from '@components/subHeader/subHeader';
 import FunnelStepLeadContainer from '@components/funnelStepLeadContainer/funnelStepLeadContainer';
 import LeadDetails from '@components/LeadDetails/leadDetails';
 import FunnelStepLeadCard from '@components/funnelStepLeadCard/funnelStepLeadCard';
-import { fetchOpportunities } from 'src/redux/opportunities/opportunitiesActions';
-import { fetchFunnelSteps } from 'src/redux/funnelSteps/funnelStepsActions';
 import './opportunities.module.less';
 import PageFrame from '@components/pageFrame/pageFrame';
 
 const { TabPane } = Tabs;
 
 const OpportunitiesPage: React.FC = () => {
+  // ------ REDUX ------ //
   const dispatch = useDispatch();
   const opportunities = useSelector((state: RootState) => state.opportunities.name);
   const opportunityInfo = useSelector((state: RootState) => state.opportunities.info);
   const leads = useSelector((state: RootState) => state.leads);
   const funnelSteps = useSelector((state: RootState) => state.funnelSteps);
+
+  // ------ HOOKS ------ //
   const [opportunityId, setOpportunityId] = React.useState(
     opportunities.allIds[0] || null
   );
   const [leadId, setLeadId] = React.useState(0);
 
   React.useEffect(() => {
-    dispatch(fetchOpportunities());
     dispatch(fetchFunnelSteps());
+    dispatch(fetchLeads());
+    dispatch(fetchOpportunities());
+    dispatch(fetchOpportunityInfos());
   }, [dispatch]);
+
+  // ------ FUNCTIONS ------ //
+
+  if (opportunities.allIds[0] && !opportunityId) {
+    setOpportunityId(opportunities.allIds[0]);
+  }
 
   const renderFunnelSteps = () => {
     // @ts-ignore
@@ -42,7 +57,7 @@ const OpportunitiesPage: React.FC = () => {
               const lead = leads.byId[leadId];
               const opportunity = opportunityInfo.byId[leadId];
 
-              return (
+              return lead && opportunity ? (
                 <FunnelStepLeadCard
                   key={leadId}
                   lastComm={lead.lastComm}
@@ -51,7 +66,7 @@ const OpportunitiesPage: React.FC = () => {
                   status={lead.status}
                   onClick={() => setLeadId(leadId)}
                 />
-              );
+              ) : null;
             })}
           </Space>
         </FunnelStepLeadContainer>
@@ -67,7 +82,7 @@ const OpportunitiesPage: React.FC = () => {
         title="Opportunities"
       >
         <Tabs
-          defaultActiveKey="9"
+          defaultActiveKey={opportunityId?.toString()}
           onChange={(activeKey: string) => setOpportunityId(Number(activeKey))}
         >
           {opportunities.allIds.map((opportunityId: number) => {

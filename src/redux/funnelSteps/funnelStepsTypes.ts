@@ -4,7 +4,7 @@ import { DefaultSchema, ThunkType } from '../commonTypes';
 export interface FunnelSteps {
   id: number;
   name: string;
-  opportunity: number;
+  opportunityId: number;
   leads: number[];
 }
 

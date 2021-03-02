@@ -1,7 +1,7 @@
-import { notification } from "antd";
+import { notification } from 'antd';
 
 export const toastError = (description: string, message: string) =>
-  notification["error"]({
+  notification['error']({
     description,
     message,
   });
@@ -16,6 +16,6 @@ export const handelError = (response: any) => {
       toastError(description, message);
       break;
     default:
-      toastError(description, message);
+      toastError('Server Offline', message);
   }
 };

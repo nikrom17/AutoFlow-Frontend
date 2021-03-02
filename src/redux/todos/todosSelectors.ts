@@ -19,8 +19,8 @@ const transformTodosTableData = (
   todos.allIds.map((id) => {
     const todo = todos.byId[id];
     const lead = leads.byId[todo.leadId];
-    const funnelStep = funnelSteps.byId[lead.funnelStep];
-    const opportunity = opportunities.name.byId[funnelStep.opportunity];
+    const funnelStep = funnelSteps.byId[lead.funnelStepId];
+    const opportunity = opportunities.name.byId[funnelStep.opportunityId];
     const opportunityInfo = opportunities.info.byId[id];
 
     return {
