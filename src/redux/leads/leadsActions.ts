@@ -1,5 +1,5 @@
-import * as leadsTypes from "../types/leadsTypes";
-import api from "src/api/api";
+import * as leadsTypes from './leadsTypes';
+import api from 'src/api/api';
 
 // ------ SIMPLE ACTIONS ------ //
 
@@ -8,7 +8,7 @@ export const fetchLeadsStart = () => ({
   type: leadsTypes.FETCH_LEADS_START,
 });
 
-export const fetchLeadsSuccess = (data: leadsTypes.LeadsState) => ({
+export const fetchLeadsSuccess: leadsTypes.FetchSuccess = (data) => ({
   type: leadsTypes.FETCH_LEADS_SUCCESS,
   data,
 });
@@ -22,7 +22,7 @@ export const fetchLeadStart = () => ({
   type: leadsTypes.FETCH_LEAD_START,
 });
 
-export const fetchLeadSuccess = (data: leadsTypes.LeadsState) => ({
+export const fetchLeadSuccess: leadsTypes.FetchSuccess = (data) => ({
   type: leadsTypes.FETCH_LEAD_SUCCESS,
   data,
 });
@@ -33,15 +33,11 @@ export const fetchLeadFailed = () => ({
 
 // ------ COMPLEX ACTIONS ------ //
 
-// Admin
-
 // fetch all leads
-export const fetchLeads: leadsTypes.FetchLeads = () => async (
-  dispatch
-) => {
+export const fetchLeads: leadsTypes.FetchLeads = () => async (dispatch) => {
   try {
     dispatch(fetchLeadsStart());
-    const response = await api.get("leads");
+    const response = await api.get('leads');
     dispatch(fetchLeadsSuccess(response));
   } catch (error) {
     dispatch(fetchLeadsFailed());
@@ -49,9 +45,7 @@ export const fetchLeads: leadsTypes.FetchLeads = () => async (
 };
 
 // fetch a single lead
-export const fetchLead: leadsTypes.FetchLead = (
-  leadId: number
-) => async (dispatch) => {
+export const fetchLead: leadsTypes.FetchLead = (leadId: number) => async (dispatch) => {
   try {
     dispatch(fetchLeadStart());
     const response = await api.get(`leads/${leadId}`);

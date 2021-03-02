@@ -1,16 +1,17 @@
-import { ThunkType, DefaultSchema } from './commonTypes';
+import { ThunkType, DefaultSchema } from '../commonTypes';
 
 // ------ COMMON INTERFACES ------ //
 export interface Leads {
   address: string;
   chanceToConvert: number;
   email: string;
-  funnelStep: number;
-  history?: number[];
+  funnelStepId: number;
+  events?: number[]; // add this to db
   id: number;
-  lastComm: string;
+  lastComm: string; // convert to date
   name: string;
-  notes?: number[];
+  notes?: number[]; // add this to db
+  dateCreated?: Date;
   phone: string;
   tags?: number[];
   type: 'individual' | 'business';
@@ -35,12 +36,15 @@ export const FETCH_LEAD_FAILED = 'FETCH_LEAD_FAILED';
 // ------ TYPES ------ //
 interface FetchLeadsSuccess {
   type: typeof FETCH_LEADS_SUCCESS;
-  data: LeadsState;
+  data: { leads: LeadsState };
 }
 
 interface FetchLeadSuccess {
   type: typeof FETCH_LEAD_SUCCESS;
-  data: LeadsState;
+  data: { leads: LeadsState };
 }
 
 export type Types = FetchLeadsSuccess | FetchLeadSuccess;
+
+// ------ ACTION TYPES ------ //
+export type FetchSuccess = (data: { leads: LeadsState }) => Types;

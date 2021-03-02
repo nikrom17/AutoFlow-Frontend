@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
-import { FunnelStepsState } from 'src/redux/types/funnelStepsTypes';
-import { LeadsState, Leads } from 'src/redux/types/leadsTypes';
-import { OpportunitiesState } from 'src/redux/types/opportunitiesTypes';
+import { FunnelStepsState } from 'src/redux/funnelSteps/funnelStepsTypes';
+import { LeadsState, Leads } from 'src/redux/leads/leadsTypes';
+import { OpportunitiesState } from 'src/redux/opportunities/opportunitiesTypes';
 import { RootState } from 'src/redux/rootReducer';
 
 const getFunnelSteps = (state: RootState) => state.funnelSteps;
@@ -15,19 +15,29 @@ const transformLeadsTableData = (
   funnelSteps: FunnelStepsState,
   leads: LeadsState,
   opportunities: OpportunitiesState
-) =>
-  leads.allIds.map((id) => {
-    const lead = leads.byId[id];
-    const funnelStep = funnelSteps.byId[lead.funnelStep];
-    const opportunity = opportunities.name.byId[funnelStep.opportunity];
-    const opportunityInfo = opportunities.info.byId[id];
+) => {
+  const isReduxEmpty =
+    !leads.allIds.length ||
+    !funnelSteps.allIds.length ||
+    !opportunities.name.allIds.length ||
+    !opportunities.info.allIds.length;
 
-    return {
-      ...lead,
-      funnelStep,
-      opportunity: { ...opportunity, info: opportunityInfo },
-    };
-  });
+  if (!isReduxEmpty) {
+    return leads.allIds.map((id) => {
+      const lead = leads.byId[id];
+      const funnelStep = funnelSteps.byId[lead.funnelStepId];
+      const opportunity = opportunities.name.byId[funnelStep.opportunityId];
+      const opportunityInfo = opportunities.info.byId[id];
+
+      return {
+        ...lead,
+        funnelStep,
+        opportunity: { ...opportunity, info: opportunityInfo },
+      };
+    });
+  }
+  return [];
+};
 
 const transformLeadDetailsData = (lead: Leads, opportunityInfo: any) => {
   return { ...lead, opportunityInfo: opportunityInfo };

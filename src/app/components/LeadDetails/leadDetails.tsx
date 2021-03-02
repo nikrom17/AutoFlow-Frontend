@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from 'src/redux/rootReducer';
-import { getLeadDetails } from 'src/redux/selectors/leadsSelectors';
+import { getLeadDetails } from 'src/redux/leads/leadsSelectors';
 import {
   Button,
   Card,

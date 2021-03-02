@@ -1,6 +1,6 @@
-import { handelError } from "@utils/errorHandling";
+import { handelError } from '@utils/errorHandling';
 
-const BASEURL = "http://127.0.0.1:5000";
+const BASEURL = 'http://127.0.0.1:5000';
 
 const throwError = (response: any) => {
   throw response;
@@ -12,8 +12,10 @@ const get: any = async (url: string) => {
     response = await response.json();
     return response.code === 200 ? response : throwError(response);
   } catch (error) {
-    handelError(error);
-    throw new Error("api error");
+    if (process.env.NODE_ENV === 'development') {
+      handelError(error);
+    }
+    throw new Error('api error');
   }
 };
 

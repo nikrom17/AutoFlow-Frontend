@@ -1,7 +1,4 @@
-// import { cloneDeep } from "lodash";
-import * as funnelStepsTypes from '../types/funnelStepsTypes';
-
-export const initialFunnelStepsState: funnelStepsTypes.FunnelStepsState = {
+export const funnelStepsState = {
   allIds: [1, 2, 3, 4],
   byId: {
     1: {
@@ -53,14 +50,4 @@ export const initialFunnelStepsState: funnelStepsTypes.FunnelStepsState = {
       leads: [],
     },
   },
-};
-
-export const funnelStepsReducer = (
-  state = initialFunnelStepsState,
-  action: any
-): funnelStepsTypes.FunnelStepsState => {
-  switch (action.type) {
-    default:
-      return state;
-  }
 };

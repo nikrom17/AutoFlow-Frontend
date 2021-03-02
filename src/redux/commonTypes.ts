@@ -1,6 +1,6 @@
 import { ThunkAction } from 'redux-thunk';
 import { Action } from 'redux';
-import { RootState } from '../rootReducer';
+import { RootState } from './rootReducer';
 
 export interface DefaultSchema<T> {
   allIds: number[];
