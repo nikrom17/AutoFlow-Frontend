@@ -60,7 +60,7 @@ const OpportunitiesPage: React.FC = () => {
               return lead && opportunity ? (
                 <FunnelStepLeadCard
                   key={leadId}
-                  lastComm={lead.lastComm}
+                  lastComm={lead.lastContact}
                   leadName={lead.name}
                   quotedPrice={opportunity.quotedPrice}
                   status={lead.status}

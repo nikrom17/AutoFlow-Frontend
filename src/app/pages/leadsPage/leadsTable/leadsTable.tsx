@@ -3,6 +3,7 @@ import { Table } from 'antd';
 import { ColumnsType } from 'antd/es/table';
 import LeadDetails from '@components/LeadDetails/leadDetails';
 import * as styles from './leadsTable.module.less';
+import timeDelta from '@utils/timeDelta';
 
 const columns: ColumnsType<any> = [
   {
@@ -14,9 +15,10 @@ const columns: ColumnsType<any> = [
     dataIndex: ['opportunity', 'name'],
   },
   {
-    title: 'Last Comm.',
-    dataIndex: 'lastComm',
-    key: 'lastComm',
+    title: 'Last Contact',
+    dataIndex: 'lastContact',
+    key: 'lastContact',
+    render: (dateString) => timeDelta(dateString),
   },
   {
     title: 'Price Estimate',

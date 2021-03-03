@@ -8,7 +8,7 @@ export interface Leads {
   dateCreated?: Date;
   email: string;
   funnelStepId: number;
-  lastComm: Date;
+  lastContact: Date;
   name: string;
   phone: string;
   status: string;
