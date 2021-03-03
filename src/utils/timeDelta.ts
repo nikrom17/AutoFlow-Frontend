@@ -19,11 +19,11 @@ const timeDelta = (datePastSting: Date) => {
 
   let difference = '';
   if (days > 0) {
-    difference = days === 1 ? `${days} day, ` : `${days} days ago`;
+    difference = days === 1 ? `${days} day ago` : `${days} days ago`;
   } else if (hours > 0) {
-    difference = hours === 1 ? `${hours} hour, ` : `${hours} hours ago`;
+    difference = hours === 1 ? `${hours} hour ago` : `${hours} hours ago`;
   } else {
-    difference = hours === 1 ? `${minutes} minutes` : `${minutes} minutes ago`;
+    difference = minutes === 1 ? `${minutes} minute ago` : `${minutes} minutes ago`;
   }
 
   return difference;
