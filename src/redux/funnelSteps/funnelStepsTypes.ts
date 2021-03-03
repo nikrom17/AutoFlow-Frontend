@@ -3,9 +3,9 @@ import { DefaultSchema, ThunkType } from '../commonTypes';
 // ------ COMMON INTERFACES ------ //
 export interface FunnelSteps {
   id: number;
+  leads: number[];
   name: string;
   opportunityId: number;
-  leads: number[];
 }
 
 export interface FunnelStepsState extends DefaultSchema<FunnelSteps> {}
