@@ -2,7 +2,7 @@ import React from 'react';
 import { Card } from 'antd';
 
 interface Props {
-  lastComm: string;
+  lastComm: Date;
   leadName: string;
   onClick(): void;
   quotedPrice: string;
@@ -16,7 +16,11 @@ const FunnelStepLeadCard: React.FC<Props> = ({
   quotedPrice,
   status,
 }) => (
-  <Card title={leadName} onClick={onClick} style={{ cursor: 'pointer' }}>
+  <Card
+    title={leadName}
+    onClick={onClick}
+    style={{ cursor: 'pointer', minWidth: '275px' }}
+  >
     <p>{`Price Estimate: ${quotedPrice}`}</p>
     <p>{`Last Comm.: ${lastComm}`}</p>
     <p>{`Status: ${status}`}</p>

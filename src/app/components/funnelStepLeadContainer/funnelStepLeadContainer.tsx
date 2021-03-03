@@ -6,9 +6,10 @@ interface Props {
   funnelStepName: string;
 }
 
-const FunnelStepLeadContainer: React.FC<Props> = ({
-  children,
-  funnelStepName,
-}) => <Card title={funnelStepName}>{children}</Card>;
+const FunnelStepLeadContainer: React.FC<Props> = ({ children, funnelStepName }) => (
+  <Card title={funnelStepName} style={{ minWidth: '300px' }}>
+    {children}
+  </Card>
+);
 
 export default FunnelStepLeadContainer;

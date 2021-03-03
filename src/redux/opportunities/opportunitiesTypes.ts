@@ -9,7 +9,7 @@ export interface Opportunities {
 
 export interface OpportunitiesState {
   name: DefaultSchema<Opportunities>;
-  info: DefaultSchema<any>;
+  info: DefaultSchema<any>; // the object schema will eventually be defined by the client
 }
 
 // ------ THUNK ACTION TYPES ------ //

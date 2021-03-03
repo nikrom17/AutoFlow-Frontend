@@ -2,19 +2,15 @@ import { ThunkType, DefaultSchema } from '../commonTypes';
 
 // ------ COMMON INTERFACES ------ //
 export interface Leads {
+  id: number;
   address: string;
   chanceToConvert: number;
+  dateCreated?: Date;
   email: string;
   funnelStepId: number;
-  events?: number[]; // add this to db
-  id: number;
-  lastComm: string; // convert to date
+  lastComm: Date;
   name: string;
-  notes?: number[]; // add this to db
-  dateCreated?: Date;
   phone: string;
-  tags?: number[];
-  type: 'individual' | 'business';
   status: string;
 }
 
