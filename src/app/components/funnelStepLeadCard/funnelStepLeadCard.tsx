@@ -1,8 +1,8 @@
 import React from 'react';
 import { Card } from 'antd';
 import timeDelta from '@utils/timeDelta';
-import './funnelStepLeadCard.less';
 import getTagColor from '@utils/getStatusColor';
+import './funnelStepLeadCard.less';
 
 interface Props {
   lastComm: Date;
