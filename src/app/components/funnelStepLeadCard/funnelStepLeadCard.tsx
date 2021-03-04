@@ -1,6 +1,8 @@
 import React from 'react';
 import { Card } from 'antd';
 import timeDelta from '@utils/timeDelta';
+import getTagColor from '@utils/getStatusColor';
+import './funnelStepLeadCard.less';
 
 interface Props {
   lastComm: Date;
@@ -17,11 +19,7 @@ const FunnelStepLeadCard: React.FC<Props> = ({
   quotedPrice,
   status,
 }) => (
-  <Card
-    title={leadName}
-    onClick={onClick}
-    style={{ cursor: 'pointer', minWidth: '275px' }}
-  >
+  <Card title={leadName} onClick={onClick} className={`leadCard-${getTagColor(status)}`}>
     <p>{`Price Estimate: ${quotedPrice}`}</p>
     <p>{`Last Contact: ${timeDelta(lastComm)}`}</p>
     <p>{`Status: ${status}`}</p>
