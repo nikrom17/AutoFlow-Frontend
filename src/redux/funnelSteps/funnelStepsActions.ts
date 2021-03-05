@@ -13,8 +13,9 @@ export const fetchFunnelStepsSuccess: funnelStepsTypes.FetchSuccess = (data) => 
   data,
 });
 
-export const fetchFunnelStepsFailed = () => ({
+export const fetchFunnelStepsFailed = (error: string) => ({
   type: funnelStepsTypes.FETCH_FUNNEL_STEPS_FAILED,
+  error,
 });
 
 // fetch a single funnelStep
@@ -27,8 +28,9 @@ export const fetchFunnelStepSuccess: funnelStepsTypes.FetchSuccess = (data) => (
   data,
 });
 
-export const fetchFunnelStepFailed = () => ({
+export const fetchFunnelStepFailed = (error: string) => ({
   type: funnelStepsTypes.FETCH_FUNNEL_STEP_FAILED,
+  error,
 });
 
 // ------ COMPLEX ACTIONS ------ //
@@ -42,7 +44,7 @@ export const fetchFunnelSteps: funnelStepsTypes.FetchFunnelSteps = () => async (
     const response = await api.get('funnel-steps');
     dispatch(fetchFunnelStepsSuccess(response));
   } catch (error) {
-    dispatch(fetchFunnelStepsFailed());
+    dispatch(fetchFunnelStepsFailed(error.message));
   }
 };
 
@@ -55,6 +57,6 @@ export const fetchFunnelStep: funnelStepsTypes.FetchFunnelStep = (
     const response = await api.get(`funnel-steps/${funnelStepId}`);
     dispatch(fetchFunnelStepSuccess(response));
   } catch (error) {
-    dispatch(fetchFunnelStepFailed());
+    dispatch(fetchFunnelStepFailed(error.message));
   }
 };

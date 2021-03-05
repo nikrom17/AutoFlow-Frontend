@@ -7,6 +7,8 @@ export interface DefaultSchema<T> {
   byId: {
     [key in number]: T;
   };
+  status: 'idle' | 'fetching';
+  error: string | null;
 }
 
 export type ThunkType = ThunkAction<void, RootState, null, Action<string>>;

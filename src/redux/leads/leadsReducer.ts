@@ -4,6 +4,8 @@ import * as leadsTypes from './leadsTypes';
 export const initialLeadsState: leadsTypes.LeadsState = {
   allIds: [],
   byId: {},
+  status: 'idle',
+  error: null,
 };
 
 export const leadsReducer = (
@@ -11,8 +13,17 @@ export const leadsReducer = (
   action: leadsTypes.Types
 ): leadsTypes.LeadsState => {
   switch (action.type) {
+    // ------- Start -------- //
+    case leadsTypes.FETCH_LEADS_START:
+    case leadsTypes.FETCH_LEAD_START:
+      return {
+        ...state,
+        status: 'fetching',
+      };
+
+    // ------- Success -------- //
     case leadsTypes.FETCH_LEADS_SUCCESS:
-      return { ...action.data.leads };
+      return { ...action.data.leads, status: 'idle', error: null };
     case leadsTypes.FETCH_LEAD_SUCCESS:
       return {
         allIds: [...state.allIds, ...action.data.leads.allIds],
@@ -20,7 +31,18 @@ export const leadsReducer = (
           ...cloneDeep(state.byId),
           ...action.data.leads.byId,
         },
+        status: 'idle',
+        error: null,
       };
+    // ------- Failed -------- //
+    case leadsTypes.FETCH_LEADS_FAILED:
+    case leadsTypes.FETCH_LEAD_FAILED:
+      return {
+        ...state,
+        status: 'idle',
+        error: action.error,
+      };
+
     default:
       return state;
   }

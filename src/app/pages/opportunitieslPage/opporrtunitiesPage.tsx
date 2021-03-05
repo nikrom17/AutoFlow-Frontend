@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { RootState } from 'src/redux/rootReducer';
 import { Tabs, Space, Empty } from 'antd';
 import {
@@ -14,38 +14,33 @@ import LeadDetails from '@components/LeadDetails/leadDetails';
 import FunnelStepLeadCard from '@components/funnelStepLeadCard/funnelStepLeadCard';
 import './opportunities.module.less';
 import PageFrame from '@components/pageFrame/pageFrame';
+import useReduxFetch from '@hooks/useReduxFetch';
 
 const { TabPane } = Tabs;
 
 const OpportunitiesPage: React.FC = () => {
   // ------ REDUX ------ //
-  const dispatch = useDispatch();
   const opportunities = useSelector((state: RootState) => state.opportunities.name);
   const opportunityInfo = useSelector((state: RootState) => state.opportunities.info);
   const leads = useSelector((state: RootState) => state.leads);
   const funnelSteps = useSelector((state: RootState) => state.funnelSteps);
 
   // ------ HOOKS ------ //
-  const [opportunityId, setOpportunityId] = React.useState(
-    opportunities.allIds[0] || null
-  );
+  const [opportunityId, setOpportunityId] = React.useState(opportunities.allIds[0] || 0);
   const [leadId, setLeadId] = React.useState(0);
+  const { isFetching } = useReduxFetch([
+    fetchFunnelSteps,
+    fetchLeads,
+    fetchOpportunities,
+    fetchOpportunityInfos,
+  ]);
 
-  React.useEffect(() => {
-    dispatch(fetchFunnelSteps());
-    dispatch(fetchLeads());
-    dispatch(fetchOpportunities());
-    dispatch(fetchOpportunityInfos());
-  }, [dispatch]);
-
-  // ------ FUNCTIONS ------ //
-
+  // ------ LOGIC ------ //
   if (opportunities.allIds[0] && !opportunityId) {
     setOpportunityId(opportunities.allIds[0]);
   }
 
   const renderFunnelSteps = () => {
-    // @ts-ignore
     const opportunityFunnelSteps = opportunities.byId[opportunityId].funnelSteps;
     return opportunityFunnelSteps.map((funnelStepId: number) => {
       const funnelStep = funnelSteps.byId[funnelStepId];
@@ -92,15 +87,15 @@ const OpportunitiesPage: React.FC = () => {
         </Tabs>
       </SubHeader>
       <PageFrame>
-        {opportunityId && opportunities ? (
-          <Space size="large" align="start">
-            {renderFunnelSteps()}
-          </Space>
-        ) : (
+        {isFetching || !opportunityId ? (
           <Empty
             description={<span>No Opportunities</span>}
             style={{ margin: '5rem auto' }}
           />
+        ) : (
+          <Space size="large" align="start">
+            {renderFunnelSteps()}
+          </Space>
         )}
       </PageFrame>
       {Boolean(leadId) && (

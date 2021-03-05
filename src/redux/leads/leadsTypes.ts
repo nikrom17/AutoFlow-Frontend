@@ -30,17 +30,37 @@ export const FETCH_LEAD_SUCCESS = 'FETCH_LEAD_SUCCESS';
 export const FETCH_LEAD_FAILED = 'FETCH_LEAD_FAILED';
 
 // ------ TYPES ------ //
+interface FetchLeadsStart {
+  type: typeof FETCH_LEADS_START;
+}
 interface FetchLeadsSuccess {
   type: typeof FETCH_LEADS_SUCCESS;
   data: { leads: LeadsState };
 }
+interface FetchLeadsFailed {
+  type: typeof FETCH_LEADS_FAILED;
+  error: string;
+}
 
+interface FetchLeadStart {
+  type: typeof FETCH_LEAD_START;
+}
 interface FetchLeadSuccess {
   type: typeof FETCH_LEAD_SUCCESS;
   data: { leads: LeadsState };
 }
+interface FetchLeadFailed {
+  type: typeof FETCH_LEAD_FAILED;
+  error: string;
+}
 
-export type Types = FetchLeadsSuccess | FetchLeadSuccess;
+export type Types =
+  | FetchLeadsStart
+  | FetchLeadsSuccess
+  | FetchLeadsFailed
+  | FetchLeadStart
+  | FetchLeadSuccess
+  | FetchLeadFailed;
 
 // ------ ACTION TYPES ------ //
 export type FetchSuccess = (data: { leads: LeadsState }) => Types;
