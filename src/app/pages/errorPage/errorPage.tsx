@@ -1,6 +1,5 @@
-import React, { ErrorInfo } from "react";
-import { RouteComponentProps, withRouter } from "react-router-dom";
-// import { Button } from "antd";
+import React, { ErrorInfo } from 'react';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
 
 interface Props extends RouteComponentProps {}
 interface State {
@@ -30,7 +29,7 @@ class ErrorBoundary extends React.Component<Props, State> {
       return (
         <div>
           <h2>Something went wrong.</h2>
-          <details style={{ whiteSpace: "pre-wrap" }}>
+          <details style={{ whiteSpace: 'pre-wrap' }}>
             {this.state.error && this.state.error.toString()}
             <br />
             {this.state.errorInfo.componentStack}

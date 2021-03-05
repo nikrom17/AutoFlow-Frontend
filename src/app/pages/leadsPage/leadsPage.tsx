@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { getLeadsTableData } from 'src/redux/leads/leadsSelectors';
 import { Skeleton, Tabs } from 'antd';
 import { fetchLeads } from 'src/redux/leads/leadsActions';
@@ -11,19 +11,21 @@ import { fetchFunnelSteps } from 'src/redux/funnelSteps/funnelStepsActions';
 import SubHeader from '@components/subHeader/subHeader';
 import LeadsTable from './leadsTable/leadsTable';
 import PageFrame from '@components/pageFrame/pageFrame';
+import useReduxFetch from '@hooks/useReduxFetch';
 
 const { TabPane } = Tabs;
 
 const LeadsPage: React.FC = () => {
-  const dispatch = useDispatch();
+  // ------ REDUX ------ //
   const leadsTableData = useSelector(getLeadsTableData);
 
-  React.useEffect(() => {
-    dispatch(fetchFunnelSteps());
-    dispatch(fetchLeads());
-    dispatch(fetchOpportunities());
-    dispatch(fetchOpportunityInfos());
-  }, [dispatch]);
+  // ------ HOOKS ------ //
+  const { isFetching } = useReduxFetch([
+    fetchFunnelSteps,
+    fetchLeads,
+    fetchOpportunities,
+    fetchOpportunityInfos,
+  ]);
 
   return (
     <>
@@ -40,10 +42,10 @@ const LeadsPage: React.FC = () => {
         </Tabs>
       </SubHeader>
       <PageFrame>
-        {leadsTableData ? (
-          <LeadsTable tableData={leadsTableData} />
-        ) : (
+        {isFetching ? (
           <Skeleton active paragraph={{ rows: 6 }} />
+        ) : (
+          <LeadsTable tableData={leadsTableData} />
         )}
       </PageFrame>
     </>

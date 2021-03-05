@@ -15,7 +15,7 @@ const get: any = async (url: string) => {
     if (process.env.NODE_ENV === 'development') {
       handelError(error);
     }
-    throw new Error('api error');
+    throw new Error(error);
   }
 };
 

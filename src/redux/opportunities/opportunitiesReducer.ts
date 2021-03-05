@@ -5,10 +5,14 @@ export const initialOpportunitiesState: opportunitiesTypes.OpportunitiesState = 
   name: {
     allIds: [],
     byId: {},
+    status: 'idle',
+    error: null,
   },
   info: {
     allIds: [],
     byId: {},
+    status: 'idle',
+    error: null,
   },
 };
 
@@ -22,6 +26,8 @@ export const opportunitiesReducer = (
         ...state,
         name: {
           ...action.data.opportunities,
+          status: 'idle',
+          error: null,
         },
       };
     case opportunitiesTypes.FETCH_OPPORTUNITY_INFOS_SUCCESS:
@@ -29,6 +35,8 @@ export const opportunitiesReducer = (
         ...state,
         info: {
           ...action.data.opportunities,
+          status: 'idle',
+          error: null,
         },
       };
     case opportunitiesTypes.FETCH_OPPORTUNITY_SUCCESS:
@@ -40,6 +48,8 @@ export const opportunitiesReducer = (
             ...cloneDeep(state.name.byId),
             ...action.data.opportunities.byId,
           },
+          status: 'idle',
+          error: null,
         },
       };
     case opportunitiesTypes.FETCH_OPPORTUNITY_INFO_SUCCESS:
@@ -51,6 +61,8 @@ export const opportunitiesReducer = (
             ...cloneDeep(state.name.byId),
             ...action.data.opportunities.byId,
           },
+          status: 'idle',
+          error: null,
         },
       };
     default:

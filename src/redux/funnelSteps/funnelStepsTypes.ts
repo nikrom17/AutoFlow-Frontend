@@ -24,17 +24,38 @@ export const FETCH_FUNNEL_STEP_SUCCESS = 'FETCH_FUNNEL_STEP_SUCCESS';
 export const FETCH_FUNNEL_STEP_FAILED = 'FETCH_FUNNEL_STEP_FAILED';
 
 // ------ TYPES ------ //
+
+interface FetchFunnelStepsStart {
+  type: typeof FETCH_FUNNEL_STEPS_START;
+}
 interface FetchFunnelStepsSuccess {
   type: typeof FETCH_FUNNEL_STEPS_SUCCESS;
   data: { funnelSteps: FunnelStepsState };
 }
+interface FetchFunnelStepsFailed {
+  type: typeof FETCH_FUNNEL_STEPS_FAILED;
+  error: string;
+}
 
+interface FetchFunnelStepStart {
+  type: typeof FETCH_FUNNEL_STEP_START;
+}
 interface FetchFunnelStepSuccess {
   type: typeof FETCH_FUNNEL_STEP_SUCCESS;
   data: { funnelSteps: FunnelStepsState };
 }
+interface FetchFunnelStepFailed {
+  type: typeof FETCH_FUNNEL_STEP_FAILED;
+  error: string;
+}
 
-export type Types = FetchFunnelStepsSuccess | FetchFunnelStepSuccess;
+export type Types =
+  | FetchFunnelStepsStart
+  | FetchFunnelStepsSuccess
+  | FetchFunnelStepsFailed
+  | FetchFunnelStepStart
+  | FetchFunnelStepSuccess
+  | FetchFunnelStepFailed;
 
 // ------ ACTION TYPES ------ //
 export type FetchSuccess = (data: { funnelSteps: FunnelStepsState }) => Types;

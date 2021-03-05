@@ -77,6 +77,8 @@ export const initialTodosState: todosTypes.TodosState = {
       status: 'Follow Up',
     },
   },
+  status: 'idle',
+  error: null,
 };
 
 export const todosReducer = (
@@ -88,6 +90,8 @@ export const todosReducer = (
     case todosTypes.FETCH_CLIENT_TODOS_SUCCESS:
       return {
         ...action.data,
+        status: 'idle',
+        error: null,
       };
     case todosTypes.FETCH_TODO_SUCCESS: //todo verify allIds is merged correctly
       return {
@@ -96,6 +100,8 @@ export const todosReducer = (
           ...cloneDeep(state.byId),
           ...action.data.byId,
         },
+        status: 'idle',
+        error: null,
       };
     default:
       return state;
