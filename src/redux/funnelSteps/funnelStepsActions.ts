@@ -44,7 +44,6 @@ export const fetchFunnelSteps: funnelStepsTypes.FetchFunnelSteps = () => async (
     const response = await api.get('funnel-steps');
     dispatch(fetchFunnelStepsSuccess(response));
   } catch (error) {
-    console.log(error);
     dispatch(fetchFunnelStepsFailed(error.message));
   }
 };
@@ -58,7 +57,6 @@ export const fetchFunnelStep: funnelStepsTypes.FetchFunnelStep = (
     const response = await api.get(`funnel-steps/${funnelStepId}`);
     dispatch(fetchFunnelStepSuccess(response));
   } catch (error) {
-    console.log(error);
-    dispatch(fetchFunnelStepFailed(error));
+    dispatch(fetchFunnelStepFailed(error.message));
   }
 };

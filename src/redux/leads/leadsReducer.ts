@@ -13,6 +13,15 @@ export const leadsReducer = (
   action: leadsTypes.Types
 ): leadsTypes.LeadsState => {
   switch (action.type) {
+    // ------- Start -------- //
+    case leadsTypes.FETCH_LEADS_START:
+    case leadsTypes.FETCH_LEAD_START:
+      return {
+        ...state,
+        status: 'fetching',
+      };
+
+    // ------- Success -------- //
     case leadsTypes.FETCH_LEADS_SUCCESS:
       return { ...action.data.leads, status: 'idle', error: null };
     case leadsTypes.FETCH_LEAD_SUCCESS:
@@ -25,6 +34,15 @@ export const leadsReducer = (
         status: 'idle',
         error: null,
       };
+    // ------- Failed -------- //
+    case leadsTypes.FETCH_LEADS_FAILED:
+    case leadsTypes.FETCH_LEAD_FAILED:
+      return {
+        ...state,
+        status: 'idle',
+        error: action.error,
+      };
+
     default:
       return state;
   }

@@ -13,8 +13,9 @@ export const fetchLeadsSuccess: leadsTypes.FetchSuccess = (data) => ({
   data,
 });
 
-export const fetchLeadsFailed = () => ({
+export const fetchLeadsFailed = (error: string) => ({
   type: leadsTypes.FETCH_LEADS_FAILED,
+  error,
 });
 
 // fetch a single lead
@@ -27,8 +28,9 @@ export const fetchLeadSuccess: leadsTypes.FetchSuccess = (data) => ({
   data,
 });
 
-export const fetchLeadFailed = () => ({
+export const fetchLeadFailed = (error: string) => ({
   type: leadsTypes.FETCH_LEAD_FAILED,
+  error,
 });
 
 // ------ COMPLEX ACTIONS ------ //
@@ -40,7 +42,7 @@ export const fetchLeads: leadsTypes.FetchLeads = () => async (dispatch) => {
     const response = await api.get('leads');
     dispatch(fetchLeadsSuccess(response));
   } catch (error) {
-    dispatch(fetchLeadsFailed());
+    dispatch(fetchLeadsFailed(error.message));
   }
 };
 
@@ -51,6 +53,6 @@ export const fetchLead: leadsTypes.FetchLead = (leadId: number) => async (dispat
     const response = await api.get(`leads/${leadId}`);
     dispatch(fetchLeadSuccess(response));
   } catch (error) {
-    dispatch(fetchLeadFailed());
+    dispatch(fetchLeadFailed(error.message));
   }
 };
