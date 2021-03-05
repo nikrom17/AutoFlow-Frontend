@@ -14,8 +14,9 @@ export const fetchOpportunitiesSuccess: opportunitiesTypes.FetchSuccess = (data)
   data,
 });
 
-export const fetchOpportunitiesFailed = () => ({
+export const fetchOpportunitiesFailed = (error: string) => ({
   type: opportunitiesTypes.FETCH_OPPORTUNITIES_FAILED,
+  error,
 });
 
 // fetch all opportunity Infos
@@ -28,8 +29,9 @@ export const fetchOpportunityInfosSuccess: opportunitiesTypes.FetchSuccess = (da
   data,
 });
 
-export const fetchOpportunityInfosFailed = () => ({
+export const fetchOpportunityInfosFailed = (error: string) => ({
   type: opportunitiesTypes.FETCH_OPPORTUNITY_INFOS_FAILED,
+  error,
 });
 
 // fetch a single opportunity
@@ -42,8 +44,9 @@ export const fetchOpportunitySuccess: opportunitiesTypes.FetchSuccess = (data) =
   data,
 });
 
-export const fetchOpportunityFailed = () => ({
+export const fetchOpportunityFailed = (error: string) => ({
   type: opportunitiesTypes.FETCH_OPPORTUNITY_FAILED,
+  error,
 });
 
 // fetch a single opportunity Info
@@ -56,8 +59,9 @@ export const fetchOpportunityInfoSuccess: opportunitiesTypes.FetchSuccess = (dat
   data,
 });
 
-export const fetchOpportunityInfoFailed = () => ({
+export const fetchOpportunityInfoFailed = (error: string) => ({
   type: opportunitiesTypes.FETCH_OPPORTUNITY_INFO_FAILED,
+  error,
 });
 
 // ------ COMPLEX ACTIONS ------ //
@@ -69,7 +73,7 @@ export const fetchOpportunities: GenericThunkAction = () => async (dispatch) => 
     const response = await api.get('opportunities');
     dispatch(fetchOpportunitiesSuccess(response));
   } catch (error) {
-    dispatch(fetchOpportunitiesFailed());
+    dispatch(fetchOpportunitiesFailed(error.message));
   }
 };
 
@@ -80,7 +84,7 @@ export const fetchOpportunityInfos: GenericThunkAction = () => async (dispatch) 
     const response = await api.get('opportunity-info');
     dispatch(fetchOpportunityInfosSuccess(response));
   } catch (error) {
-    dispatch(fetchOpportunityInfosFailed());
+    dispatch(fetchOpportunityInfosFailed(error.message));
   }
 };
 
@@ -93,7 +97,7 @@ export const fetchOpportunity: opportunitiesTypes.FetchOpportunity = (
     const response = await api.get(`opportunities/${opportunityId}`);
     dispatch(fetchOpportunitySuccess(response));
   } catch (error) {
-    dispatch(fetchOpportunityFailed());
+    dispatch(fetchOpportunityFailed(error.message));
   }
 };
 
@@ -106,6 +110,6 @@ export const fetchOpportunityInfo: opportunitiesTypes.FetchOpportunityInfo = (
     const response = await api.get(`opportunity-info/${opportunityInfoId}`);
     dispatch(fetchOpportunityInfoSuccess(response));
   } catch (error) {
-    dispatch(fetchOpportunityInfoFailed());
+    dispatch(fetchOpportunityInfoFailed(error.message));
   }
 };
