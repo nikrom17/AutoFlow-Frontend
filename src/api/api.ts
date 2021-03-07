@@ -1,6 +1,9 @@
 import { handelError } from '@utils/errorHandling';
 
-const BASEURL = 'http://127.0.0.1:5000';
+const BASEURL =
+  process.env.NODE_ENV === 'development'
+    ? 'http://127.0.0.1:5000'
+    : 'https://autoflow-backend.herokuapp.com';
 
 const throwError = (response: any) => {
   throw response;

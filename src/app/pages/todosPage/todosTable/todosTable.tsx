@@ -38,7 +38,6 @@ interface Props {
 }
 
 const DeliveriesTable: React.FC<Props> = ({ tableData }) => {
-  console.log(tableData);
   return (
     <Table
       columns={columns}
