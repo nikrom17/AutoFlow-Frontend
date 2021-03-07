@@ -5,11 +5,24 @@ import { getTodosTableData } from 'src/redux/todos/todosSelectors';
 import PageFrame from '@components/pageFrame/pageFrame';
 import TodosTable from './todosTable/todosTable';
 import SubHeader from '@components/subHeader/subHeader';
+import useReduxFetch from '@hooks/useReduxFetch';
+import { fetchLeads } from 'src/redux/leads/leadsActions';
+import { fetchFunnelSteps } from 'src/redux/funnelSteps/funnelStepsActions';
+import {
+  fetchOpportunities,
+  fetchOpportunityInfos,
+} from 'src/redux/opportunities/opportunitiesActions';
 
 const { TabPane } = Tabs;
 
 const TodosPage: React.FC = () => {
   const todos = useSelector(getTodosTableData);
+  const { isFetching } = useReduxFetch([
+    fetchLeads,
+    fetchFunnelSteps,
+    fetchOpportunities,
+    fetchOpportunityInfos,
+  ]);
 
   return (
     <>
@@ -26,10 +39,10 @@ const TodosPage: React.FC = () => {
         </Tabs>
       </SubHeader>
       <PageFrame>
-        {todos ? (
-          <TodosTable tableData={todos} />
-        ) : (
+        {isFetching ? (
           <Skeleton active paragraph={{ rows: 6 }} />
+        ) : (
+          <TodosTable tableData={todos} />
         )}
       </PageFrame>
     </>

@@ -16,13 +16,13 @@ const transformLeadsTableData = (
   leads: LeadsState,
   opportunities: OpportunitiesState
 ) => {
-  const isReduxEmpty =
+  const isStoreEmpty =
     !leads.allIds.length ||
     !funnelSteps.allIds.length ||
     !opportunities.name.allIds.length ||
     !opportunities.info.allIds.length;
 
-  if (!isReduxEmpty) {
+  if (!isStoreEmpty) {
     return leads.allIds.map((id) => {
       const lead = leads.byId[id];
       const funnelStep = funnelSteps.byId[lead.funnelStepId];
