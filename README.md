@@ -26,7 +26,7 @@ CRM for working leads with a prioritized to-do list.
 
 - Framework: React
 - State management: Redux
-- Auth: Auth0
+- Component Library: Ant Design
 - Error Tracking: Sentry, Log Rocket
 - Hosting: Netlify
 
