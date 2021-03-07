@@ -1,6 +1,6 @@
 import React from 'react';
 import PageFrame from '@components/pageFrame/pageFrame';
-import { Row, Col, Card, Statistic, Divider, Calendar } from 'antd';
+import { Row, Col, Card, Statistic, Divider } from 'antd';
 import { ArrowUpOutlined, ArrowDownOutlined } from '@ant-design/icons';
 import * as styles from './homePage.module.less';
 
