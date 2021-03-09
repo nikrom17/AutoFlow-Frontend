@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Table, Tag } from 'antd';
+import { Table } from 'antd';
 import { ColumnsType } from 'antd/es/table';
-import getStatusColor from '@utils/getStatusColor';
+import timeDelta from '@utils/timeDelta';
 import * as styles from './todosTable.module.less';
 
 const columns: ColumnsType<any> = [
@@ -14,21 +14,17 @@ const columns: ColumnsType<any> = [
     dataIndex: ['lead', 'name'],
   },
   {
-    title: 'Last Comm.',
-    dataIndex: ['lead', 'lastComm'],
+    title: 'Last Contact',
+    dataIndex: ['lead', 'lastContact'],
+    render: (date: Date) => timeDelta(date),
   },
   {
     title: 'Price Estimate',
     dataIndex: ['opportunity', 'info', 'quotedPrice'],
   },
   {
-    title: 'Status',
-    dataIndex: 'status',
-    render: (status: string) => <Tag color={getStatusColor(status)}>{status}</Tag>,
-  },
-  {
-    title: 'Rank ',
-    dataIndex: 'priority_rank',
+    title: 'Priority Rank ',
+    dataIndex: 'priorityRank',
     render: (rank: number) => <span className={styles.rank}>{rank}</span>,
   },
 ];
