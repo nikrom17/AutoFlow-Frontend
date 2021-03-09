@@ -8,6 +8,7 @@ import SubHeader from '@components/subHeader/subHeader';
 import useReduxFetch from '@hooks/useReduxFetch';
 import { fetchLeads } from 'src/redux/leads/leadsActions';
 import { fetchFunnelSteps } from 'src/redux/funnelSteps/funnelStepsActions';
+import { fetchTodos } from 'src/redux/todos/todosActions';
 import {
   fetchOpportunities,
   fetchOpportunityInfos,
@@ -18,6 +19,7 @@ const { TabPane } = Tabs;
 const TodosPage: React.FC = () => {
   const todos = useSelector(getTodosTableData);
   const { isFetching } = useReduxFetch([
+    fetchTodos,
     fetchLeads,
     fetchFunnelSteps,
     fetchOpportunities,

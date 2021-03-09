@@ -2,81 +2,8 @@ import { cloneDeep } from 'lodash';
 import * as todosTypes from './todosTypes';
 
 export const initialTodosState: todosTypes.TodosState = {
-  allIds: [1, 2, 3, 4, 5, 6, 7, 8],
-  byId: {
-    1: {
-      id: 1,
-      completed: false,
-      description: 'Send email',
-      leadId: 1,
-      priority_rank: 1,
-      status: 'Follow Up',
-    },
-    2: {
-      id: 2,
-      completed: false,
-      description: 'Send Email',
-      leadId: 2,
-      priority_rank: 2,
-      status: 'Follow Up',
-    },
-    3: {
-      id: 3,
-      completed: false,
-      description: 'Create engagement letter',
-      leadId: 3,
-      priority_rank: 3,
-      status: 'Follow Up',
-    },
-    4: {
-      id: 4,
-      completed: false,
-      description: 'Do a thing',
-      leadId: 4,
-      priority_rank: 4,
-      status: 'With Client',
-    },
-    5: {
-      id: 5,
-      completed: false,
-      description: 'Do a thing',
-      leadId: 5,
-      priority_rank: 5,
-      status: 'With Client',
-    },
-    6: {
-      id: 6,
-      completed: false,
-      description: 'Do a thing',
-      leadId: 6,
-      priority_rank: 6,
-      status: 'Follow Up',
-    },
-    7: {
-      id: 7,
-      completed: false,
-      description: 'Do a thing',
-      leadId: 7,
-      priority_rank: 7,
-      status: 'Follow Up',
-    },
-    8: {
-      id: 8,
-      completed: false,
-      description: 'Do a thing',
-      leadId: 8,
-      priority_rank: 8,
-      status: 'Follow Up',
-    },
-    9: {
-      id: 9,
-      completed: false,
-      description: 'Do a thing',
-      leadId: 9,
-      priority_rank: 9,
-      status: 'Follow Up',
-    },
-  },
+  allIds: [],
+  byId: {},
   status: 'idle',
   error: null,
 };
@@ -86,22 +13,37 @@ export const todosReducer = (
   action: todosTypes.Types
 ): todosTypes.TodosState => {
   switch (action.type) {
-    case todosTypes.FETCH_TODOS_SUCCESS:
-    case todosTypes.FETCH_CLIENT_TODOS_SUCCESS:
+    // ------- Start -------- //
+    case todosTypes.FETCH_TODOS_START:
+    case todosTypes.FETCH_TODO_START:
       return {
-        ...action.data,
+        ...state,
+        status: 'fetching',
+      };
+    // ------- Success -------- //
+    case todosTypes.FETCH_TODOS_SUCCESS:
+      return {
+        ...action.data.todos,
         status: 'idle',
         error: null,
       };
-    case todosTypes.FETCH_TODO_SUCCESS: //todo verify allIds is merged correctly
+    case todosTypes.FETCH_TODO_SUCCESS:
       return {
-        allIds: [...state.allIds, ...action.data.allIds],
+        allIds: [...state.allIds, ...action.data.todos.allIds],
         byId: {
           ...cloneDeep(state.byId),
-          ...action.data.byId,
+          ...action.data.todos.byId,
         },
         status: 'idle',
         error: null,
+      };
+    // ------- Failed -------- //
+    case todosTypes.FETCH_TODOS_FAILED:
+    case todosTypes.FETCH_TODO_FAILED:
+      return {
+        ...state,
+        status: 'idle',
+        error: action.error,
       };
     default:
       return state;

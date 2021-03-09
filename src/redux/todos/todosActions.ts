@@ -13,22 +13,9 @@ export const fetchTodosSuccess = (data: todosTypes.TodosState) => ({
   data,
 });
 
-export const fetchTodosFailed = () => ({
+export const fetchTodosFailed = (error: string) => ({
   type: todosTypes.FETCH_TODOS_FAILED,
-});
-
-// fetch all todos for a client
-export const fetchClientTodosStart = () => ({
-  type: todosTypes.FETCH_CLIENT_TODOS_START,
-});
-
-export const fetchClientTodosSuccess = (data: todosTypes.TodosState) => ({
-  type: todosTypes.FETCH_CLIENT_TODOS_SUCCESS,
-  data,
-});
-
-export const fetchClientTodosFailed = () => ({
-  type: todosTypes.FETCH_CLIENT_TODOS_FAILED,
+  error,
 });
 
 // fetch a single todo
@@ -41,13 +28,12 @@ export const fetchTodoSuccess = (data: todosTypes.TodosState) => ({
   data,
 });
 
-export const fetchTodoFailed = () => ({
+export const fetchTodoFailed = (error: string) => ({
   type: todosTypes.FETCH_TODO_FAILED,
+  error,
 });
 
 // ------ COMPLEX ACTIONS ------ //
-
-// Admin
 
 // fetch all todos
 export const fetchTodos: todosTypes.FetchTodos = () => async (dispatch) => {
@@ -56,26 +42,9 @@ export const fetchTodos: todosTypes.FetchTodos = () => async (dispatch) => {
     const response = await api.get('todos');
     dispatch(fetchTodosSuccess(response));
   } catch (error) {
-    dispatch(fetchTodosFailed());
+    dispatch(fetchTodosFailed(error));
   }
 };
-
-// Client
-
-// fetch all todos for a client
-export const fetchClientTodos: todosTypes.FetchClientTodos = (clientId: number) => async (
-  dispatch
-) => {
-  try {
-    dispatch(fetchClientTodosStart());
-    const response = await api.get(`todos/client/${clientId}`);
-    dispatch(fetchClientTodosSuccess(response));
-  } catch (error) {
-    dispatch(fetchClientTodosFailed());
-  }
-};
-
-// Both
 
 // fetch a single todo
 export const fetchTodo: todosTypes.FetchTodo = (todoId: number) => async (dispatch) => {
@@ -84,6 +53,6 @@ export const fetchTodo: todosTypes.FetchTodo = (todoId: number) => async (dispat
     const response = await api.get(`todos/${todoId}`);
     dispatch(fetchTodoSuccess(response));
   } catch (error) {
-    dispatch(fetchTodoFailed());
+    dispatch(fetchTodoFailed(error));
   }
 };
