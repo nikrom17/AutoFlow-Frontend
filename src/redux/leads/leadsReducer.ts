@@ -42,7 +42,6 @@ export const leadsReducer = (
         status: 'idle',
         error: action.error,
       };
-
     default:
       return state;
   }
