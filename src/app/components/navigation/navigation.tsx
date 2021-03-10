@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { useHistory } from 'react-router';
 import * as styles from './navigation.module.less';
 import { Menu } from 'antd';

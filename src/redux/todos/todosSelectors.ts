@@ -13,6 +13,7 @@ export const getTodosTableData = createSelector(
   getOpportunities,
   (todos, leads, funnelSteps, opportunities) => {
     const isStoreEmpty =
+      !todos.allIds.length ||
       !leads.allIds.length ||
       !funnelSteps.allIds.length ||
       !opportunities.name.allIds.length ||
@@ -36,3 +37,9 @@ export const getTodosTableData = createSelector(
         });
   }
 );
+
+export const getNumberOfTodos = createSelector(getTodos, (todos) => {
+  const isStoreEmpty = !todos.allIds.length;
+
+  return isStoreEmpty ? undefined : todos.allIds.length;
+});

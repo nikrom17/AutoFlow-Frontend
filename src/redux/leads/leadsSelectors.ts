@@ -56,3 +56,9 @@ export const getLeadDetails = createSelector(
   getOpportunityInfoById,
   (lead, opportunityInfo) => transformLeadDetailsData(lead, opportunityInfo)
 );
+
+export const getNumberOfLeads = createSelector(getLeads, (leads) => {
+  const isStoreEmpty = !leads.allIds.length;
+
+  return isStoreEmpty ? undefined : leads.allIds.length;
+});

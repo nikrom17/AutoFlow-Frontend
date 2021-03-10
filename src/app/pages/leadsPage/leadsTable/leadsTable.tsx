@@ -21,8 +21,9 @@ const columns: ColumnsType<any> = [
     render: (dateString) => timeDelta(dateString),
   },
   {
-    title: 'Price Estimate',
+    title: 'Quoted Price',
     dataIndex: ['opportunity', 'info', 'quotedPrice'],
+    render: (quotedPrice: number) => `$${quotedPrice}`,
   },
   {
     title: 'Funnel Step',
@@ -35,7 +36,7 @@ interface Props {
   tableData: any;
 }
 
-const DeliveriesTable: React.FC<Props> = ({ tableData }) => {
+const LeadsTable: React.FC<Props> = ({ tableData }) => {
   const [leadId, setLeadId] = React.useState(0);
   return (
     <>
@@ -62,4 +63,4 @@ const DeliveriesTable: React.FC<Props> = ({ tableData }) => {
   );
 };
 
-export default DeliveriesTable;
+export default LeadsTable;

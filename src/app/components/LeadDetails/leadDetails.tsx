@@ -118,7 +118,7 @@ const LeadDetails: React.FC<Props> = ({ isModalVisible, setLeadId, leadId }) => 
               <p>{`Filing Status: ${filingStatus}`}</p>
               <p>{`Occupation: ${occupation}`}</p>
               <p>{`Yearly Income: ${yearlyIncome}`}</p>
-              <p>{`Quoted Price: ${quotedPrice}`}</p>
+              <p>{`Quoted Price: $${quotedPrice}`}</p>
             </Card>
           </div>
           <div className={styles.cardColumnContainer}>

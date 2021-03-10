@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { useSelector } from 'react-redux';
 import { getLeadsTableData } from 'src/redux/leads/leadsSelectors';
 import { Skeleton, Tabs } from 'antd';
