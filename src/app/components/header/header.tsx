@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { Button, Tooltip, Avatar, Badge } from 'antd';
 import { SearchOutlined, BellOutlined, UserOutlined } from '@ant-design/icons';
 import * as styles from './header.module.less';
