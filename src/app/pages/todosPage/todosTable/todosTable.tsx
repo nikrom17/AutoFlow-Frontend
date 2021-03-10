@@ -19,8 +19,9 @@ const columns: ColumnsType<any> = [
     render: (date: Date) => timeDelta(date),
   },
   {
-    title: 'Price Estimate',
+    title: 'Quoted Price',
     dataIndex: ['opportunity', 'info', 'quotedPrice'],
+    render: (quotedPrice: number) => `$${quotedPrice}`,
   },
   {
     title: 'Priority Rank ',
