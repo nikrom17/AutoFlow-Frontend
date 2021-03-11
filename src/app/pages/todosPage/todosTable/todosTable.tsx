@@ -39,7 +39,6 @@ const DeliveriesTable: React.FC<Props> = ({ tableData }) => {
     <Table
       columns={columns}
       dataSource={tableData}
-      pagination={false}
       rowKey={(todo) => todo.id}
       rowSelection={{ type: 'checkbox' }}
     />
