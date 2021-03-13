@@ -33,7 +33,7 @@ const Home: React.FC = () => {
             <Skeleton title={false} paragraph={{ rows: 4 }} active />
           ) : (
             <Card>
-              <Row justify="space-between" align="bottom">
+              <Row align="bottom">
                 <Col span={18}>
                   <Statistic title="Total Leads" value={numberOfLeads} precision={0} />
                 </Col>

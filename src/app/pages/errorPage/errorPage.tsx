@@ -1,4 +1,5 @@
 import React, { ErrorInfo } from 'react';
+import { Result, Row, Col } from 'antd';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 
 interface Props extends RouteComponentProps {}
@@ -27,14 +28,11 @@ class ErrorBoundary extends React.Component<Props, State> {
     if (this.state.errorInfo) {
       // Error path
       return (
-        <div>
-          <h2>Something went wrong.</h2>
-          <details style={{ whiteSpace: 'pre-wrap' }}>
-            {this.state.error && this.state.error.toString()}
-            <br />
-            {this.state.errorInfo.componentStack}
-          </details>
-        </div>
+        <Row justify="center" style={{ width: '100%', marginTop: '8rem' }}>
+          <Col span={24}>
+            <Result status="500" title="500" subTitle="Sorry, something went wrong." />
+          </Col>
+        </Row>
       );
     }
     // Normally, just render children

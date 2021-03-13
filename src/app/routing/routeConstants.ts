@@ -5,6 +5,7 @@ import ErrorPage from '@pages/errorPage/errorPage';
 import HomePage from '@pages/homePage/homePage';
 import OpportunitiesPage from '@pages/opportunitieslPage/opporrtunitiesPage';
 import LeadsPage from '@pages/leadsPage/leadsPage';
+import NotFoundPage from '@pages/notFoundPage/notFoundPage';
 
 // master list of roles used in this app
 type Roles = 'admin' | 'basicUser' | 'paidUser';
@@ -13,11 +14,10 @@ interface Routes {
   allIds: string[];
   byId: {
     [key: string]: {
-      Component:
-        | React.ComponentType<RouteComponentProps<any>>
-        | React.ComponentType<any>;
-      path: string;
+      Component: React.ComponentType<RouteComponentProps<any>> | React.ComponentType<any>;
+      path?: string;
       requiredRoles: Roles[];
+      exact?: boolean;
     };
   };
 }
@@ -25,9 +25,10 @@ interface Routes {
 export const routeConstants: string[] = [
   'error',
   'funnel',
-  'home',
   'leads',
   'todos',
+  'home',
+  'notFound',
 ];
 
 export const routes: Routes = {
@@ -39,7 +40,6 @@ export const routes: Routes = {
       Component: OpportunitiesPage,
       path: '/opportunities',
     },
-    home: { requiredRoles: [], Component: HomePage, path: '/' },
     leads: {
       requiredRoles: [],
       Component: LeadsPage,
@@ -50,5 +50,7 @@ export const routes: Routes = {
       Component: TodosPage,
       path: '/todos',
     },
+    home: { requiredRoles: [], Component: HomePage, path: '/', exact: true },
+    notFound: { requiredRoles: [], Component: NotFoundPage },
   },
 };
