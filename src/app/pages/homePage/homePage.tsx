@@ -28,16 +28,16 @@ const Home: React.FC = () => {
       <h1 className={styles.home}>Home</h1>
       <Divider />
       <Row gutter={[24, 48]} className="rowStatistics">
-        <Col span={6}>
+        <Col xl={6} xs={12}>
           {isFetchingLeads ? (
             <Skeleton title={false} paragraph={{ rows: 4 }} active />
           ) : (
             <Card>
               <Row justify="space-between" align="bottom">
-                <Col span={12}>
+                <Col span={18}>
                   <Statistic title="Total Leads" value={numberOfLeads} precision={0} />
                 </Col>
-                <Col span={5}>
+                <Col span={6}>
                   <div className={styles.statisticPercentageUp}>
                     <ArrowUpOutlined /> 4%
                   </div>
@@ -46,16 +46,16 @@ const Home: React.FC = () => {
             </Card>
           )}
         </Col>
-        <Col span={6}>
+        <Col xl={6} xs={12}>
           {isFetchingTodos ? (
             <Skeleton title={false} paragraph={{ rows: 4 }} active />
           ) : (
             <Card>
-              <Row justify="space-between" align="bottom">
-                <Col span={12}>
+              <Row align="bottom">
+                <Col span={18}>
                   <Statistic title="Total Todos" value={numberOfTodos} precision={0} />
                 </Col>
-                <Col span={5}>
+                <Col span={6}>
                   <div className={styles.statisticPercentageUp}>
                     <ArrowDownOutlined /> 1%
                   </div>
@@ -64,13 +64,13 @@ const Home: React.FC = () => {
             </Card>
           )}
         </Col>
-        <Col span={6}>
+        <Col xl={6} xs={12}>
           {isFetchingOpportunityInfo ? (
             <Skeleton title={false} paragraph={{ rows: 4 }} active />
           ) : (
             <Card>
-              <Row justify="space-between" align="bottom">
-                <Col span={12}>
+              <Row align="bottom">
+                <Col span={18}>
                   <Statistic
                     title="Opportunity Value"
                     value={totalOpportunityValue}
@@ -78,7 +78,7 @@ const Home: React.FC = () => {
                     prefix="$"
                   />
                 </Col>
-                <Col span={5}>
+                <Col span={6}>
                   <div className={styles.statisticPercentageUp}>
                     <ArrowUpOutlined /> 11%
                   </div>
@@ -87,13 +87,13 @@ const Home: React.FC = () => {
             </Card>
           )}
         </Col>
-        <Col span={6}>
+        <Col xl={6} xs={12}>
           <Card>
-            <Row justify="space-between" align="bottom">
-              <Col span={12}>
+            <Row align="bottom">
+              <Col span={18}>
                 <Statistic title="Conversion Rate" value={13} precision={0} suffix="%" />
               </Col>
-              <Col span={5}>
+              <Col span={6}>
                 <div className={styles.statisticPercentageDown}>
                   <ArrowDownOutlined /> 5%
                 </div>

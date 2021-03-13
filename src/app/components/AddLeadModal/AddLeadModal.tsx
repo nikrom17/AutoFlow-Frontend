@@ -39,6 +39,16 @@ const AddLeadModal: React.FC<Props> = ({ isModalVisible, setIsModalVisible }) =>
             <Input type="tel" />
           </div>
           <div>
+            <div>
+              <p>City</p>
+              <Input type="text" />
+            </div>
+            <div>
+              <p>State</p>
+              <Input type="text" />
+            </div>
+          </div>
+          <div>
             <p>Funnel Step</p>
             <Cascader options={funnelStepCascaderOptions} expandTrigger="hover" />
           </div>
