@@ -7,14 +7,21 @@ import AddTodoModal from '@components/AddTodoModal/AddTodoModal';
 const AddButtonPopover: React.FC = () => {
   let AddItemModal;
   const [addItemId, setAddItemId] = React.useState(0);
+  const [isModalVisible, setIsModalVisible] = React.useState<boolean>(false);
   const addItemList = [
     {
       description: 'Add new lead',
-      onClick: () => setAddItemId(1),
+      onClick: () => {
+        setAddItemId(1);
+        setIsModalVisible(true);
+      },
     },
     {
       description: 'Add new todo',
-      onClick: () => setAddItemId(2),
+      onClick: () => {
+        setAddItemId(2);
+        setIsModalVisible(true);
+      },
     },
   ];
 
@@ -27,7 +34,6 @@ const AddButtonPopover: React.FC = () => {
       break;
     default:
       AddItemModal = AddLeadModal;
-      break;
   }
 
   const popoverContent = (
@@ -53,8 +59,8 @@ const AddButtonPopover: React.FC = () => {
       </Popover>
       {Boolean(addItemId) && (
         <AddItemModal
-          isModalVisible={Boolean(addItemId)}
-          setIsModalVisible={setAddItemId}
+          isModalVisible={isModalVisible}
+          setIsModalVisible={setIsModalVisible}
         />
       )}
     </>

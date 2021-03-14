@@ -3,7 +3,7 @@ import { Modal } from 'antd';
 
 interface Props {
   isModalVisible: boolean;
-  setIsModalVisible(isModalVisible: number): void;
+  setIsModalVisible(isModalVisible: boolean): void;
 }
 
 const AddLeadModal: React.FC<Props> = ({ isModalVisible, setIsModalVisible }) => {
@@ -11,7 +11,7 @@ const AddLeadModal: React.FC<Props> = ({ isModalVisible, setIsModalVisible }) =>
     <Modal
       visible={isModalVisible}
       footer={null}
-      onCancel={() => setIsModalVisible(0)}
+      onCancel={() => setIsModalVisible(false)}
       width="100%"
       style={{ maxWidth: '1100px' }}
     >
