@@ -16,6 +16,7 @@ export const leadsReducer = (
     // ------- Start -------- //
     case leadsTypes.FETCH_LEADS_START:
     case leadsTypes.FETCH_LEAD_START:
+    case leadsTypes.ADD_LEAD_START:
       return {
         ...state,
         status: 'fetching',
@@ -25,6 +26,7 @@ export const leadsReducer = (
     case leadsTypes.FETCH_LEADS_SUCCESS:
       return { ...action.data.leads, status: 'idle', error: null };
     case leadsTypes.FETCH_LEAD_SUCCESS:
+    case leadsTypes.ADD_LEAD_SUCCESS:
       return {
         allIds: [...state.allIds, ...action.data.leads.allIds],
         byId: {
@@ -37,6 +39,7 @@ export const leadsReducer = (
     // ------- Failed -------- //
     case leadsTypes.FETCH_LEADS_FAILED:
     case leadsTypes.FETCH_LEAD_FAILED:
+    case leadsTypes.ADD_LEAD_FAILED:
       return {
         ...state,
         status: 'idle',

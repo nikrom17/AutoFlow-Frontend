@@ -19,6 +19,7 @@ export interface LeadsState extends DefaultSchema<Leads> {}
 // ------ THUNK ACTION TYPES ------ //
 export type FetchLeads = () => ThunkType;
 export type FetchLead = (clientId: number) => ThunkType;
+export type AddLead = (lead: Leads) => ThunkType;
 
 // ------ CONSTANTS ------ //
 export const FETCH_LEADS_START = 'FETCH_LEADS_START';
@@ -29,7 +30,13 @@ export const FETCH_LEAD_START = 'FETCH_LEAD_START';
 export const FETCH_LEAD_SUCCESS = 'FETCH_LEAD_SUCCESS';
 export const FETCH_LEAD_FAILED = 'FETCH_LEAD_FAILED';
 
+export const ADD_LEAD_START = 'ADD_LEAD_START';
+export const ADD_LEAD_SUCCESS = 'ADD_LEAD_SUCCESS';
+export const ADD_LEAD_FAILED = 'ADD_LEAD_FAILED';
+
 // ------ TYPES ------ //
+
+// fetch all leads
 interface FetchLeadsStart {
   type: typeof FETCH_LEADS_START;
 }
@@ -42,6 +49,7 @@ interface FetchLeadsFailed {
   error: string;
 }
 
+// fetch single lead
 interface FetchLeadStart {
   type: typeof FETCH_LEAD_START;
 }
@@ -54,13 +62,29 @@ interface FetchLeadFailed {
   error: string;
 }
 
+// add a new lead
+interface AddLeadStart {
+  type: typeof ADD_LEAD_START;
+}
+interface AddLeadSuccess {
+  type: typeof ADD_LEAD_SUCCESS;
+  data: { leads: LeadsState };
+}
+interface AddLeadFailed {
+  type: typeof ADD_LEAD_FAILED;
+  error: string;
+}
+
 export type Types =
   | FetchLeadsStart
   | FetchLeadsSuccess
   | FetchLeadsFailed
   | FetchLeadStart
   | FetchLeadSuccess
-  | FetchLeadFailed;
+  | FetchLeadFailed
+  | AddLeadStart
+  | AddLeadSuccess
+  | AddLeadFailed;
 
 // ------ ACTION TYPES ------ //
 export type FetchSuccess = (data: { leads: LeadsState }) => Types;
