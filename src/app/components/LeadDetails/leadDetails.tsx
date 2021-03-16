@@ -6,6 +6,7 @@ import {
   Button,
   Card,
   Checkbox,
+  Empty,
   List,
   Modal,
   Progress,
@@ -81,8 +82,11 @@ const LeadDetails: React.FC<Props> = ({ isModalVisible, setLeadId, leadId }) => 
     email,
     city,
     state,
-    opportunityInfo: { filingStatus, occupation, yearlyIncome, quotedPrice },
+    opportunityInfo,
   } = leadDetails;
+
+  const hasOpportunity = Boolean(opportunityInfo);
+
   return (
     <Modal
       visible={isModalVisible}
@@ -116,10 +120,19 @@ const LeadDetails: React.FC<Props> = ({ isModalVisible, setLeadId, leadId }) => 
               <p>{`Location: ${city}, ${state}`}</p>
             </Card>
             <Card title="Opportunity Info" className={styles.card}>
-              <p>{`Filing Status: ${filingStatus}`}</p>
-              <p>{`Occupation: ${occupation}`}</p>
-              <p>{`Yearly Income: ${yearlyIncome}`}</p>
-              <p>{`Quoted Price: $${quotedPrice}`}</p>
+              {hasOpportunity ? (
+                <>
+                  <p>{`Filing Status: ${opportunityInfo.filingStatus}`}</p>
+                  <p>{`Occupation: ${opportunityInfo.occupation}`}</p>
+                  <p>{`Yearly Income: ${opportunityInfo.yearlyIncome}`}</p>
+                  <p>{`Quoted Price: $${opportunityInfo.quotedPrice}`}</p>
+                </>
+              ) : (
+                <Empty
+                  image={Empty.PRESENTED_IMAGE_SIMPLE}
+                  description={<p>No opportunity info</p>}
+                />
+              )}
             </Card>
           </div>
           <div className={styles.cardColumnContainer}>
