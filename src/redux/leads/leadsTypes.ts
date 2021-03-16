@@ -1,9 +1,9 @@
 import { ThunkType, DefaultSchema } from '../commonTypes';
-
 // ------ COMMON INTERFACES ------ //
 export interface Leads {
   id: number;
-  address: string;
+  city: string;
+  state: string;
   chanceToConvert: number;
   dateCreated?: Date;
   email: string;
@@ -16,10 +16,19 @@ export interface Leads {
 
 export interface LeadsState extends DefaultSchema<Leads> {}
 
+type formSubmitLeads = Omit<
+  Leads,
+  'id' | 'chanceToConvert' | 'dateCreated' | 'funnelStepId' | 'lastContact'
+>;
+
+export interface AddLeadFormData extends formSubmitLeads {
+  funnelStepId: number[];
+}
+
 // ------ THUNK ACTION TYPES ------ //
 export type FetchLeads = () => ThunkType;
 export type FetchLead = (clientId: number) => ThunkType;
-export type AddLead = (lead: Leads) => ThunkType;
+export type AddLead = (lead: AddLeadFormData) => ThunkType;
 
 // ------ CONSTANTS ------ //
 export const FETCH_LEADS_START = 'FETCH_LEADS_START';

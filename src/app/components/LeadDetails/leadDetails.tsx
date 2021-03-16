@@ -79,7 +79,8 @@ const LeadDetails: React.FC<Props> = ({ isModalVisible, setLeadId, leadId }) => 
     status,
     phone,
     email,
-    address,
+    city,
+    state,
     opportunityInfo: { filingStatus, occupation, yearlyIncome, quotedPrice },
   } = leadDetails;
   return (
@@ -112,7 +113,7 @@ const LeadDetails: React.FC<Props> = ({ isModalVisible, setLeadId, leadId }) => 
             <Card title="Contact Info" className={styles.card}>
               <p>{`Phone Number: ${phone}`}</p>
               <p>{`Email: ${email}`}</p>
-              <p>{`Address: ${address}`}</p>
+              <p>{`Location: ${city}, ${state}`}</p>
             </Card>
             <Card title="Opportunity Info" className={styles.card}>
               <p>{`Filing Status: ${filingStatus}`}</p>

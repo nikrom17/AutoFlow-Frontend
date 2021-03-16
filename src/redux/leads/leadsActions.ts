@@ -73,10 +73,12 @@ export const fetchLead: leadsTypes.FetchLead = (leadId) => async (dispatch) => {
 };
 
 // add a single lead
-export const addLead: leadsTypes.AddLead = (lead) => async (dispatch) => {
+export const addLead: leadsTypes.AddLead = (newLead) => async (dispatch) => {
   try {
     dispatch(addLeadStart());
-    const response = await api.get(`leads/${leadId}`);
+    const payload: any = { ...newLead };
+    payload.funnelStepId = newLead.funnelStepId[1];
+    const response = await api.post('leads', payload);
     dispatch(addLeadSuccess(response));
   } catch (error) {
     dispatch(addLeadFailed(error.message));

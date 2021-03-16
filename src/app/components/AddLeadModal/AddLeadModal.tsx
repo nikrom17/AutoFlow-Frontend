@@ -1,10 +1,12 @@
 import * as React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Modal, Cascader, Input, Skeleton, Row, Col, Form } from 'antd';
 import { getSalesFunnelCascaderOptions } from 'src/redux/funnelSteps/funnelStepsSelectors';
 import useReduxFetch from '@hooks/useReduxFetch';
 import { fetchOpportunities } from 'src/redux/opportunities/opportunitiesActions';
 import { fetchFunnelSteps } from 'src/redux/funnelSteps/funnelStepsActions';
+import { addLead } from 'src/redux/leads/leadsActions';
+import { AddLeadFormData } from 'src/redux/leads/leadsTypes';
 import * as styles from './AddLeadModal.module.less';
 
 interface Props {
@@ -19,10 +21,12 @@ const AddLeadModal: React.FC<Props> = ({ isModalVisible, setIsModalVisible }) =>
   // ------ HOOKS ------ //
   const { isFetching } = useReduxFetch([fetchOpportunities, fetchFunnelSteps]);
   const [form] = Form.useForm();
+  const dispatch = useDispatch();
 
   // ------ LOGIC ------ //
-  const onSubmit = (data: any) => {
-    console.log(data);
+  const onSubmit = (formValues: AddLeadFormData) => {
+    form.resetFields();
+    dispatch(addLead(formValues));
   };
 
   return (
@@ -34,9 +38,8 @@ const AddLeadModal: React.FC<Props> = ({ isModalVisible, setIsModalVisible }) =>
       okText="Add Lead"
       onOk={async () => {
         try {
-          const values = await form.validateFields();
-          form.resetFields();
-          onSubmit(values);
+          const formValues = await form.validateFields();
+          onSubmit(formValues);
         } catch (error) {
           console.log('Validate Failed:', error);
         }
@@ -76,7 +79,7 @@ const AddLeadModal: React.FC<Props> = ({ isModalVisible, setIsModalVisible }) =>
           <Row>
             <Col span={24}>
               <Form.Item
-                name="phoneNumber"
+                name="phone"
                 label="Phone Number"
                 rules={[{ required: true, message: 'Please enter a name for the lead' }]}
               >
@@ -109,7 +112,7 @@ const AddLeadModal: React.FC<Props> = ({ isModalVisible, setIsModalVisible }) =>
           <Row>
             <Col span={24}>
               <Form.Item
-                name="funnelStep"
+                name="funnelStepId"
                 label="Funnel Step"
                 rules={[
                   { required: true, message: 'Please select a funnel step for the lead' },
