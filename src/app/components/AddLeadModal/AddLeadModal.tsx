@@ -29,6 +29,15 @@ const AddLeadModal: React.FC<Props> = ({ isModalVisible, setIsModalVisible }) =>
     dispatch(addLead(formValues));
   };
 
+  const onOk = async () => {
+    try {
+      const formValues = await form.validateFields();
+      onSubmit(formValues);
+    } catch (error) {
+      console.log('Validate Failed:', error);
+    }
+  };
+
   return (
     <Modal
       visible={isModalVisible}
@@ -36,14 +45,7 @@ const AddLeadModal: React.FC<Props> = ({ isModalVisible, setIsModalVisible }) =>
       onCancel={() => setIsModalVisible(false)}
       okButtonProps={{ htmlType: 'submit' }}
       okText="Add Lead"
-      onOk={async () => {
-        try {
-          const formValues = await form.validateFields();
-          onSubmit(formValues);
-        } catch (error) {
-          console.log('Validate Failed:', error);
-        }
-      }}
+      onOk={onOk}
     >
       {isFetching ? (
         <Skeleton />
@@ -81,7 +83,9 @@ const AddLeadModal: React.FC<Props> = ({ isModalVisible, setIsModalVisible }) =>
               <Form.Item
                 name="phone"
                 label="Phone Number"
-                rules={[{ required: true, message: 'Please enter a name for the lead' }]}
+                rules={[
+                  { required: true, message: 'Please enter a phone number for the lead' },
+                ]}
               >
                 <Input className={styles.input} type="tel" />
               </Form.Item>
