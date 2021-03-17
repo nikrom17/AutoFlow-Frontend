@@ -38,7 +38,7 @@ export const addLeadStart = () => ({
   type: leadsTypes.ADD_LEAD_START,
 });
 
-export const addLeadSuccess: leadsTypes.FetchSuccess = (data) => ({
+export const addLeadSuccess: leadsTypes.PostSuccess = (data) => ({
   type: leadsTypes.ADD_LEAD_SUCCESS,
   data,
 });

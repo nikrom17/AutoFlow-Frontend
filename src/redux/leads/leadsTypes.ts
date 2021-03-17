@@ -1,4 +1,5 @@
 import { ThunkType, DefaultSchema } from '../commonTypes';
+import { FunnelStepsState } from '../funnelSteps/funnelStepsTypes';
 // ------ COMMON INTERFACES ------ //
 export interface Leads {
   id: number;
@@ -77,7 +78,7 @@ interface AddLeadStart {
 }
 interface AddLeadSuccess {
   type: typeof ADD_LEAD_SUCCESS;
-  data: { leads: LeadsState };
+  data: { leads: LeadsState; funnelSteps: FunnelStepsState };
 }
 interface AddLeadFailed {
   type: typeof ADD_LEAD_FAILED;
@@ -97,3 +98,7 @@ export type Types =
 
 // ------ ACTION TYPES ------ //
 export type FetchSuccess = (data: { leads: LeadsState }) => Types;
+export type PostSuccess = (data: {
+  leads: LeadsState;
+  funnelSteps: FunnelStepsState;
+}) => Types;
