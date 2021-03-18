@@ -1,4 +1,4 @@
-import { DefaultSchema, ThunkType } from '../commonTypes';
+import { DefaultSchema } from '../commonTypes';
 
 // ------ COMMON INTERFACES ------ //
 export interface FunnelSteps {
@@ -11,8 +11,6 @@ export interface FunnelSteps {
 export interface FunnelStepsState extends DefaultSchema<FunnelSteps> {}
 
 // ------ THUNK ACTION TYPES ------ //
-export type FetchFunnelSteps = () => ThunkType;
-export type FetchFunnelStep = (funnelStepId: number) => ThunkType;
 
 // ------ CONSTANTS ------ //
 export const FETCH_FUNNEL_STEPS_START = 'FETCH_FUNNEL_STEPS_START';

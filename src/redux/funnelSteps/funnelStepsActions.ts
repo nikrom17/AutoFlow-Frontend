@@ -1,4 +1,5 @@
 import * as funnelStepsTypes from './funnelStepsTypes';
+import { DefaultThunkAction, ThunkActionId } from '../commonTypes';
 import api from 'src/api/api';
 
 // ------ SIMPLE ACTIONS ------ //
@@ -36,9 +37,7 @@ export const fetchFunnelStepFailed = (error: string) => ({
 // ------ COMPLEX ACTIONS ------ //
 
 // fetch all funnelSteps
-export const fetchFunnelSteps: funnelStepsTypes.FetchFunnelSteps = () => async (
-  dispatch
-) => {
+export const fetchFunnelSteps: DefaultThunkAction = () => async (dispatch) => {
   try {
     dispatch(fetchFunnelStepsStart());
     const response = await api.get('funnel-steps');
@@ -49,9 +48,9 @@ export const fetchFunnelSteps: funnelStepsTypes.FetchFunnelSteps = () => async (
 };
 
 // fetch a single funnelStep
-export const fetchFunnelStep: funnelStepsTypes.FetchFunnelStep = (
-  funnelStepId: number
-) => async (dispatch) => {
+export const fetchFunnelStep: ThunkActionId<number> = (funnelStepId) => async (
+  dispatch
+) => {
   try {
     dispatch(fetchFunnelStepStart());
     const response = await api.get(`funnel-steps/${funnelStepId}`);

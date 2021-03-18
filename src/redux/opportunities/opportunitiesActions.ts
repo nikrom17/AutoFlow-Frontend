@@ -1,5 +1,5 @@
 import * as opportunitiesTypes from './opportunitiesTypes';
-import { GenericThunkAction } from 'src/redux/commonTypes';
+import { DefaultThunkAction, ThunkActionId } from 'src/redux/commonTypes';
 import api from 'src/api/api';
 
 // ------ SIMPLE ACTIONS ------ //
@@ -67,7 +67,7 @@ export const fetchOpportunityInfoFailed = (error: string) => ({
 // ------ COMPLEX ACTIONS ------ //
 
 // fetch all opportunities
-export const fetchOpportunities: GenericThunkAction = () => async (dispatch) => {
+export const fetchOpportunities: DefaultThunkAction = () => async (dispatch) => {
   try {
     dispatch(fetchOpportunitiesStart());
     const response = await api.get('opportunities');
@@ -78,7 +78,7 @@ export const fetchOpportunities: GenericThunkAction = () => async (dispatch) => 
 };
 
 // fetch all opportunity Infos
-export const fetchOpportunityInfos: GenericThunkAction = () => async (dispatch) => {
+export const fetchOpportunityInfos: DefaultThunkAction = () => async (dispatch) => {
   try {
     dispatch(fetchOpportunityInfosStart());
     const response = await api.get('opportunity-info');
@@ -89,9 +89,9 @@ export const fetchOpportunityInfos: GenericThunkAction = () => async (dispatch) 
 };
 
 // fetch a single opportunity
-export const fetchOpportunity: opportunitiesTypes.FetchOpportunity = (
-  opportunityId: number
-) => async (dispatch) => {
+export const fetchOpportunity: ThunkActionId<number> = (opportunityId) => async (
+  dispatch
+) => {
   try {
     dispatch(fetchOpportunityStart());
     const response = await api.get(`opportunities/${opportunityId}`);
@@ -102,9 +102,9 @@ export const fetchOpportunity: opportunitiesTypes.FetchOpportunity = (
 };
 
 // fetch a single opportunity Info
-export const fetchOpportunityInfo: opportunitiesTypes.FetchOpportunityInfo = (
-  opportunityInfoId
-) => async (dispatch) => {
+export const fetchOpportunityInfo: ThunkActionId<number> = (opportunityInfoId) => async (
+  dispatch
+) => {
   try {
     dispatch(fetchOpportunityInfoStart());
     const response = await api.get(`opportunity-info/${opportunityInfoId}`);

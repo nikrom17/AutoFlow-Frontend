@@ -41,7 +41,23 @@ const post: any = async (url: string, payload: object) => {
   }
 };
 
+const deleteApi: any = async (url: string) => {
+  try {
+    let response: any = await fetch(`${BASEURL}/${url}`, {
+      method: 'DELETE',
+    });
+    response = await response.json();
+    return response.code === 200 ? response : throwError(response);
+  } catch (error) {
+    if (process.env.NODE_ENV === 'development') {
+      handelError(error);
+    }
+    throw new Error(error);
+  }
+};
+
 export default {
   get,
   post,
+  delete: deleteApi,
 };

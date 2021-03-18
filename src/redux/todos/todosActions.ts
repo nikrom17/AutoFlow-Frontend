@@ -1,4 +1,5 @@
 import * as todosTypes from './todosTypes';
+import { DefaultThunkAction, ThunkActionId } from '../commonTypes';
 import api from 'src/api/api';
 
 // ------ SIMPLE ACTIONS ------ //
@@ -36,7 +37,7 @@ export const fetchTodoFailed = (error: string) => ({
 // ------ COMPLEX ACTIONS ------ //
 
 // fetch all todos
-export const fetchTodos: todosTypes.FetchTodos = () => async (dispatch) => {
+export const fetchTodos: DefaultThunkAction = () => async (dispatch) => {
   try {
     dispatch(fetchTodosStart());
     const response = await api.get('todos');
@@ -47,7 +48,7 @@ export const fetchTodos: todosTypes.FetchTodos = () => async (dispatch) => {
 };
 
 // fetch a single todo
-export const fetchTodo: todosTypes.FetchTodo = (todoId: number) => async (dispatch) => {
+export const fetchTodo: ThunkActionId<number> = (todoId) => async (dispatch) => {
   try {
     dispatch(fetchTodoStart());
     const response = await api.get(`todos/${todoId}`);

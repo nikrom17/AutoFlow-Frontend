@@ -1,4 +1,4 @@
-import { ThunkType, DefaultSchema } from '../commonTypes';
+import { DefaultSchema } from '../commonTypes';
 
 // ------ COMMON INTERFACES ------ //
 export interface Todos {
@@ -14,8 +14,6 @@ export interface Todos {
 export interface TodosState extends DefaultSchema<Todos> {}
 
 // ------ THUNK ACTION TYPES ------ //
-export type FetchTodos = () => ThunkType;
-export type FetchTodo = (TodoId: number) => ThunkType;
 
 // ------ CONSTANTS ------ //
 export const FETCH_TODOS_START = 'FETCH_TODOS_START';

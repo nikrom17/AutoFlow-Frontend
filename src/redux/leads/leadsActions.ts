@@ -1,4 +1,5 @@
 import * as leadsTypes from './leadsTypes';
+import { DefaultThunkAction, ThunkActionId } from '../commonTypes';
 import api from 'src/api/api';
 
 // ------ SIMPLE ACTIONS ------ //
@@ -48,10 +49,25 @@ export const addLeadFailed = (error: string) => ({
   error,
 });
 
+// delete a single lead
+export const deleteLeadStart = () => ({
+  type: leadsTypes.DELETE_LEAD_START,
+});
+
+export const deleteLeadSuccess: leadsTypes.DeleteSuccess = (data) => ({
+  type: leadsTypes.DELETE_LEAD_SUCCESS,
+  data,
+});
+
+export const deleteLeadFailed = (error: string) => ({
+  type: leadsTypes.DELETE_LEAD_FAILED,
+  error,
+});
+
 // ------ COMPLEX ACTIONS ------ //
 
 // fetch all leads
-export const fetchLeads: leadsTypes.FetchLeads = () => async (dispatch) => {
+export const fetchLeads: DefaultThunkAction = () => async (dispatch) => {
   try {
     dispatch(fetchLeadsStart());
     const response = await api.get('leads');
@@ -62,10 +78,10 @@ export const fetchLeads: leadsTypes.FetchLeads = () => async (dispatch) => {
 };
 
 // fetch a single lead
-export const fetchLead: leadsTypes.FetchLead = (leadId) => async (dispatch) => {
+export const fetchLead: ThunkActionId<number> = (leadId) => async (dispatch) => {
   try {
     dispatch(fetchLeadStart());
-    const response = await api.post(`leads`);
+    const response = await api.post(`leads/${leadId}`);
     dispatch(fetchLeadSuccess(response));
   } catch (error) {
     dispatch(fetchLeadFailed(error.message));
@@ -82,5 +98,16 @@ export const addLead: leadsTypes.AddLead = (newLead) => async (dispatch) => {
     dispatch(addLeadSuccess(response));
   } catch (error) {
     dispatch(addLeadFailed(error.message));
+  }
+};
+
+// delete a single lead
+export const deleteLead: ThunkActionId<number> = (leadId) => async (dispatch) => {
+  try {
+    dispatch(deleteLeadStart());
+    const response = await api.delete(`leads/${leadId}`);
+    dispatch(deleteLeadSuccess(response));
+  } catch (error) {
+    dispatch(deleteLeadFailed(error.message));
   }
 };

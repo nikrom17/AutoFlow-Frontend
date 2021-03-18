@@ -1,4 +1,4 @@
-import { DefaultSchema, ThunkType } from '../commonTypes';
+import { DefaultSchema } from '../commonTypes';
 
 // ------ COMMON INTERFACES ------ //
 export interface Opportunities {
@@ -13,8 +13,6 @@ export interface OpportunitiesState {
 }
 
 // ------ THUNK ACTION TYPES ------ //
-export type FetchOpportunity = (opportunityId: number) => ThunkType;
-export type FetchOpportunityInfo = (opportunityInfoId: number) => ThunkType;
 
 // ------ CONSTANTS ------ //
 export const FETCH_OPPORTUNITIES_START = 'FETCH_OPPORTUNITIES_START';

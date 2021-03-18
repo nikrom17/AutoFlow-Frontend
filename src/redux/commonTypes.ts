@@ -13,4 +13,5 @@ export interface DefaultSchema<T> {
 
 export type ThunkType = ThunkAction<void, RootState, null, Action<string>>;
 
-export type GenericThunkAction = () => ThunkType;
+export type DefaultThunkAction = () => ThunkType;
+export type ThunkActionId<T> = (id: T) => ThunkType;

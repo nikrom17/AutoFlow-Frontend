@@ -17,6 +17,7 @@ export const leadsReducer = (
     case leadsTypes.FETCH_LEADS_START:
     case leadsTypes.FETCH_LEAD_START:
     case leadsTypes.ADD_LEAD_START:
+    case leadsTypes.DELETE_LEAD_START:
       return {
         ...state,
         status: 'fetching',
@@ -36,10 +37,22 @@ export const leadsReducer = (
         status: 'idle',
         error: null,
       };
+    case leadsTypes.DELETE_LEAD_SUCCESS:
+      const deletedLeadId = action.data.leads.allIds[0];
+      const byId = { ...cloneDeep(state.byId) };
+      delete byId[deletedLeadId];
+
+      return {
+        allIds: [...state.allIds].filter((id) => id !== deletedLeadId),
+        byId,
+        status: 'idle',
+        error: null,
+      };
     // ------- Failed -------- //
     case leadsTypes.FETCH_LEADS_FAILED:
     case leadsTypes.FETCH_LEAD_FAILED:
     case leadsTypes.ADD_LEAD_FAILED:
+    case leadsTypes.DELETE_LEAD_FAILED:
       return {
         ...state,
         status: 'idle',

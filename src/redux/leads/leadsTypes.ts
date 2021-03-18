@@ -27,8 +27,6 @@ export interface AddLeadFormData extends formSubmitLeads {
 }
 
 // ------ THUNK ACTION TYPES ------ //
-export type FetchLeads = () => ThunkType;
-export type FetchLead = (clientId: number) => ThunkType;
 export type AddLead = (lead: AddLeadFormData) => ThunkType;
 
 // ------ CONSTANTS ------ //
@@ -43,6 +41,10 @@ export const FETCH_LEAD_FAILED = 'FETCH_LEAD_FAILED';
 export const ADD_LEAD_START = 'ADD_LEAD_START';
 export const ADD_LEAD_SUCCESS = 'ADD_LEAD_SUCCESS';
 export const ADD_LEAD_FAILED = 'ADD_LEAD_FAILED';
+
+export const DELETE_LEAD_START = 'DELETE_LEAD_START';
+export const DELETE_LEAD_SUCCESS = 'DELETE_LEAD_SUCCESS';
+export const DELETE_LEAD_FAILED = 'DELETE_LEAD_FAILED';
 
 // ------ TYPES ------ //
 
@@ -85,6 +87,19 @@ interface AddLeadFailed {
   error: string;
 }
 
+// delete a lead
+interface DeleteLeadStart {
+  type: typeof DELETE_LEAD_START;
+}
+interface DeleteLeadSuccess {
+  type: typeof DELETE_LEAD_SUCCESS;
+  data: { leads: LeadsState; funnelSteps: FunnelStepsState };
+}
+interface DeleteLeadFailed {
+  type: typeof DELETE_LEAD_FAILED;
+  error: string;
+}
+
 export type Types =
   | FetchLeadsStart
   | FetchLeadsSuccess
@@ -94,11 +109,18 @@ export type Types =
   | FetchLeadFailed
   | AddLeadStart
   | AddLeadSuccess
-  | AddLeadFailed;
+  | AddLeadFailed
+  | DeleteLeadStart
+  | DeleteLeadSuccess
+  | DeleteLeadFailed;
 
 // ------ ACTION TYPES ------ //
 export type FetchSuccess = (data: { leads: LeadsState }) => Types;
 export type PostSuccess = (data: {
+  leads: LeadsState;
+  funnelSteps: FunnelStepsState;
+}) => Types;
+export type DeleteSuccess = (data: {
   leads: LeadsState;
   funnelSteps: FunnelStepsState;
 }) => Types;
