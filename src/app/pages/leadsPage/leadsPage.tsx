@@ -33,7 +33,7 @@ const LeadsPage: React.FC = () => {
     <>
       <SubHeader
         title="Leads"
-        addButtonOnClick={() => console.log('Leads button')}
+        addButtonOnClick={() => setIsModalVisible(true)}
         addButtonTitle="Add New Lead"
       >
         <Tabs defaultActiveKey="1">
