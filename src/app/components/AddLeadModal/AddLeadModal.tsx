@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Modal, Cascader, Input, Skeleton, Row, Col, Form } from 'antd';
+import { Modal, Cascader, Input, Skeleton, Row, Col, Form, message } from 'antd';
 import { getSalesFunnelCascaderOptions } from 'src/redux/funnelSteps/funnelStepsSelectors';
 import useReduxFetch from '@hooks/useReduxFetch';
 import { fetchOpportunities } from 'src/redux/opportunities/opportunitiesActions';
@@ -25,8 +25,10 @@ const AddLeadModal: React.FC<Props> = ({ isModalVisible, setIsModalVisible }) =>
 
   // ------ LOGIC ------ //
   const onSubmit = (formValues: AddLeadFormData) => {
+    message.success('Successfully added lead');
     form.resetFields();
     dispatch(addLead(formValues));
+    setIsModalVisible(false);
   };
 
   const onOk = async () => {
@@ -34,7 +36,7 @@ const AddLeadModal: React.FC<Props> = ({ isModalVisible, setIsModalVisible }) =>
       const formValues = await form.validateFields();
       onSubmit(formValues);
     } catch (error) {
-      console.log('Validate Failed:', error);
+      console.error('Validate Failed:', error);
     }
   };
 
