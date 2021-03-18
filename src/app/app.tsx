@@ -26,8 +26,15 @@ const App: React.FC = () => {
           <Content>
             <Switch>
               {routes.allIds.map((routeId) => {
-                const { Component, path } = routes.byId[routeId];
-                return <Route component={Component} exact key={path} path={path} />;
+                const { Component, path, exact } = routes.byId[routeId];
+                return (
+                  <Route
+                    component={Component}
+                    exact={exact}
+                    key={path || 'non-found'}
+                    path={path}
+                  />
+                );
               })}
             </Switch>
           </Content>

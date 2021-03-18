@@ -50,14 +50,18 @@ const OpportunitiesPage: React.FC = () => {
           <Space size="middle" direction="vertical">
             {funnelStep.leads.map((leadId) => {
               const lead = leads.byId[leadId];
-              const opportunity = opportunityInfo.byId[leadId];
+              const leadOpportunityInfo = opportunityInfo.byId[leadId];
+              if (funnelStepId === 1) {
+                console.log(lead);
+                console.log(opportunityInfo);
+              }
 
-              return lead && opportunity ? (
+              return lead ? (
                 <FunnelStepLeadCard
                   key={leadId}
                   lastComm={lead.lastContact}
                   leadName={lead.name}
-                  quotedPrice={opportunity.quotedPrice}
+                  opportunityInfo={leadOpportunityInfo}
                   status={lead.status}
                   onClick={() => setLeadId(leadId)}
                 />

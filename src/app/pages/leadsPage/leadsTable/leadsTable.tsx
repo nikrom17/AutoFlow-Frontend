@@ -23,7 +23,8 @@ const columns: ColumnsType<any> = [
   {
     title: 'Quoted Price',
     dataIndex: ['opportunity', 'info', 'quotedPrice'],
-    render: (quotedPrice: number) => `$${quotedPrice}`,
+    render: (quotedPrice: number) =>
+      quotedPrice ? `$${quotedPrice}` : 'No opportunity info',
   },
   {
     title: 'Funnel Step',

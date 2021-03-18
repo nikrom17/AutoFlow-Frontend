@@ -33,6 +33,21 @@ export const fetchLeadFailed = (error: string) => ({
   error,
 });
 
+// add a single lead
+export const addLeadStart = () => ({
+  type: leadsTypes.ADD_LEAD_START,
+});
+
+export const addLeadSuccess: leadsTypes.PostSuccess = (data) => ({
+  type: leadsTypes.ADD_LEAD_SUCCESS,
+  data,
+});
+
+export const addLeadFailed = (error: string) => ({
+  type: leadsTypes.ADD_LEAD_FAILED,
+  error,
+});
+
 // ------ COMPLEX ACTIONS ------ //
 
 // fetch all leads
@@ -47,12 +62,25 @@ export const fetchLeads: leadsTypes.FetchLeads = () => async (dispatch) => {
 };
 
 // fetch a single lead
-export const fetchLead: leadsTypes.FetchLead = (leadId: number) => async (dispatch) => {
+export const fetchLead: leadsTypes.FetchLead = (leadId) => async (dispatch) => {
   try {
     dispatch(fetchLeadStart());
-    const response = await api.get(`leads/${leadId}`);
+    const response = await api.post(`leads`);
     dispatch(fetchLeadSuccess(response));
   } catch (error) {
     dispatch(fetchLeadFailed(error.message));
+  }
+};
+
+// add a single lead
+export const addLead: leadsTypes.AddLead = (newLead) => async (dispatch) => {
+  try {
+    dispatch(addLeadStart());
+    const payload: any = { ...newLead };
+    payload.funnelStepId = newLead.funnelStepId[1];
+    const response = await api.post('leads', payload);
+    dispatch(addLeadSuccess(response));
+  } catch (error) {
+    dispatch(addLeadFailed(error.message));
   }
 };

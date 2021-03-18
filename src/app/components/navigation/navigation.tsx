@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { useHistory } from 'react-router';
-import * as styles from './navigation.module.less';
 import { Menu } from 'antd';
 import { OrderedListOutlined, UserOutlined, FunnelPlotOutlined } from '@ant-design/icons';
+import AddButtonPopover from '@components/AddButtonPopover/AddButtonPopover';
+import * as styles from './navigation.module.less';
 
 const Navigation = () => {
   const history = useHistory();
@@ -30,6 +31,9 @@ const Navigation = () => {
           Leads
         </Menu.Item>
       </Menu>
+      <div className={styles.addButtonContainer}>
+        <AddButtonPopover />
+      </div>
     </>
   );
 };

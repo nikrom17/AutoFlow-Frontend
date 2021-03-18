@@ -8,7 +8,7 @@ interface Props {
   lastComm: Date;
   leadName: string;
   onClick(): void;
-  quotedPrice: string;
+  opportunityInfo?: any;
   status: string;
 }
 
@@ -16,11 +16,11 @@ const FunnelStepLeadCard: React.FC<Props> = ({
   lastComm,
   leadName,
   onClick,
-  quotedPrice,
+  opportunityInfo,
   status,
 }) => (
   <Card title={leadName} onClick={onClick} className={`leadCard-${getTagColor(status)}`}>
-    <p>{`Quoted Price: $${quotedPrice}`}</p>
+    {Boolean(opportunityInfo) && <p>{`Quoted Price: $${opportunityInfo.quotedPrice}`}</p>}
     <p>{`Last Contact: ${timeDelta(lastComm)}`}</p>
     <p>{`Status: ${status}`}</p>
   </Card>

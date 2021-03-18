@@ -6,6 +6,7 @@ import {
   Button,
   Card,
   Checkbox,
+  Empty,
   List,
   Modal,
   Progress,
@@ -79,9 +80,13 @@ const LeadDetails: React.FC<Props> = ({ isModalVisible, setLeadId, leadId }) => 
     status,
     phone,
     email,
-    address,
-    opportunityInfo: { filingStatus, occupation, yearlyIncome, quotedPrice },
+    city,
+    state,
+    opportunityInfo,
   } = leadDetails;
+
+  const hasOpportunity = Boolean(opportunityInfo);
+
   return (
     <Modal
       visible={isModalVisible}
@@ -112,13 +117,22 @@ const LeadDetails: React.FC<Props> = ({ isModalVisible, setLeadId, leadId }) => 
             <Card title="Contact Info" className={styles.card}>
               <p>{`Phone Number: ${phone}`}</p>
               <p>{`Email: ${email}`}</p>
-              <p>{`Address: ${address}`}</p>
+              <p>{`Location: ${city}, ${state}`}</p>
             </Card>
             <Card title="Opportunity Info" className={styles.card}>
-              <p>{`Filing Status: ${filingStatus}`}</p>
-              <p>{`Occupation: ${occupation}`}</p>
-              <p>{`Yearly Income: ${yearlyIncome}`}</p>
-              <p>{`Quoted Price: $${quotedPrice}`}</p>
+              {hasOpportunity ? (
+                <>
+                  <p>{`Filing Status: ${opportunityInfo.filingStatus}`}</p>
+                  <p>{`Occupation: ${opportunityInfo.occupation}`}</p>
+                  <p>{`Yearly Income: ${opportunityInfo.yearlyIncome}`}</p>
+                  <p>{`Quoted Price: $${opportunityInfo.quotedPrice}`}</p>
+                </>
+              ) : (
+                <Empty
+                  image={Empty.PRESENTED_IMAGE_SIMPLE}
+                  description={<p>No opportunity info</p>}
+                />
+              )}
             </Card>
           </div>
           <div className={styles.cardColumnContainer}>

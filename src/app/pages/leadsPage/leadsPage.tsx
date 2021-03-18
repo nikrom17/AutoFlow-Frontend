@@ -12,6 +12,7 @@ import SubHeader from '@components/subHeader/subHeader';
 import LeadsTable from './leadsTable/leadsTable';
 import PageFrame from '@components/pageFrame/pageFrame';
 import useReduxFetch from '@hooks/useReduxFetch';
+import AddLeadModal from '@components/AddLeadModal/AddLeadModal';
 
 const { TabPane } = Tabs;
 
@@ -20,6 +21,7 @@ const LeadsPage: React.FC = () => {
   const leadsTableData = useSelector(getLeadsTableData);
 
   // ------ HOOKS ------ //
+  const [isModalVisible, setIsModalVisible] = React.useState(false);
   const { isFetching } = useReduxFetch([
     fetchFunnelSteps,
     fetchLeads,
@@ -48,6 +50,12 @@ const LeadsPage: React.FC = () => {
           <LeadsTable tableData={leadsTableData} />
         )}
       </PageFrame>
+      {Boolean(isModalVisible) && (
+        <AddLeadModal
+          isModalVisible={isModalVisible}
+          setIsModalVisible={setIsModalVisible}
+        />
+      )}
     </>
   );
 };
